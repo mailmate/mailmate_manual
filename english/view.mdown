@@ -1,0 +1,111 @@
+title: View
+
+<a name="view"> </a>
+# View
+
+## <a name="layouts">Layouts</a>
+
+You could easily miss it if you are not looking for it. Go to the “View ▸ Layout” menu and play with the alternative layouts currently available for MailMate. The Correspondence layout allows you to immediately see any messages in any correspondence similar to the currently selected message(s). The Statistics layout replaces the message display with a simple tableview listing the frequency of any message header (again, note the “Other…” menu item in the headers popup). You can use this to easily find out who writes most often, what is the most popular email client, how many messages you have received per year and so forth. You can even combine these searches by double-clicking items. The Thread Arcs layout provides an alternative view of threads. It can be used as an immediate overview of where the currently selected message is located in a discussion (even if the other messages are in a different mailbox). Clicking on a node brings you to the corresponding message. The default layout is the standard three pane layout used by most email clients.
+
+<img src="images/thread_arcs.png" alt="Thread arcs" class="center" />
+
+The current selection of layouts is also a proof-of-concept. They are defined using an experimental file format which is likely to evolve over time. You can play with this file format yourself, but it is currently undocumented with the exception of a blog post about how to get a [widescreen layout][] (this layout is now included in MailMate).
+
+[widescreen layout]: https://blog.freron.com/2010/widescreen-layout/
+
+## <a name="search">Search View</a>
+
+### Toolbar Search
+
+By default, the toolbar has a search field in the upper right corner. If the toolbar is hidden then you can temporarily show it when using the searching shortcut ⌥⌘F. If you don’t see the search field in the toolbar then right-click the toolbar to “Customize Toolbar…” and drag it into the toolbar (or drag the default set).
+
+By default, a search is equivalent to a search in “Common Headers and Body”, but it also supports a few special one-letter modifiers. Furthermore, “and” and “or” are supported. If neither is used then it’s interpreted as an implicit “and”. Finally, a value prefixed with `"!"` negates the search. Here is an example:
+
+    foo f !smith t (smith or joe)
+
+This means:
+
+    Message contains “foo” and From does not contain “smith” and (To contains “smith” or “joe”)
+
+(To be precise, “Message” means “Common Headers and Body” and “To” means “Recipients”.)
+
+Here are the currently supported modifiers:
+
+| Modifier | Search scope |
+|----------|--------------|
+| f        |  From        |
+| s        |  Subject     |
+| t        |  To (Recipients)|
+| a        |  Any address header |
+| b        |  Body text (unquoted body text)|
+| q        |  Quoted text|
+| m        |  Message (Common Headers or Body)|
+| T        |  Tags |
+| K        |  All IMAP keywords |
+| A        |  Attachment filenames |
+
+Searching is initiated when hitting “Enter”. Holding down ⌥ tells MailMate to stay in the current mailbox. The menu of the toolbar search field allows setting the default search mailbox. (If “Current Mailbox” is selected then holding down ⌥ makes MailMate search “All Messages”.)
+
+A default “header” can be specified for the toolbar search field (`MmDefaultSearchScope`). There is no GUI for this feature yet. It is configured in a Terminal window like this:
+
+    defaults write com.freron.MailMate MmDefaultSearchScope -string "subject"
+
+Note that you can also search explicit headers like this:
+
+    delivered-to:joe x-mailer.name:mailmate
+
+The search “language” is transformed to a MailMate query using an external script and the long term plan is to allow users to define their own shorthand search languages.
+
+### Advanced Search
+
+For advanced searching you should try out “Edit ▸ Find ▸ Mailbox Search…” (⌃⌥⌘F). This opens an editor within the main window which is very similar to the Conditions pane of the mailbox editor. The only difference is with respect to empty values – such conditions are ignored when searching. Remember that you can hold down ⌥ to create advanced All/Any conditions. 
+
+You can setup a default set of search conditions using “Edit ▸ Find ▸ Use as Default Search”.
+
+Note that the toolbar contains a “Thread” button and a “Correspondence” button which currently have no corresponding menu items. They can be used to expand a search to include related messages. Again, the ⌥ key can be used to do the search in “All Messages”.
+
+## <a name="messages_outline">Messages Outline</a>
+
+Threading of messages can be enabled or disabled (⇧⌘T). When enabled, messages are completely threaded. It is useful to know that if you hold down ⌥ while expanding an item then all subitems are expanded as well. You can jump to the root of a thread (⌃⌘R) and you can select all the messages of a thread (⌃⌘A) which is especially useful when not threading messages. The context sensitive menu has a range of options including finding messages related to the currently selected message. Double-clicking messages also initiates a search for related messages based on the column double-clicked.
+
+<img src="images/link_search.png" alt="Link searching" class="center" />
+
+Like other email applications, MailMate has a configurable selection of columns to display in the outline (see the context sensitive menu of the column headers). Note the normalized message subjects. Whitespace is trimmed and in some cases a slight reordering occurs. For example, “\[MailMate\]\ \ Re:\ \ Some subject” becomes “Re: \[MailMate\] Test subject”. This magic is based on a very general system. There is no documentation for this system yet, so the following explanation should be considered a “teaser”: The subject is split into components using regular expressions specified in a configuration file. Instead of just being able to reference the `subject` of a message, one can reference `subject.prefix` (“Re:”), `subject.body` (“Test subject”), `subject.blob` (“MailMate”), or even `subject.word` (“Test” and “Subject”). This can be used when searching for values, but it is also useful when formatting strings. The subject string in the messages outline is internally defined as follows:
+
+	"${subject.prefix:+${subject.prefix} }${subject.blob:+[${subject.blob}] }${subject.body}"
+
+This is also used for replies, so you get “Re: \[MailMate\] Some subject” instead of “Re: \[MailMate\]  Re:  Some subject”. It may sound trivial, but you should not expect it to work if you try replying to a message like that in your current email application.
+
+### Correspondent/Identity
+
+MailMate now allows some special transformations of header values as part of its internal “specifier” system. For example, instead of “Recipient ▸ Address”, one can do “Recipient ≫ Correspondent ▸ Address”. This filters the recipients of the recipient headers (to, cc, bcc) such that no addresses known to be user identities are included. The opposite is also allowed: “Recipient ≫ Identity ▸ Address”. Most importantly, this feature can be used for a “Correspondent” message list column (based on “Any Address ≫ Correspondent”). This column lists addresses found which is not a user identity. It can also be quite useful for the “Submailboxes” feature in the mailbox editor.
+
+## Message View
+
+### <a name="headers">Headers</a>
+
+The headers view has two modes. A compact mode which typically only takes up a single line and an extended mode with full standard headers. Note that you can click on almost any part of the displayed headers in order to make a related search (hold down ⌥ to search in “All Messages”). You can also copy headers to the pasteboard via the context sensitive menu.
+
+## <a name="webview">WebView</a>
+
+Messages are displayed using a standard WebView like the one used in Safari. HTML is generated for plain text messages and it is styled using CSS. Defaults are very basic, but you can [create your own CSS file][css plist] (and maybe even share it with us). Note that you can change the font and/or the font size using the Format menu (the same is true for the messages outline and the composer).
+
+Searching within a message is similar to searching in Safari. You can use the standard shortcuts for Find (⌘F), Find Next (⌘G), Find Previous (⇧⌘G), and for closing the find view (⌘.).
+
+[css plist]: customization.html#css_plist
+
+<!--
+## Statistics
+
+...
+
+## Thread Arcs
+
+...
+
+FIXME:
+
+More features are hidden in the menus. Make sure you notice the “Message ▸ Mute” menu item which is very useful for mailing lists. When a message is muted it affects all replies for the message arriving in the future. Several actions are taken. Replies are automatically muted themselves and marked as read. If the muted parent is in a different mailbox (for example, because it has been archived or deleted) then the replies are moved to the same mailbox. The result of this is that a muted message triggers the entire subthread to be handled automatically. If a message in the subthread is addressed directly to one of the known identities of the user then the muting is automatically disabled.
+
+Also note the menu items related to navigation currently in the “Message” menu. Moving to the next message (⌘⇣) automatically expands items and you can also move directly to the next unread message (⌥⌘⇣), or to the root of a thread (⇧⌘R).
+-->

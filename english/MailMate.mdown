@@ -1,0 +1,84 @@
+title: MailMate Help
+meta: AppleTitle="MailMate Help", AppleIcon="MailMate Help/images/mm_small.png"
+footer: footer
+web_css: empty
+
+# Table of Contents
+
+* [Introduction][]
+* [Account Setup][]
+	* IMAP
+	* Subscriptions
+	* Gmail
+* [Organize][]
+	* Mailboxes
+	* Mailbox Editor
+	* Tags
+* [View][]
+	* Layouts
+	* Search View
+	* Messages Outline
+	* Message View
+	* Statistics
+	* Thread Arcs
+* [Navigate][]
+* [Compose][]
+	* Headers
+	* Markup
+	* Identities
+	* Signatures
+	* Attachments
+* [Preferences][]
+	* General
+	* Counters (Notifications)
+	* Viewer
+	* Composer
+	* Signatures
+	* Tags
+	* Bundles
+	* Security
+	* Software Update
+* [Custom Key Bindings][]
+* [Rebuild Database][]
+
+[introduction]: introduction.html
+[accountsetup]: account_setup.html
+[organize]: organize.html
+[view]: view.html
+[navigate]: navigate.html
+[compose]: compose.html
+[preferences]: preferences.html
+[customkeybindings]: custom_key_bindings.html
+[rebuilddatabase]: rebuild.html
+
+## Appendix
+
+<!--
+* Message headers
+	* Normalization
+	* Specifiers
+* [querylanguage]: query_language.html
+* Selectors for keybindings
+-->
+
+* [Key Binding Selectors][]
+* [Format String Syntax][]
+* [Extended `mailto:` URL Scheme][mailtourlscheme]
+
+[keybindingselectors]: key_binding_selectors.html
+[formatstringsyntax]: format_string_syntax.html
+[mailtourlscheme]: extended_url_scheme.html
+
+## Advanced/Experimental Features
+
+MailMate is under continuous development and many features implemented in MailMate have only reached an experimental level. This is typically features which have no graphical user interface. The following sections describe some of these features, but remember that anything in this section can change in future updates of MailMate. Feedback is welcome.
+
+* [Hidden Preferences][]
+* [Event-Driven Scripts][]
+* [Command Line Interface (`emate`)][emate]
+* [Low-Level Customization][]
+
+[hiddenpreferences]: hidden_preferences.html
+[event-drivenscripts]: scripts.html
+[emate]: emate.html
+[low-levelcustomization]: customization.html

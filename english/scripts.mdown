@@ -1,0 +1,19 @@
+title: Event-Driven Scripts
+
+# <a name="scripts">Event-Driven Scripts</a>
+
+**The following is going to be deprecated in a future revision of MailMate. It is to be replaced by the very similar functionality of Bundles.**
+
+A few default scripts are located in
+
+	MailMate.app/Contents/SharedSupport/Scripts/
+
+You can add more scripts by placing them in
+
+	~/Library/Application Support/MailMate/Scripts/
+
+You can replace default scripts by using the same `uuid` property.
+
+For now, the examples and the comments within them are the only documentation. There is no GUI for the scripts in MailMate and there is no way to see in MailMate when a script has been applied to a message. The latter is the main reason that the example script stripping MailMan (mailing list software) footers is currently disabled.
+
+Remember that the format for scripts may change in the future. It is an experimental feature.

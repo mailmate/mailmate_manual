@@ -1,0 +1,83 @@
+title: Compose
+
+<a name="compose"> </a>
+# Compose
+
+<!--
+## Editor
+
+plain text, format=flowed, ...
+
+“Edit ▸ Paste as Quoted Text” (⌥⌘V)
+-->
+
+## Headers
+
+By default, only the `To` header and the `Subject` header is shown in the composer. You can add more headers and control which should be shown by default via the popup menu in the left side of the Composer status bar. Headers not shown by default can also be added by hitting ⌥↩. For example, hit ⌥↩ to add a “Cc” header when focus is in the “To” header.
+
+Note that when pasting an email address in an address field then MailMate automatically de-obfuscates it, for example, MailMate automatically converts `"user at example dot com"` to `"user@example.com"`.
+
+### Send Later
+
+A special virtual header is available named “Send Later”. If enabled, a simple text field allows one to write time expressions such as “tomorrow at noon” or “friday at 10”. The text is red as long as the expression cannot be interpreted. The exact format of the supported expressions cannot be documented since it is based on Apples API for locating date/time-related expressions in text. In addition to this, MailMate looks for simple relative time expressions such as “2 hours 10 minutes” with support for years, months, weeks, days, minutes, and seconds. Shorthand is also supported, for example, “2h 10m” or just “2h10m”. If MailMate cannot parse the expression and the user tries to send the message then a sheet is shown which allows the user to correct the problem or set an exact time using a calendar and a clock. The `Date:` header of the composed message reflects the “send later” date (which may be sooner than the message is sent if MailMate has been offline). This is [standard behavior](https://tools.ietf.org/html/rfc5322#section-3.6.1).
+
+Message outline columns are available for showing when a message is scheduled to be sent (“Pending Submission”). One of them is relative to the current time and is enabled by default for the Drafts mailbox.
+
+<!--
+	Holding down ⌥ cancels Send Later. (Important when there is a GUI to provide a default value for Send Later.)
+-->
+
+## Markup
+
+See [preferences](preferences.html#markup_support) for some details about how markup support is implemented in MailMate. The composer window has an optional live preview which is particularly useful when using a markup language. It can be enabled/disabled in the “View ▸ Layout” menu.
+
+## Identities
+
+If you have more than 1 email address configured in your IMAP accounts (in total) then a popup menu is available for selecting the `From` address to be used. Note that the default `From` address is derived by MailMate based on either the message replied or the primary recipient for a new message. For new messages, the address is automatically updated when changing the `To` header except if an explicit choice has been made.
+
+<!-- Describe derivation heuristic -->
+
+The menu also includues a “Customize...” menu item which allows you to alter the currently selected identity. The text field shown supports completion based on the `From` header of all previously sent messages.
+
+## Signatures
+
+Many email clients allow you to configure a selection of signatures and this is also [true for MailMate](preferences.html#signatures). This is especially useful if a signature is automatically inserted when you compose a new message, but this requires the email client to be able to guess which signature you need. Some email clients solve this problem by letting the user explicitly choose a signature to be used for each email account, but MailMate takes a different approach to this problem.
+
+In MailMate, the choice of default signature is based on the main recipient of the email rather than the account/identity used. MailMate looks for the most recent email to the same recipient and reuses the choice of signature. The same is done for the choice of top or bottom posting. Changing these choices will then affect any future emails to the same recipient since the email will become the new most recent email. If no previous email exists (with a choice of signature) to the recipient then MailMate falls back to choosing the most often used signature sent using the same identity.
+
+<img src="images/signatures_popup.png" alt="images/signatures_popup.png" class="center" />
+
+After using this system for a while, you'll be able to have your preferred signature and signature placement chosen by default for most of your emails.
+
+Note that MailMate handles the following caveat: If you change one of your existing signatures, for example by updating a phone number, then this will work as expected even when the signature is used in a new email where previous emails to the same recipient uses a signature with the old phone number.
+
+Also note that [hidden preferences](hidden_preferences.html) include a setting to make MailMate see new messages and replies as two different types of messages when deriving a signature from previously sent messages.
+
+<a name="html_signatures"> </a>
+
+### Restricting Signatures
+
+If you need to restrict one or more signatures to one or more email addresses then you can use the “Address(es)” text field in the signature editor. A so-called glob pattern is the expected input, but you don't need to know what that is. You can provide a comma separated list of email addresses using `*` as a wildcard and MailMate ensures it's a glob pattern. Here is a couple of correctly formatted examples:
+
+	mm-*@freron.com
+	{personal@example.com,work@example.com}
+
+Note that the signatures popup in the composer only displays signatures available for the currently selected “From” address. This is also useful for making sure the glob pattern works as expected.
+
+### HTML Signatures
+
+MailMate is a plain text email client and the only way to generate rich text emails is to use the Markdown [markup language](preferences.html#markup_support). For some users this is a problem because they are required by company policy to include an HTML signature in every email sent. This special case is solved by MailMate by allowing a signature to be defined with an HTML variant. This is raw HTML code and when such a signature is used MailMate generates HTML for the email and inserts the HTML signature in the HTML part of the email. Note that this easily doubles the size of each email (disregarding the use of Markdown or any attachments) and therefore you shouldn't use it unless you really need to.
+
+Note that defining signatures both with and without an HTML variant allows you to make the behavior depend on the recipient of the email.
+
+HTML signatures work for both Markdown and plain text messages.
+
+## Attachments
+
+Attachments can be added either by dragging them onto the composer or by using the “Attach Files...” (⇧⌘A) menu item. Using the attachments menu in the Composer status bar you can also view existing attachments or remove them.
+
+Inline images are only supported in [Markdown mode](preferences.html#markup_support).
+
+## Character Encoding
+
+MailMate can handle almost any kind of character encoding when receiving emails. This includes numerous workarounds for wrongly encoded emails, but when generating emails MailMate only uses [“UTF-8”](https://en.wikipedia.org/wiki/UTF-8). This is *not* configurable.

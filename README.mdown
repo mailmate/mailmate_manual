@@ -1,0 +1,5 @@
+# Background
+
+These are the files used to generated the Help Book within [MailMate](https://freron.com) and the identical online [manual pages](https://manual.mailmate-app.com).
+
+Note that the files are usually ahead of the most recent release of MailMate and therefore could possibly document features which are not available yet.

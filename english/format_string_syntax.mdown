@@ -1,0 +1,10 @@
+title: Format String Syntax
+
+# Format String Syntax
+
+	${«var»:?«if»:«else»}
+	${«var»:+«if»}
+	${«var»:-«else»}
+	${«var»:«else»}
+	${«var»/«regexp»/«format»/«options»}
+	${«var»:[/upcase][/downcase][/capitalize][/asciify]}

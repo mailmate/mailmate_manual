@@ -1,0 +1,39 @@
+title: Command Line Interface (emate)
+
+# <a name="emate">Command Line Interface (emate)</a>
+
+MailMate includes a shell command named `emate` which is located inside the MailMate application bundle. It can be used to create and, optionally, send emails directly from the command line.
+
+It is recommended to make a symbolic link to `emate` and never make a copy. This ensures that new versions of MailMate automatically updates the `emate` command as well. Make sure `~/bin/` exists and paste the following in the Terminal:
+
+	mkdir -p ~/bin/
+	ln -s /Applications/MailMate.app/Contents/Resources/emate ~/bin/emate
+
+This is the current output when asking `emate` for `--help`:
+
+	usage: emate mailto [-h] [-v] [-f FROM] [-t TO] [-c CC] [-b BCC] [-r REPLYTO]
+	                    [-s SUBJECT] [--header HEADER] [--send-now]
+	                    ...
+
+	MailMate command line interface.
+
+	positional arguments:
+	  attachments
+
+	optional arguments:
+	  -h, --help            show this help message and exit
+	  -v, --verbose         verbose output
+	  -f FROM, --from FROM  email address for the sender
+	  -t TO, --to TO        email address to send to
+	  -c CC, --cc CC        email addresses to add to cc
+	  -b BCC, --bcc BCC     email address to add to bcc
+	  -r REPLYTO, --replyto REPLYTO
+	                        email address for replies
+	  -s SUBJECT, --subject SUBJECT
+	                        subject for email
+	  --header HEADER       arbitrary header formatted as "<name>: <value>"
+	  --send-now            send email immediately
+
+The following is an example of creating a message with a tag named `special`:
+
+	echo "The body of the message." | emate mailto --to "Info <info@example.com>" --subject "The subject of the message." --header "#flags: special"

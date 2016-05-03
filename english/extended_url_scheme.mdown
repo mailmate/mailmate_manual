@@ -1,0 +1,56 @@
+title: Extended mailto URL scheme
+
+# Extended `mailto:` URL scheme
+
+MailMate supports the [`mailto:` URL scheme][mailto rfc] which can be used to create new messages. For example, the following link creates a message with recipient, subject, and default body text:
+
+		mailto:me@example.com?subject=Test&body=Body%20text
+
+This can be used within HTML pages as a link, but it can also be called directly, for example, using the `open` command in the Terminal:
+
+		open "mailto:me@example.com?subject=Test&body=Body%20text"
+
+Using the `open` command it is also possible to specify the application to be used when creating the message:
+
+		open -a MailMate "mailto:me@example.com?subject=Test&body=Body%20text"
+
+Otherwise, the default email application is used (this can be configured in the General preferences pane in Apple Mail or MailMate).
+
+MailMate also extends the `mailto:` syntax to include some additional special parameters. These are `from`, `attachment-url` and `send-now`. For security reasons `attachment-url` and `send-now` are ignored except if the URL is provided via AppleScript. It can be done as follows using a single line in the Terminal:
+
+		osascript -e 'tell application "MailMate" to open location "mailto:me@example.com?subject=Test&body=Body%20text&attachment-url=file:///full/path/to/file.txt&send-now=yes" with trust'
+
+The “`with trust`” part of the AppleScript command tells MailMate to not ignore the special parameters.
+
+The `from` value should just be an email address and MailMate then takes care of finding the corresponding identity. It works with all identity settings including address patterns. If an unknown address is given then MailMate falls back to the default account.
+
+Note that it is also possible (and easier for shell scripts) to create messages using the [`emate`][emate] command. The `emate` command is a simple interface to the `mailto:` URLs described above.
+
+[mailto rfc]: https://tools.ietf.org/html/rfc6068
+[emate]: emate.html
+
+## Hacking Integration with Third Party Applications
+
+In practice, the extended `mailto:` URL scheme should allow MailMate to be integrated with applications which need to send messages with attachments. Unfortunately this often requires the developers of the applications to add scripts for MailMate. Some example scripts are included with MailMate and they can be enabled as described below using the Terminal (assuming all applications are in `/Applications`). Note that in some cases updating the applications involved or moving MailMate is going to break the symbolic links created.
+
+### Alfred 2
+
+	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/Alfred\ 2/MailMate.scpt ~/Library/Application\ Support/Alfred\ 2/Plugins/Email/
+
+### iCal
+
+	mv /Applications/iCal.app/Contents/Resources/Scripts/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/MailBackup.scpt
+	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/iCal/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/
+
+*Note:* The above does not work on Mountain Lion or later versions of OS X since Apple no longer uses the `Mail.scpt` file. It is unknown whether or not a workaround exists.
+
+### BusyCal
+
+	mv /Applications/BusyCal.app/Contents/Resources/Scripts/MailAttachmentScript.scpt /Applications/BusyCal.app/Contents/Resources/Scripts/MailAttachmentScriptBackup.scpt
+	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/BusyCal/MailAttachmentScript.scpt /Applications/BusyCal.app/Contents/Resources/Scripts/
+
+*Note:* The above only works for BusyCal 1.6.
+
+### LaunchBar
+
+An example with instructions is available [here](http://prenagha.github.io/launchbar/mailmate.html).

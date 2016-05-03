@@ -1,0 +1,127 @@
+title: Key Binding Selectors
+
+# Key Binding Selectors
+
+## Navigation
+
+Selector | Argument | Action
+---------|----------|-------
+`nextMessage:` | - | Move to next message (expand if possible)
+`previousMessage:` | - | Move to previous message
+`nextThread:` | - | Move to next thread
+`previousThread:` | - | Move to previous thread
+`nextUnreadMessage:` | - | Move to next unread message (expand if possible)
+`previousUnreadMessage:` | - | Move to previous unread message
+`nextUnreadThread:` | - | Move to next unread thread
+`previousUnreadThread:` | - | Move to previous unread thread
+`rootOfThread:` | - | Move to root of thread (search for thread if necessary)
+`lastOfThread:` | - | Move to last message of thread (with respect to received date)
+`selectNextMessageRow:` | - | Select next message (without expanding)
+`selectPreviousMessageRow:` | - | Select previous message (same as previousMessage:)
+`selectFirstMessageRow:` | - | Select first message
+`selectLastMessageRow:` | - | Select last message
+`expand:` | - | Expand selected messages
+`collapse:` | - | Collapse selected messages
+`expandThread:` | - | Expand selected threads
+`collapseThread:` | - | Collapse selected threads
+`expandAll:` | - | Expand all threads
+`collapseAll:` | - | Collapse all threads
+`scrollPageDown:` | - | Scroll one page down
+`scrollPageUp:` | - | Scroll one page up
+`scrollPageDownOrNextUnreadMessage:` | - | Scroll one page down if possible or skip to next message
+`makeFirstResponder:` | View identifier | Identifiers can be found in layout files
+`goToMailbox:` | Mailbox UUID (optional) | Select mailbox (or show mailbox selection window)
+`selectNextMailboxRow:` | - | Select next mailbox (without expanding)
+`selectPreviousMailboxRow:` | - | Select previous mailbox
+`selectNextMailbox:` | - | Select next mailbox (expand if possible)
+`selectPreviousMailbox:` | - | Select previous mailbox (same as selectPreviousMailboxRow:)
+`searchAllMessages:` | - | Initiate search in “All Messages”
+`mailboxSearch:` | - | Initiate search in currently selected mailbox
+`showThread:` | - | Initiate search for messages in the same thread(s)
+`showCorrespondence:` | - | Initiate search for messages with the same correspondent(s)
+
+## Selection
+
+Selector | Argument | Action
+---------|----------|-------
+`selectAll:` | - | Select all messages
+`deselectAll:` | - | Clear selection of messages
+`moveDownAndModifySelection:` | - | Extend selection downwards
+`moveUpAndModifySelection:` | - | Extend selection upwards
+`selectWithFilter:` | Filter string | Select a subset of messages matched by the filter
+
+## Message actions
+
+Selector | Argument | Action
+---------|----------|-------
+`openMessages:` | - | Open message(s) in separate window(s)
+`newMessage:` | - | Create new message and open composer
+`reply:` | - | Reply to selected message
+`replySender:` | - | Reply to only the sender of the selected message
+`replyAll:` | - | Reply to both sender and all recipients of the selected message
+`replyList:` | - | Reply to the mailing list of the selected message (if possible)
+`forwardMessage:` | - | Forward selected message(s)
+`forwardAsAttachment:` | - | Forward selected message as an attachment
+`redirectMessage:` | - | Redirect selected message
+`moveToMailbox:` | Mailbox UUID (optional) | Move selected messages to mailbox (or show mailbox selection window)
+`moveThreadToMailbox:` | Mailbox UUID | (not fully implemented)
+`copyToMailbox:` | Mailbox UUID | Copy selected messages to mailbox
+`archive:` | - | Shorthand for `( 'moveToMailbox:', 'archive' )`
+`moveToJunk:` | - | Shorthand for `( 'moveToMailbox:', 'junk' )`
+`deleteMessage:` | - | Shorthand for `( 'moveToMailbox:', 'trash' )`
+`expungeMessage:` | - | Delete without moving to the trash mailbox
+`toggleTag:` | IMAP keyword | Toggle an IMAP keyword (not necessarily a tag)
+`setTag:` | IMAP keyword | Set an IMAP keyword (not necessarily a tag)
+`removeTag:` | IMAP keyword | Remove an IMAP keyword (not necessarily a tag)
+`toggleReadState:` | - | Shorthand for `( 'toggleTag:', '\\Seen' )`
+`toggleFlag:` | - | Shorthand for `( 'toggleTag:', '\\Flagged' )`
+`toggleMuteState:` | - | Shorthand for `( 'toggleTag:', '$Muted' )`
+`markAsJunk:` | - | Shorthand for `( 'setTag:', '$Junk' )` — automatically clears not-junk related tags
+`markAsNotJunk:` | - | Shorthand for `( 'setTag:', '$NotJunk' )` — automatically clears junk related tags
+`saveAttachments:` | - | Display “Save Attachments” panel
+`saveAttachmentsInDownloads:` | - | Save attachments in the default downloads folder
+`undo:` | - | Undo action (moved messages or keyword changes)
+`redo:` | - | Redo action (moved messages or keyword changes)
+`copyAsLink:` | - | Put the `message:` URL of the currently selected message on the pasteboard.
+
+## Mailbox actions
+
+Selector | Argument | Action
+---------|----------|-------
+`newIMAPMailbox:` | - | Create an IMAP mailbox in the currently selected IMAP account/mailbox.
+`newSmartMailbox:` | - | Create a smart mailbox.
+`mailboxToggleTag:` | IMAP keyword | Toggle tag for messages in currently displayed mailbox (or search result)
+`mailboxSetTag:` | IMAP keyword | Set tag for messages in currently displayed mailbox (or search result)
+`mailboxRemoveTag:` | IMAP keyword |  Remove tag for messages in currently displayed mailbox (or search result)
+`expungeDeletedMessages:`\* | - | Permanently delete any messages marked as `\Deleted` in the currently displayed mailbox (or search result)
+`emptyMailbox:` | - | Empty the current mailbox (by default this only works for junk/trash mailboxes)
+`applyRules:` | - | Apply the rules of the currently selected mailbox to the currently selected messages
+`refreshMailbox:` | - | Forces a refresh of smart mailboxes hanging on to certain types of messages (like recently read messages in the Unread mailbox)
+
+\* Experimental feature which can be used to make MailMate behave like a traditional IMAP email client. Currently this also requires enabling the following preference in the Terminal (to prevent MailMate from hiding `\Deleted` messages):
+
+	defaults write com.freron.MailMate MmShowDeletedMessages -bool YES
+
+## Composer
+
+Selector | Argument | Action
+---------|----------|-------
+`saveDocument:` | - | Save draft
+`showContextMenu:` | - | Show context sensitive menu (can be used to show spelling alternatives in the composer)
+`showHeaders:` | - | Show headers menu
+`showSignatures:` | - | Show signatures menu
+`showMarkupLanguage:` | - | Show markup menu
+`showIdentities:` | - | Show identities menu (choice of “From”)
+`toggleMarkdown:` | - | Enable/disable the use of Markdown (a bit faster than using `showMarkupLanguage:`).
+`send:` | - | Send message
+`sendAndArchiveParent:` | - | Send message and then archive the replied message
+`sendAndMoveParentToMailbox:` | Mailbox UUID | Send message and then move the replied message to the given mailbox
+`insertString:` | string | Insert text in composer
+`pasteAsQuotedText:` | - | Paste text with an increased quoting level
+`insertFormatString:`\*\* | format string | Insert text in composer using a format string
+
+\*\* Experimental feature added as an alternative to `insertText:`. Mainly to allow one to do something like `"x" = ( "reply:", "insertFormatString:", "Hi ${from.name.first},\n\n");`.
+
+## Other
+
+`performBundleItemWithUUID:` | Command UUID | Launch bundle command with the given UUID.

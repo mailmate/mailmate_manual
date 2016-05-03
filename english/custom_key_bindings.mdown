@@ -1,0 +1,175 @@
+title: Custom Key Bindings
+
+<a name="custom_key_bindings"> </a>
+# Custom Key Bindings
+
+If you simply want key bindings similar to those available in the [Gmail web interface][gmail key bindings] then go to the General pane of the Preferences (⌘,) and enable the default custom key bindings.
+
+## Background
+
+A key binding is the translation of a key stroke (or series of keystrokes) to some action. For example, the key stroke ⌘Q is most often bound to the action of quitting. The key stroke for quitting is fairly high-level in the sense that it is handled by each application individually and this is true for most key bindings involving the use of ⌘.
+
+But there is also a more low-level system for key bindings in Mac OS X. These key bindings affect most applications and most of them affect keyboard navigation in text fields or other views. The standard definitions are located in a file named [StandardKeyBinding.dict][standard key bindings] in the so-called AppKit framework, but this file is in a binary format and viewing it either requires a property list editor as distributed with Apples developer tools or conversion using the `plutil` command line program. A detailed [description of key bindings][key bindings] has been written by Jacob Rus and this is recommended reading if you want to get the full story.
+
+This is a couple of the standard key bindings defined in Mac OS X (converted to plain text property list format):
+
+	"^a" = "moveToBeginningOfParagraph:";
+	"^e" = "moveToEndOfParagraph:";
+
+The basic format is very simple. The first string defines the key stroke and the other string defines the action (by stating its [selector][] name). In the above example ⌃a (control-a) is bound to the action of moving the caret to the beginning of a paragraph. This works in most applications on Mac OS X. The plain text format for defining key strokes with modifiers is shown in the following table:
+
+Shortcut | Code   | Description
+-------: | -----: | -----------
+      a  |    `a` | -
+      ⌃a |     `^a`| Control-a
+      ⌥a |     `~a`| Option-a
+      ⇧a |      `A`| Shift-a
+      ⌘a |     `@a`| Command-a
+
+In addition to the above, `$` can be used to bind to the shift key (⇧) for non-letter-keys and `#` can be used for the numeric key pad. Note that the order of multiple modifiers is important. It must be in this order: `#^~$@`.
+
+You could look through the standard key bindings to get an idea of what is possible by default in Mac OS X. As an example, you may not know the following useful key binding:
+
+	"^'" = "insertSingleQuoteIgnoringSubstitution:";
+
+It's a bit difficult to actually view the standard key bindings. Here is a trick from [osxnotes](http://osxnotes.net/keybindings.html) which makes the output nice and clean:
+
+	plutil -convert xml1 /System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict -o -|pl|grep -v noop:|ruby -pe '$_.gsub!(/[^ -~\n]/){"\\U%04x"%$&.ord}'|sed 's/  / /g'
+
+This is useful if you have smart quotes enabled (globally or using “View ▸ Edit Substitutions ▸ Smart Quotes”) since it allows you to insert plain quotes using the control key. The same is possible for double quotes.
+
+If you want to add or change the standard key bindings (in all applications) then you can do it by creating a new property list in the following location:
+
+	~/Library/KeyBindings/DefaultKeyBinding.dict
+
+You can use the standard key bindings as inspiration, but they do not reveal all that is possible. In particular, note the power of [multi-stroke key bindings][] which we are also going to utilize further below.
+
+[key bindings]: http://www.hcs.harvard.edu/~jrus/site/cocoa-text.html
+[selector]: https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/Selector.html
+[multi-stroke key bindings]: http://blog.macromates.com/2006/multi-stroke-key-bindings/
+
+## Key Bindings in MailMate
+
+Similar to the standard key bindings system, the behavior of MailMate can be tweaked using key bindings files. Examples can be found in the following folder within the MailMate application:
+
+	MailMate.app/Contents/Resources/KeyBindings/
+
+Do **not** edit these files. Changes should be placed in separate files as described further below. The file named `Standard.plist` is always in use, but `Gmail.plist` is more interesting. It shows how to replicate many of the [Gmail key bindings][] available when using Gmails web interface. Here are some simple examples from the file:
+
+	"c"	= "newMessage:";
+	"r"	= "reply:";
+	"f"	= "forwardMessage:";
+	"s"	= "toggleFlag:";
+
+You can enable these key bindings in the Preferences (General pane). Note that you can specify a comma-separated list of key bindings files (without file extensions). The order determines the priority of the files and `Standard` is automatically appended to the list. The first item in the list has the highest priority.
+
+It is also possible to create new key bindings files in the following folder location:
+
+	~/Library/Application Support/MailMate/Resources/KeyBindings/
+
+If you create a file named `Special.plist` then you need to add `Special` to the comma-separated list of names in the Preferences, for example, `Gmail, Special`.
+
+[gmail key bindings]: https://mail.google.com/support/bin/answer.py?answer=6594
+
+A complete list of the [key binding selectors][] available can be found in the appendix.
+
+[key binding selectors]: key_binding_selectors.html
+
+## <a name="special_actions">Special Actions</a>
+
+The standard key binding system in Mac OS X supports the use of a special selector for inserting text which needs an additional argument. Here is an example binding ⇧F1 to a snippet of text:
+
+	"$\UF704" = ( "insertText:", "Thanks for trying out MailMate." );
+
+<!--
+`insertFormatString:` has been added as an alternative to `insertText:` for key bindings. Mainly to allow one to do something like `"x" = ( "reply:", "insertFormatString:", "Hi ${from.name.first},\n\n");`.
+-->
+
+MailMate extends the list of selectors accepting an argument. The following table contains some of the most interesting examples. More can be found in [the appendix][key binding selectors].
+
+Selector               | Argument
+---------------------- | -----------------------
+`goToMailbox:`         | Mailbox UUID (optional)
+`moveToMailbox:`       | Mailbox UUID (optional)
+`toggleTag:`           | IMAP keyword
+`setTag:`              | IMAP keyword
+`removeTag:`           | IMAP keyword
+`selectWithFilter:`    | Filter string (experimental feature)
+
+The `goToMailbox:` and `moveToMailbox:` selectors work both with and without an argument. A mailbox [UUID][] is not always a UUID in a strict sense, but it is always a unique identifier for a mailbox. It can be one of the following:
+
+1. The UUID of a smart mailbox (as saved in `~/Library/Application Support/MailMate/Mailboxes.plist`)
+1. A standard mailbox name such as `inbox`, `archive`, `drafts`, `sent`, `junk`, and `trash`.
+1. A full path for a mailbox within an account such as `imap://you@imap.example.com/Special`
+1. A mailbox path without an account such as `/Special` (does not work for `goToMailbox:`).
+
+The easiest way to obtain the UUID of a mailbox (case 1 and 3 above) is to simply select the mailbox and then use “Edit ▸ Copy” (⌘C) to put the value on the pasteboard.
+
+The following is an example from the Gmail key bindings file. It also shows how to use multi-stroke key bindings:
+
+	"g" = {
+		"a" = ( "goToMailbox:", "ALL_MESSAGES" );
+		"i" = ( "goToMailbox:", "INBOX" );
+		"l" = "goToMailbox:"; // Opens the “Go to Mailbox...” window
+	};
+
+The following example binds the key `g` to move a message to a mailbox named `Special` — within the account the message is currently located:
+
+	g = ( "moveToMailbox:", "/Special");
+		
+Finally, here is an example which allows you to use basic tagging in MailMate.
+
+	"t" = {
+		"s" = ( "toggleTag:", "Special" );
+	};
+
+Using the above, entering `ts` toggles a tag named `Special` on the currently selected messages. When at least 1 message is tagged the tag should be available as an IMAP keyword for searching and configuring smart mailboxes. Note that the tag is given “as is” to the IMAP server and thus you should not use any special characters including no use of the space character (technically, they need to be [IMAP atoms][]). Also note that some servers do not support custom tags at all (MS Exchange is an example). In those cases the tags are not synchronized with the server (and thus can more easily be lost).
+
+It is also possible to explicitly set or remove a tag using selectors as in the following example:
+
+	"s" = ( "setTag:", "Special" );
+	"S" = ( "removeTag:", "Special" );
+	"m" = ( "setTag:", "SpecialOne", "removeTag:", "SpecialTwo" );
+
+The last one also shows that it is possible to define multiple actions for a single key binding. In this case used to make two tags mutually exclusive.
+
+[imap atoms]: https://tools.ietf.org/html/rfc3501#page-82
+[uuid]: https://en.wikipedia.org/wiki/Universally_unique_identifier
+
+The `selectWithFilter:` selector is quite powerful. It can be seen as a generalization of the standard `selectAll:` and `deselectAll:` selectors since it can be used to select any set of messages matching a filter. Using this selector the default Gmail key bindings for selecting messages can be defined as follows:
+
+	"*" = {
+		"a" = "selectAll:";
+		"n" = "deselectAll:";
+		"r" = ( "selectWithFilter:", "#flags.flag = '\\Seen'"); // Selects all mail you've read.
+		"u" = ( "selectWithFilter:", "#flags.flag !=[x] '\\Seen'"); // Selects all unread mail.
+		"s" = ( "selectWithFilter:", "#flags.flag = '\\Flagged'"); // Selects all starred mail.
+		"t" = ( "selectWithFilter:", "#flags.flag !=[x] '\\Flagged'"); // Selects all unstarred mail.
+	};
+
+Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future.
+
+## <a name="special_keys">Special “Keys”</a>
+
+Trackpad gestures are supported by MailMate and they have been implemented with customization in mind as described in the following. The 4 standard swipe directions, left, right, up, and down, are transformed into key down events with the unicode characters `\U2193`, `\U2190`, `\U2192`, and `\U2191` (→ ← ↑ ↓). It allows for great flexibility with respect to what can now be done with gestures. By default, standard key bindings include the following:
+
+	"→"  = "nextMessage:";
+	"←"  = "previousMessage:";
+	"↑"  = "previousThread:";
+	"↓"  = "nextThread:";
+	"^→" = "nextUnreadMessage:";
+	"^←" = "previousUnreadMessage:";
+	"^↑" = "previousUnreadThread:";
+	"^↓" = "nextUnreadThread:";
+
+Using your own key bindings, you can override the above or create more using other modifier keys. Swipe to archive, switch mailbox, delete messages, or whatever you like.
+
+## AppleScript
+
+It is also possible to execute selectors via AppleScript using the `perform` command. Its argument is a list of strings identical to what would be used to define a custom key binding. The frontmost window of MailMate is the target even if MailMate is not in focus (activated). Here is an example:
+
+	tell application "MailMate" to perform {"toggleFlag:"}
+
+Combined with the `performBundleItemWithUUID:` selector, it is also possible to execute any existing bundle command. For example, adding the selected message to OmniFocus could be done like this:
+
+	tell application "MailMate" to perform {"performBundleItemWithUUID:", "03B35B47-9836-4EE1-9AFF-0D01D6F249F0"}

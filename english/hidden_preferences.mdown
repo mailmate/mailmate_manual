@@ -1,0 +1,357 @@
+title: Hidden Preferences
+
+<a name="hidden_preferences"> </a>
+# Hidden Preferences
+
+Some preferences are not available in any of the panes of the Preferences window. They can only be accessed using the Terminal application and thus require some technical skills. There are various reasons for keeping these preferences hidden. Some have just not been added to a Preferences pane yet, but most of them are used to enable experimental features which cannot yet be considered stable or complete features.
+
+Most of the hidden preferences are configured using the `defaults` command. Note that you can also use this command to read and delete a hidden preference. Here are examples with the `MmDefaultBccHeader` setting:
+
+	defaults read com.freron.MailMate MmDefaultBccHeader
+	defaults delete com.freron.MailMate MmDefaultBccHeader
+
+## Visual Appearance
+
+This is an example of how you can change the font of the headers view:
+
+	defaults write com.freron.MailMate MmHeadersViewFontName -string "LucidaGrande"
+	defaults write com.freron.MailMate MmHeadersViewFontSize -float 16
+
+Note that most other font settings can be handled via the “Format ▸ Show Fonts” menu item.
+
+You can also change the maximum number of email addresses shown in the headers view (the default is 30):
+
+	defaults write com.freron.MailMate MmHeadersViewMaximum -integer 10
+
+Dock icon counters size is configurable as follows (default size is 24.0):
+
+	defaults write com.freron.MailMate MmDockCounterFontSize -float 48.0
+
+It's possible to make MailMate collapse quoted text beyond a certain quoting level. Instead a line with “Show/Hide quoted text” appears. Navigation is possible using the tab and space keys. Here is an example of using the currently hidden preference:
+
+	defaults write com.freron.MailMate MmShowQuotedTextLimit -integer 2
+
+This should hide quote levels of level 3 or more. This currently also works for HTML messages, but there might be undesired side effects. Feedback is welcome.
+
+It's possible to force MailMate to always display attachments at the top of the message display. This is a stop-gap solution until better handling of attachments has been implemented:
+
+	defaults write com.freron.MailMate MmShowAttachmentsFirst -bool YES
+
+## Navigation
+
+When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
+
+	defaults write com.freron.MailMate MmMessagesOutlineMoveStrategy -string "next"
+
+The possible values are:
+
+Value               | Behavior
+------------------- | -----------------------
+`none`              | Do not select another message.
+`next`              | Select the next message with respect to the sorting direction.
+`previous`          | Select the previous message with respect to the sorting direction.
+`unreadOrNext`      | Always prefer the direction of an unread message before going to `next`.
+`unreadOrPrevious`  | Always prefer the direction of an unread message before going to `previous`.
+
+When following an external link then MailMate can be told to use a specific browser instead of the global default (configurable in Safari). The application identifier is needed for this. Here is an example telling MailMate to use “Google Chrome”:
+
+	defaults write com.freron.MailMate OakBrowserAppBundleIdentifier -string "com.google.Chrome"
+
+Some users prefer the single message window to close after, e.g., archiving. This can be done by enabling this preference:
+
+	defaults write com.freron.MailMate MmMessageWindowActionAfterMove -string "closeWindow"
+
+On earlier releases of OS X it was common that a vertical drag in a list could be used to select multiple lines. A horizontal drag was required to initiate a drag action. The following preference enables the old behavior in the message list:
+
+	defaults write com.freron.MailMate MmMessagesOutlineVerticalDragSelects -bool YES
+
+## Composing
+
+The following can be used to add a BCC (blind carbon copy) header by default to all outgoing messages:
+
+	defaults write com.freron.MailMate MmDefaultBccHeader -string me@example.com
+
+Using the special value `"<.sender.>"` tells MailMate to use the sending address of the related account.
+
+MailMate uses delivery headers such as `X-Original-To` in order to derive an appropriate From address for replies. This is especially powerful when used in combination with the “Address Pattern” in the IMAP account settings, but some users may want to make MailMate pick the first address in “Email Address(es)” whenever none of the addresses are explicitly used in the recipient fields (`To` or `Cc`). This can currently be done by setting the following preferences:
+
+	defaults write com.freron.MailMate MmIgnoreDeliveryAddresses -bool YES
+
+An experimental alternative algorithm for the [dynamic signatures][] system exists. It can be configured using the Terminal as follows:
+
+	defaults write com.freron.MailMate MmDynamicSignatureMethod -string messageType
+
+The three possible values are `none` (to disable it completely), `standard` (the default behavior), and `messageType`. The last one bases its signature guess on whether the message is new or is a reply. The intention is to be able to use a detailed signature for new messages and a short signature for replies — automatically.
+
+[dynamic signatures]: preferences.html#signatures
+
+The composer allows you to enable/disable various headers in the headers menu (far left of the status bar in the composer window). The list of available headers can be augmented as follows:
+
+	defaults write com.freron.MailMate MmAdditionalComposerHeaders "( { headerName = 'X-Priority'; defaultValue = '1'; type = 'plain'; } )"
+
+In this example, an `X-Priority` header is made available. Giving it a value of 1 is going to make the message a high priority message (at least according to some email clients). Note that this is a really low-level feature. Make sure you know what you are doing before adding non-standard headers to outgoing messages.
+
+Finally, it is possible to customize the generated “On ... John Appleseed wrote:” string for replies. This can be done as follows:
+
+	defaults write com.freron.MailMate MmReplyWroteString -string 'On %e %b %Y, at %k:%M, ${from.name:${from.address}} wrote:'
+
+The placeholders for date and time are the same as described in the manual page for the `strftime` function. The following describes this function in the Terminal:
+
+	man strftime
+
+MailMate uses the plain text body part of an email when generating the quoted text for a reply. Unfortunately some email clients (including Gmail) hard-wrap the plain text body part. As an experimental workaround, MailMate can be told to try to unwrap the plain text body part before creating the reply. Feedback is welcome:
+
+	defaults write com.freron.MailMate MmAutomaticUnwrapEnabled -bool YES
+
+Some users prefer to always have the initial focus in the text editor of the Composer window, also for new messages:
+
+	defaults write com.freron.MailMate MmComposerInitialFocus -string "alwaysTextView"
+
+Some users prefer to disable automatic derivation of the sender address when forwarding an email:
+
+	defaults write com.freron.MailMate MmForwardingDeriveIdentityFromRecipient -bool NO
+
+### LDAP
+
+MailMate supports searching LDAP servers when autocompleting names/addresses in the composer window, but there is currently no GUI for this feature. It has only been tested with very few LDAP servers and feedback on success/failure of this feature is welcome.
+
+To use this feature you need to create a file named `LDAP.plist` in the following folder: `~/Library/Application Support/MailMate/`. Here is an example with SSL disabled (which is necessary for some badly configured servers):
+
+	{	servers = (
+			{	requireSSL = 0;
+				hostname = "ldap.example.com";
+				// port = ...;
+				// username = "...";
+				// searchBase = "";
+				// searchScope = "subtree"; // base, oneLevel, or subtree (default)
+			},
+		);
+	}
+
+If a `username` is provided then MailMate looks for a password in the keychain. It can be added manually to the keychain, but it should also work if Apple Mail has been used to store the password.
+
+## Sending
+
+Based on [this discussion](https://freron.lighthouseapp.com/projects/58672/tickets/213), it is now possible to store a sent message with the message to which it is a reply:
+
+	defaults write com.freron.MailMate MmMoveSentRepliesToMailboxOfRepliedMessage -bool YES
+
+The above currently does not work well with address completion since only “Sent Messages” is used as a history of previously sent messages. This can be changed using the following hidden preference:
+
+	defaults write com.freron.MailMate MmAddressCompletionMailbox -string 8F9C1062-E4F8-4949-B5DC-BAB7CDEC4110
+
+The same can be done with the following preference which completely changes what is shown in the “Sent Messages” standard mailbox. This is convenient if sent messages are not kept in dedicated mailboxes:
+
+	defaults write com.freron.MailMate MmSentMailbox -string 8F9C1062-E4F8-4949-B5DC-BAB7CDEC4110
+
+The value given should be the UUID of a mailbox. The UUID can be copied to the pasteboard using “Edit ▸ Copy” after selecting a mailbox.
+		
+This is all experimental and how it works may change slightly before becoming a GUI feature.
+
+### Alternative SMTP server
+
+This is a functional but somewhat incomplete feature allowing you to select an alternative SMTP server in the Composer. It is described in more detail in [this mailing list post](https://lists.freron.com/mailmate/2016-January/005366.html).
+
+	defaults write com.freron.MailMate MmSentMailbox -string 8F9C1062-E4F8-4949-B5DC-BAB7CDEC4110
+
+### Internationalized Email
+
+MailMate has experimental support for the use of the [`SMTPUTF8` SMTP extension](https://tools.ietf.org/html/rfc6531). In short, this means that MailMate can generate and send emails with UTF8 headers. This also means that MailMate supports international user and domain names in email addresses. This feature is naturally limited by what is supported by the transmission agents, IMAP servers, and receiving email clients.
+
+	defaults write com.freron.MailMate MmSMTPUTF8Enabled -bool YES
+
+*Don't enable this if you don't really know what you are doing. Review your outgoing messages (⌥⌘U) and make sure both server and recipients can handle it. Feedback is welcome on how well this feature works in practice.*
+
+Note that you need an SMTP server with support for `SMTPUTF8`. This currently includes Gmail and the latest releases of Postfix.
+
+### Custom message verifications
+
+Before MailMate sends a message then the message is verified in various ways, for example, it is verified that a subject exists.
+
+It is possible to create some simple custom verifications as well. This is done by creating a file in the current location:
+
+	~/Library/Application Support/MailMate/Resources/messageVerifications.plist
+
+Here is an example which checks that the message contains at least one tag with a `@`:
+
+	{
+		verifications = (
+			{
+				title = "Message not tagged";
+				details = "You have not tagged the message. Are you sure you want to send it?";
+				conditions = "#flags !~ '@'";
+			}
+		);
+	}
+
+### Warn about external recipients
+
+MailMate warns about sending to external recipients if a regular expression pattern is provided for internal recipients. A simple example:
+
+	defaults write com.freron.MailMate MmInternalRecipients -string "@freron\.com"
+
+Anything *not* sent to `@freron.com` addresses is then going to trigger a warning.
+
+A more fine-grained alternative is also available. This requires quitting MailMate and then editing the following file:
+
+	~/Library/Application Support/MailMate/Identities.plist
+
+The following is an example which tells MailMate which addresses are to be considered internal for a given identity. Anything not sent to an address at `freron.com` is going to trigger a warning when trying to send:
+
+	internalAddressPattern = ".*@freron\\.com";
+	internalAddressPatternEnabled = 1;
+
+### Fixed IP
+
+A few users may want to hardcode the IP used for the EHLO SMTP response.
+
+	defaults write com.freron.MailMate MmSMTPFixedIP -string "127.0.0.1"
+
+## Sending PDFs
+
+The following is a [feature of OS X](https://support.apple.com/kb/PH11479?viewlocale=en_US&locale=en_US) which is not obvious. You can add a menu item to the PDF menu of the Print dialogue which makes it easier to create a new message with a PDF attached. You just need to make an alias to the MailMate application in the following folder:
+
+	~/Library/PDF Services/
+
+After making the alias, the name of the alias can be changed to, for example, “Mail PDF with MailMate.app”.
+
+## Security
+
+### Cross-message Content IDs
+
+The so-called [`cid:` URLs](https://tools.ietf.org/html/rfc2392) are supported by MailMate. They are mainly used for rich text (like HTML) to reference images included as attachments in the same message, but they are designed to also work even if referencing parts of other messages. If you do not want MailMate to resolve such references then you can use the following:
+
+	defaults write com.freron.MailMate MmCrossMessageContentIDsAllowed -bool NO
+
+### OpenPGP / S/MIME
+
+Some users may have multiple keys/certificates for a single identity (email address). There is currently no GUI for mapping an email address to a specific key, but a low level solution is available. You need to create the following file:
+
+	~/Library/Application Support/MailMate/Security.plist
+
+Example content:
+
+	{
+		map = (
+			{
+				address = "user1@example.com";
+				userID = "0x70DC41A4D3A3CB12";
+			},
+			{
+				address = "user2@example.com";
+				userID = "0x70DC41A4D3A3CB12";
+			},
+			{
+				address = "user3@example.com";
+				serial = "34 29 1B DA 91 26 0A 8D 8E 61 AC FD 4D 1C 30 F1";
+			},
+		);
+	}
+
+The `userID` value is a value as described in the “HOW TO SPECIFY A USER ID” section of the man page for `gpg2`. You must restart MailMate for any changes to take effect. The `serial` value can be seen when displaying a certificate in Keychain Access.
+
+If an empty string is provided for `userID` or `serial` then it's a hint to MailMate that signing/encryption is not used for this email address. This overrides whatever the setting is in the Security preferences pane. For OpenPGP the `address` can also be the address of a recipient.
+
+## IMAP Namespaces
+
+If you need access to non-private IMAP namespaces then try the following:
+
+	defaults write com.freron.MailMate MmNonPrivateNamespacesEnabled -bool YES
+
+Please report how this works for you (both good and bad).
+
+Some users may need to specify an IMAP namespace prefix explicitly. A known example is UW IMAP servers which return a set of namespaces similar to the following:
+
+	NAMESPACE (("" "/")("#mhinbox" NIL)("#mh/" "/")) (("~" "/")) (("#shared/" "/")("#ftp/" "/")("#news." ".")("#public/" "/"))
+
+If MailMate uses the above as is then it is likely that all files in the home catalog of the user are fetched as IMAP mailboxes. This is a server configuration problem and it is obviously a serious security issue. Nevertheless, if you need to override the NAMESPACE response from the server then you can add the following line to the `Sources.plist` file in `~/Library/Application Support/MailMate`:
+
+	namespaceResponse = '(("MailboxPrefix" "/")) NIL NIL';
+
+You must replace `MailboxPrefix` with the name of the folder with your IMAP mailboxes.
+
+IMAP and SMTP connections are kept alive for a while when they are not in use. The defaults are 120 and 30 seconds, but this can be configured in `Sources.plist` or `Submission.plist` using `keepAliveSeconds`. For example:
+
+	keepAliveSeconds = 10;
+
+## Performance
+
+<!-- No longer documented September, 2015. It should be deprecated.
+### Experimental “IMAP Window”
+
+Since MailMate is an offline email client it requires a lot of disk space if you have a large collection of emails. As an experimental feature MailMate offers to only fetch a subset of messages based on their age. It is currently controlled with an application wide preferences value:
+
+	defaults write com.freron.MailMate MmIMAPWindowInDays -int 365
+
+This should limit MailMate to only fetch messages with a date within the latest year (technically, it is based on the so-called INTERNALDATE of the message on the server).
+
+MailMate does not dynamically adapt to changes to these settings yet. It only has an effect when initially synchronizing an account. (Internally, MailMate supports controlling this window at both account and mailbox level, but this currently requires manual editing of database files.)
+
+Any feedback on this feature is welcome, but use it with care. It *is* experimental.
+-->
+
+### Support for CONDSTORE
+
+MailMate supports the CONDSTORE IMAP extension, but it can be disabled as follows:
+
+	defaults write com.freron.MailMate MmEnableIMAPCondstore -bool NO
+
+The CONDSTORE extension is supported by some IMAP servers and makes it faster to check IMAP mailboxes for changes since the last synchronization (in particular when there are no changes).
+
+## Experimental dual mode
+
+MailMate has a layout class for handling multiple modes in a window. This can be used to provide a dual-mode layout in which one can switch between list mode and message mode. To control it, a key binding is needed for `nextMode:`. To enable this layout, you need to do the following:
+
+	mkdir -p ~/Library/Application\ Support/MailMate/Resources/Layouts/Mailboxes/
+	cp /Applications/MailMate.app/Contents/Resources/Layouts/Mailboxes/dualMode.plist ~/Library/Application\ Support/MailMate/Resources/Layouts/Mailboxes/
+
+And then edit `dualMode.plist` by removing the `enabled = 0` line.
+
+## TNEF / winmail.dat
+
+MailMate has built-in support for extracting anything hidden within the non-standard TNEF files generated by some email clients. These files are often named `winmail.dat` and they often contain the text body of the message in an alternative format (such as `rtf`). MailMate does not extract this by default, but you can force it to so with this preference:
+
+	defaults write com.freron.MailMate MmTNEFSaveBodies -bool YES
+
+## Third party applications
+
+A hidden preference has been introduced for BusyContacts users. It affects the behavior of the “Show” and “Add” menu items for email addresses in the headers view.
+
+	defaults write com.freron.MailMate MmDefaultAddressBook -string com.busymac.busycontacts
+
+## Debugging
+
+When using the following debug variable, a log file is dumped to `/tmp/mailmate_imap_subscriptions.log` if an error occurs while fetching mailboxes to be displayed for “Edit Subscriptions”. It also enables logging for the Activity Viewer even when the Activity Viewer is closed.
+
+	defaults write com.freron.MailMate LoggingEnabled -bool YES
+
+Debug variable for logging any actions related to scripts:
+
+	defaults write com.freron.MailMate MmDebugScripts -bool YES
+
+Debug variable for logging communication between SpamSieve and MailMate:
+
+	defaults write com.freron.MailMate DebugSpamDetection -bool YES
+
+Debug variable for logging actions related to security protocols (S/MIME and OpenPGP):
+
+	defaults write com.freron.MailMate MmDebugSecurity -bool YES
+
+## Other
+
+When dragging messages from the messages outline to the Finder (or Desktop), the default filename is based on the subject of the message. This can be customized using a [format string][]. Here are some simple examples:
+
+	defaults write com.freron.MailMate MmFilenameFormatString "${#body-part-id}.eml"
+	defaults write com.freron.MailMate MmFilenameFormatString "${subject} (${from}).eml"
+
+The default is a nicely formatted subject line: `${subject.prefix:+${subject.prefix} }${subject.blob:+[${subject.blob}] }${subject.body}.eml`. Note that due to a file system limitation, MailMate always replaces any occurrences of `:` with `;`.
+
+Normal behavior when clicking the dock icon is to open a mailbox viewer if none exists. The following changes this behavior such that any existing message viewer windows or composer windows is taken to the front when the dock icon is clicked.
+
+	defaults write com.freron.MailMate MmShowAnyViewerOnDockIconClick -bool YES
+
+Trash and junk related mailboxes have an “Empty Mailbox...” menu item. This menu item can be enabled for all mailboxes like this:
+
+	defaults write com.freron.MailMate MmEmptyMailboxMenuItemEnabled -bool YES
+
+[format string]: format_string_syntax.html

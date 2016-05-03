@@ -1,0 +1,40 @@
+title: Navigate
+
+# Navigate
+
+The following sections list the primary ways to navigate in MailMate using the keyboard only. Note that using [custom key bindings][] you can also assign your own keys for these actions and you can make specialized key bindings, for example, to use a single key to jump to a specific mailbox.
+
+[custom key bindings]: custom_key_bindings.html
+
+## Mailboxes
+
+Action                  | Key
+----------------------- | -------
+Go to Mailbox...        | ⌘T
+Go to Source            | ⌥⌘S
+
+
+## Messages
+
+The space key (␣) can be used to scroll the content of a message, but when at the bottom of a message the space key selects the next message (the exact behavior depends on the date sorting used).
+
+Action                  | Key
+----------------------- | -------
+Next Message            | ⌘↓
+Previous Message        | ⌘↑
+Next Unread Message     | ⌥⌘↓
+Previous Unread Message | ⌥⌘↑
+
+Note that all of these shortcuts auto-expands threads as needed.
+
+## Threads
+
+Action                  | Key
+----------------------- | -------
+Next Thread             | ⌃⌘↓
+Previous Thread         | ⌃⌘↑
+Next Unread Thread      | ⌃⌥⌘↓
+Previous Unread Thread  | ⌃⌥⌘↑
+Root of Thread          | ⌃⌘R
+
+Note that “Next/Previous Unread Thread” also marks all messages in the current thread as read.

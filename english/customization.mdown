@@ -1,0 +1,134 @@
+title: Low-Level Customization
+
+# Low-Level Customization
+
+All of the following is *subject to change*. It is essentially a peek into some of the raw inner workings of MailMate and you could very easily make changes which would cause MailMate to malfunction. Even if something does work, it is not unlikely that it is going to malfunction in future updates of MailMate.
+
+That said, the following is also an opportunity to play with aspects of an email program which are most often strictly off limits.
+
+## General
+
+Most of the following files are located in the `Resources` folder of MailMate. A custom version of a file can be made by making a copy in `~/Library/Application Support/MailMate/Resources/` and then edit it. In some cases, the copy replaces the original and in others, the copy extends the original.
+
+With the exception of cascading style sheet (css) files, the files are in the [ASCII property list format][plist].
+
+[plist]: https://developer.apple.com/mac/library/documentation/Cocoa/Conceptual/PropertyLists/OldStylePlists/OldStylePLists.html#//apple_ref/doc/uid/20001012-BBCBDBJE
+
+## Message Headers
+
+<!--
+*ToDo: Add background information on the basic rules for headers in RFC2822 messages and how MailMate normalizes them.*
+-->
+
+Apart from normalization of message headers, all information needed from message headers is obtained using the regular expressions in `specifiers.plist` (currently located in `Frameworks/OakMIME/Resources`). It contains specifications of parsers and shorthands.
+
+### Parser
+
+A parser specifies how to identify the various parts of a message header. The names of these parsers can then be used in queries/filters to reference the data of interest in a simple manner.
+
+The following are examples of a `From` header containing the same email address:
+
+	From: Foo Bar <foo@example.com>
+	From: <foo@example.com>
+	From: "Foo Bar" <foo@example.com>
+	From: foo@example.com (Foo Bar)
+	From: foo@example.com
+
+Hiding the complexities of the above, it is possible to reference the email address by simply writing `from.address`. Since parsers also exist for the various parts of an email address, it is even possible to write `from.address.domain.toplevel` (or implicitly by just using `from.toplevel`).
+
+Currently, you can both specify new parsers and override existing parsers (extreme care should be taken if doing the latter). The format of the parsers is informally specified in the file itself. Remember: The format is subject to change.
+
+### Shorthand
+
+A shorthand specifies how a special header name (a shorthand) can be used to reference multiple headers. Current examples are `#recipient` which merges `to`, `cc` and `bcc` and `#mailer` which merges `x-mailer`, `user-agent` and `x-newsreader`.
+
+### Headers PopUp
+
+The headers and parsers available are exposed in MailMate via the headers popup shown, e.g., when specifying the filter for a smart mailbox. A default set of headers shown in this popup is specified in `headersPopUp.plist`. More headers can be found using the Other… menu item in the popup. Descriptions for these headers are specified in `headerDescriptions.plist` (currently very incomplete). Both files can be customized.
+
+## Layouts
+
+\[…\]
+<!--
+*ToDo: Additional comments in this and the following sections*
+-->
+
+Replaceable and extendable:
+
+	headersFormatting.plist (short/long formatting for the headers view)
+	Layouts/
+		Composer/
+			default.plist
+		Mailboxes/
+			correspondence.plist
+			default.plist
+			statistics.plist
+			threadArcs.plist
+		Message/
+			default.plist
+
+## Toolbars
+
+Not customizable yet:
+
+	composerToolbar.plist
+	mailboxesToolbar.plist
+	messageToolbar.plist
+	toolbarItems.plist
+
+## Messages Viewer
+
+### <a name="mailboxes_plist">Mailboxes Outline</a>
+
+A set of standard mailboxes are defined in the file `standardMailboxes.plist` and an additional set of default example mailboxes are defined in `defaultMailboxes.plist`. The latter is copied to `Mailboxes.plist` which is located in the application support folder (`~/Library/Application Support/MailMate/`). Changes to the standard mailboxes are saved as deltas in `Mailboxes.plist`. Currently the GUI does not allow one to define custom mailbox icons for the mailboxes, but this can be done by editing `Mailboxes.plist` (you MUST quit MailMate first). In particular, one can reuse the graphics from Mail by adding the following:
+
+**Note:** On OS X 10.8 and earlier you must replace `tiff` with `png`.
+
+	deltaMailboxes =
+	(
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/InMailbox.tiff";
+			uuid = "INBOX";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/DraftsMailbox.tiff";
+			uuid = "DRAFTS";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SentMailbox.tiff";
+			uuid = "SENT";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/JunkMailbox.tiff";
+			uuid = "JUNK";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/TrashMailbox.tiff";
+			uuid = "TRASH";
+		}
+	);
+
+Extendable file defining the set of possible counters for each mailbox (defaults are All, Unread, Flagged, and Unreplied):
+
+	countMenu.plist
+
+### Messages Outline
+
+Extendable:
+
+	MmMessagesOutlineView/outlineColumns.plist (available columns in messages outline view)
+
+### <a name="css_plist">Message Display</a>
+
+Extendable stylesheet for WebView:
+
+	MmMessagesWebView/stylesheet.css
+
+Note that the stylesheet can also include specialized behavior for printing messages. Here is an example changing the font used for (plain text) messages:
+
+	@media print {
+		body {
+			font: 12pt "Courier";
+		}
+	}
+
+## Composer
+
+Replaceable:
+
+	MmMessageTextView/display.plist (foreground/background coloring of quoting levels)

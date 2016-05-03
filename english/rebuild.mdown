@@ -1,0 +1,25 @@
+title: Rebuild Database
+
+<a name="rebuild"> </a>
+# Rebuild Database
+
+MailMate handles a large number of files on your disk. Most of them are downloaded messages, but there are also files which are used for the indexing of all message headers. These index files are needed for almost every aspect of MailMate. In general, these files are saved very carefully by MailMate and it is even able to roll back to a safe state if MailMate terminates unexpectedly or is forced to quit.
+
+Nevertheless, on rare occasions an inconsistency can be introduced in the index files or the messages stored. This can be triggered by a bug in MailMate, but it can also happen if files are somehow corrupted or deleted on disk. In particular, it can happen after restoring files from a backup.
+
+If it happens then it is very likely to be detected by MailMate and then a window is automatically shown to inform the user. This window has various options to solve the problem. It is very likely that you are never going to see this window, but if you do then try the options one-by-one from top to bottom.
+
+If you think a problem requiring rebuilding was caused by MailMate then you are encouraged to send some feedback. You can use the “Help ▸ Send Feedback...” menu item to do this.
+
+## Manually resetting MailMate
+
+It is also possible to manually trigger database rebuilding. The following Terminal commands are similar to what MailMate does when being asked to rebuild:
+
+	rm ~/Library/Application\ Support/MailMate/*.tmp
+	printf "OldDatabase" > ~/Library/Application\ Support/MailMate/.rebuild.tmp
+
+Then restart MailMate. When the rebuilding has finished, you should take a look at the contents of the following folder:
+
+	~/Library/Application\ Support/MailMate/OldDatabase/
+
+Again, if you had to do this due to what you think is a MailMate bug then please report it.

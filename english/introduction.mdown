@@ -1,0 +1,99 @@
+title: Introduction
+
+# <a name="introduction">Introduction</a>
+
+## Import or Add IMAP Accounts
+
+To get started with MailMate, you need to configure one or more IMAP accounts. If you have any IMAP accounts configured in Apple Mail or Thunderbird then an importer window should have opened when you first started MailMate. Alternatively, it can be opened manually in the File menu where you can also find the menu item for manually [adding an account][setup] (“File ▸ Add IMAP Account…”). There is an Activity Viewer (⌥⌘0) to help debug server problems.
+
+[setup]: account_setup.html
+
+## Explore
+
+The following is a list of things you should try in MailMate. For more information, follow the link in the title of each item. Also note the tips displayed at the bottom of some of the windows in MailMate.
+
+*	[Mailboxes][organize]
+
+	Go through the list of mailboxes in the mailbox outline. Note that the standard mailboxes (like Inbox) are universal which means that they include messages from standard mailboxes in all IMAP accounts configured. Double-click any of the smart mailboxes in order to see how they are configured in the mailbox editor. Play with the possible selection of header values and the comparison methods and notice that “rules” can be added to any kind of mailbox.
+
+	<img src="images/boolean_filter.png" alt="Boolean filter" class="center" />
+
+*	[Messages outline][messages outline]
+
+	Try double-clicking names, subjects and other fields in the outline in order to quickly search for related messages. Note the available set of columns (right-click the column headers line) and how you can choose to make the currently displayed columns the default set of columns. Also look through the Messages menu, in particular, note the “Move to Mailbox…” (⌥⌘T) menu item.
+
+	<img src="images/link_search.png" alt="Link searching" class="center" />
+
+*	[Headers view][headers view]
+
+	Try both the compact mode which typically only takes up a single line and an extended mode with full standard headers. Note that you can click on almost any part of the displayed headers in order to make a related search (hold down ⌥ to search in the current mailbox only). Also note the context sensitive menu.
+
+*	[Message display][message view]
+
+	Messages are displayed using a standard WebView. HTML is generated for plain text messages and it is styled using CSS. Note that you can change the font and/or the font size using the “Format ▸ Fonts” menu item (the same is true for mailboxes, messages outline, and the composer). Searching within a message is similar to Safari (⌘F). Note that you can preview attachments with Quick Look (⌘Y). You can open a tag editor by hitting T (setup tags in the Tags preferences pane).
+
+*	[Layouts][layouts]
+
+	Go to the “View ▸ Layout” menu and play with the alternative layouts currently available for MailMate. The Correspondence layout allows you to immediately see any messages in any correspondence similar to the currently selected message(s). The Statistics layout replaces the message display with a simple tableview listing the frequency of any message header. You can use this to easily find out who writes most often, what is the most popular email client, how many messages you have received per year and so forth. You can even combine these searches by double-clicking items. The Thread Arcs layout provides an alternative view of threads.
+
+	<img src="images/thread_arcs.png" alt="Thread arcs" class="center" />
+
+*  [Bundles][bundles]
+
+	MailMate can integrate with a large number of third party applications including task managers, calendar managers, and external text editors. Go to the “Bundles” preferences pane and enable the applications you use and then look for new functionality in the Command menu. Bundles are dynamically fetched and updated by MailMate independently of updates of MailMate itself.
+
+*	[Notifications][preferences]
+
+	In the Preferences (⌘,) you can setup both dock and menu bar counters. Each menu bar counter includes a submenu with up to the 10 most recent messages related to the counter. Various actions are also available in these menus allowing you to archive, delete, reply, or mark messages without switching to MailMate first. Selecting a message brings you to the relevant mailbox. Note that sounds for the counters can also be configured.
+
+	<img src="images/menu_bar_counters.png" alt="Menu bar counters" class="center" />
+
+*	[Markdown][markup]
+
+	MailMate uses a plain text editor in the composer, but this does not mean that you cannot make nicely formatted messages. Using [Markdown][], a simple readable plain text markup language, you can make MailMate generate HTML for your messages with lists, tables, code segments, inline images, and more.
+
+*	[Signatures][signatures]
+
+	The support for signatures in MailMate is unconventional and deserves special attention. When writing a new message, the signature used for the message (by default) is based on the history of messages sent to the main recipient of the message. If no such history exists then the default signature is based on the history of the from address. It is a simple system, but it works remarkably well.
+
+*	Menus
+
+	More features are hidden in the menus. Make sure you notice the “Message ▸ Mute” menu item which is very useful for mailing lists. When a message is muted MailMate automatically handles any reply to the message arriving in the future (muting it and moving it to the same location as its parent).
+
+*	[Toolbar][search view]
+
+	The search field in the toolbar can be activated using ⌥⌘F and closed/cancelled using “⌘.” or the escape key. It supports a simple syntax for searching the most interesting messages headers and the body, for example, `reciept f amazon t freron` would find all messages containing the word `receipt` sent from an address containing `amazon` and to an address containing `freron`. The toolbar also contains a “Thread” button and a “Correspondence” button. These can be used to expand a search to include related messages. Also note the arrows for going back (⌘[) and forward (⌘]) in search history. This is similar to using a web browser.
+
+*	[Advanced Search][search view]
+
+	For advanced searching you should try out “Edit ▸ Find ▸ Mailbox Search…” (⌃⌥⌘F). This opens a filter editor within the main window which is very similar to the Conditions pane in the mailbox editor. Note that you can hold down ⌥ to create advanced All/Any conditions. This view differs from the mailbox editor with respect to empty values – such filter rules are ignored when searching. Push “Save” if you want to save a search as a Smart Mailbox.
+
+[markdown]: https://daringfireball.net/projects/markdown/
+[css plist]: customization.html#css_plist
+[organize]: organize.html
+[messages outline]: view.html#messages_outline
+[headers view]: view.html#headers
+[message view]: view.html#webview
+[layouts]: view.html#layouts
+[bundles]: preferences.html#bundles_preferences
+[preferences]: preferences.html#markup_support
+[signatures]: compose.html#signatures
+[markup]: preferences.html#notifications
+[search view]: view.html#search
+
+## Stay in Touch
+
+Whether or not you decide to use MailMate then you may want to follow future development. Here are some links to make that easier:
+
+* [Homepage][]
+* [Email notifications][email]
+* [Mailing list][]
+* [Blog][] ([RSS][])
+* [Twitter][] (@mailmateapp)
+
+[homepage]: https://freron.com
+[email]: https://freron.com/subscribe
+[blog]: https://blog.freron.com
+[rss]: feed://blog.freron.com
+[mailinglist]: https://lists.freron.com/listinfo/mailmate
+[twitter]: https://twitter.com/mailmateapp

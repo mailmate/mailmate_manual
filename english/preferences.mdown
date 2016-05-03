@@ -1,0 +1,191 @@
+title: Preferences
+
+<a name="preferences"> </a>
+# Preferences
+
+The “MailMate ▸ Preferences…” (⌘,) menu item provides access to a range of preferences which you can use to tweak the look and behavior of MailMate. If you do not find what you need then you can also try to take a look at the list of [hidden preferences][].
+
+[hidden preferences]: hidden_preferences.html
+
+## General
+
+The “Default Email Composer” is the email application used when the system needs an application to handle a URL. Most email clients support the `mailto:` URL scheme which is used to create new messages, but MailMate also supports the `message:`, `mid:`, `cid:` URL schemes. They are used to open messages by referring to the the value of `Message-ID` or `Content-ID` email headers.
+
+[Custom key bindings][] are described in a separate section.
+
+In order to help the future development of MailMate then it is important that you consider reporting any issues you have with MailMate. This can be done easily and discreetly by allowing MailMate to automatically send any crash reports to Freron Software. If you also identify yourself then you may get some feedback as well with help or additional questions.
+
+[custom key bindings]: custom_key_bindings.html
+
+<a name="spotlight"> </a>
+### Messages Folder / Spotlight
+
+Using [Apple's own words](https://developer.apple.com/library/mac/documentation/Carbon/Conceptual/MetadataIntro/Concepts/HowDoesItWork.html) “Spotlight provides fast desktop searching by extracting metadata in the background and storing the indexed metadata for future searches. When a query is made, the indexed metadata is searched for matching files.”
+
+Apple does not index standard email files (`.eml`) which is the internal format used by MailMate, but fortunately MailMate can and does provide its own Spotlight plugin for this type of file. In other words, you can use Spotlight to search your emails, but there are some cavets.
+
+It only works if you enable indexing in the General preferences pane. It takes time and resources to index a large collection of emails and therefore it needs to be optional. When enabled you can use Finder (or third party applications like [HoudahSpot](https://www.houdah.com/houdahSpot/)) to search for emails, but it still won't work in Spotlight. This is because Spotlight ignores files in the application support folder. Therefore MailMate offers the slightly mysterious “Custom location” option which can be used to move the `Messages` folder to a Spotlight searched location. If desired this folder can be hidden in the Finder just like the `Library` folder is hidden by default in OS X.
+
+<a name="notifications"> </a>
+## Counters (Notifications)
+
+MailMate allows you to configure 4 message counters which can be displayed in the dock and/or the menu bar. For each counter you need to select a mailbox and what to count in the mailbox. If displayed in the menu bar then each counter includes a submenu with up to the 10 most recent messages related to the counter. Selecting a message brings you to the relevant mailbox. Each counter can have its own sound which is triggered when a counter is increased due to the arrival of new messages. Finally, it is also possible to enable notifications for each counter. An advanced [format string](format_string_syntax.html) can be used to define the information shown about the message. The same format string is used for the messages shown in the menu bar submenus.
+
+<img src="images/menu_bar_counters.png" alt="Menu bar counters" class="center" />
+
+**Note: The current interface in the preferences pane can be misleading. The 4 radio buttons to the left are not used to configure the position of a single counter. They are used to configure 4 separate counters.**
+
+<!--
+Note that the set of available counters (All, Unread, Flagged, etc.) can also be [customized][count menu plist].
+
+[count menu plist]: ...#count_menu_plist
+-->
+
+## Viewer
+
+Most of the viewer related preferences are self-explanatory. An exception is the option to “Prefer Plain Text”. This tells MailMate to display the plain text alternative of a message whenever such an alternative exists. This is useful if you dislike the look of the rich text (HTML) formatted messages you receive. You can always change the displayed alternative by using “View ▸ Message Body Parts ▸ Next/Previous Alternative” (⌥⌘] / ⌥⌘[) and MailMate will remember your choice for individual messages.
+
+Inlined PDFs are shown using the `img` HTML tag (primarily to avoid PDF plugins), but the PDF format can be used for both small images and large PDF documents. This makes some users prefer to never inline PDFs. Note that you can always Quick Look attachments (⌘Y).
+
+<a name="composer_preferences"> </a>
+## Composer
+
+When creating a new message (not a reply) then the default `From` address is based on the current context (mailbox and currently displayed/selected messages). You can override this behavior using the “New Message” preference. If you select an explicit account then the default `From` address is the first address defined for the account. *In any case, as soon as you update the `To` header of a message then the `From` address is updated if you have previously sent anything to the same recipient.*
+
+<a name="embedding"> </a>
+### Replying/Forwarding HTML
+
+MailMate does not support rich text editing with WYSIWYG (What You See Is What You Get). Only plain text is allowed in the composer window, but this does not mean that MailMate cannot generate nicely formatted emails when the need arises. In fact, MailMate is a very powerful rich text email client — it's just all handled using plain text.
+
+The main problem with a plain text composer is that it's not possible to include arbitrary rich text within the text editor of the composer, but this is often needed when writing replies and when forwarding emails. The solution to this problem is based on the fact that most rich text emails contain *both* a plain text part and an HTML (rich text) part. The plain text can then be shown in the text editor while MailMate automatically injects the HTML into the generated HTML of the email. If the user tries to edit the plain text then MailMate offers to drop the original HTML. This warning can be disabled.
+
+Most users should be fine with the default settings in the Composer preferences pane, but if you like then you can change when MailMate chooses to embed HTML. The default setting is to “embed when needed” which lets MailMate decide when to embed. This is a heuristic algorithm which might change over time. The other options should be self-explanatory. You can also change the embedding method used. If the “Premailer” bundle is enabled then it's best to use this, but you also have the option of using a “scoped stylesheet”. This works well in theory, but it won't always work well in practice (depending on the receiving email client).
+
+### HTML Styling
+
+For a number of different reasons MailMate might need to generate HTML for an outgoing message. This means that MailMate also has the option of styling the outgoing message, for example, the look of quoted text (typically using a vertical colored line). Theoretically, it's best not to do any styling, because then the receiving email client is in charge, but unfortunately this does not work well in practice. The default settings should be fine, but you do have the option of changing how MailMate does the styling and you can select a default theme. Note that it's also possible to configure a specific theme for any signature in the Signatures preferences pane.
+
+In addition to basic styling of emails, you can also do some very powerful automatic styling if you have mathetmatics or source code in your emails. (Note: The latter currently only works if Markdown is also used.)
+
+To do this you need to enabled some of the relate bundles in the Bundles preferences pane. Currently, the only options are “Pygments” (for souce code highligting) and “ASCIIMath”/“TeX to Math” (for styling of mathematics). Here is an example of what to write to style a section of HTML code:
+
+	~~~html
+	<p>This is a paragraph with a <a href="https://freron.com">link</a>.</p>
+	~~~
+
+Here is an example of how to create a math block with “ASCIIMath”:
+
+	~~~math
+	((n(n+1))/2)^2
+	~~~
+
+If mixing ASCIIMath and TeX math then it's also possible to use `~~~asciimath` and `~~~texmath`, but this should rarely be necessary. Most users would only use one type and this is saved by MailMate in the `Content-Type` header.
+
+It's also possible to do math inline like this, ``a^2 + b^2 = c^2``. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
+
+<a name="markup_support"> </a>
+### Markdown Support
+
+ for emphasis, bullet points, code segments, or even tables.
+
+MailMate does not support rich text editing with WYSIWYG (What You See Is What You Get). Only plain text is allowed in the composer, but this does not mean that MailMate cannot generate nicely formatted messages when the need arises for emphasis, bullet points, code segments, or even tables.
+
+If you enable “Markdown support” in the Composer preferences then a popup menu for choosing a markup language is part of the bar below the headers in the Composer window. Currently, the only available markup language is [Markdown][]. With Markdown enabled MailMate is able to generate an HTML body part for the message as an alternative to the plain text body part. This is the opposite of what most email clients with rich text editing do. They have a [WYSIWYG][] editor for creating HTML and then they automatically generate a plain text body part based on the HTML.
+
+The markup related popup menu in the Composer also includes an option to enable/disable the generation of the HTML body part. If disabled then MailMate only generates a standard plain text message, but it has a `markup` parameter in the `Content-Type` header with the value `markdown`. For example:
+
+	Content-Type: text/plain; format=flowed; markup=markdown
+
+This can be used by the receiving email client to do the conversion to HTML (or another display format). MailMate is the only client which can do this, so this is only useful if you know the recipient uses MailMate or if you do not care whether the recipient sees the raw markdown text (which is very readable plain text) or an HTML formatted message.
+
+The following are some technical facts about the current implementation:
+
+* Inlined images are supported using so-called `cid:` links. This is also what is used for images inlined using HTML in other email clients. You can hold down ⌥ when dragging to avoid the creation of a link.
+* Standard Markdown has special [line break rules][]. Consecutive lines are merged into paragraphs and a hard line break is then done by using two or more spaces at the end of a line. In MailMate, all line breaks are hard line breaks in order to work well with email clients which handle Markdown formatted text as ordinary plain text. This has some drawbacks though.
+* The defaults for markup language and HTML generation can be configured in the Preferences (Composer pane).
+* When replying to a message, markup language is disabled if the received message does not have the `markup` parameter or if the markup language is unknown.
+* Currently, an HTML body part is never generated if no markup is used in the message.
+
+[wysiwyg]: https://en.wikipedia.org/wiki/WYSIWYG
+[markdown]: https://daringfireball.net/projects/markdown/
+[line break rules]: https://daringfireball.net/projects/markdown/syntax#p
+
+### Attachments Check
+
+Before sending a message, MailMate makes a series of sanity checks. These are:
+
+* Refuse to send if there are no recipients.
+* If the subject has been changed by the user in a reply then ask the user to confirm that the message is still intended as a reply instead of as a new message. This is important with regard to inserting sensible reference headers.
+* If the message contains an attachment-related word in an unquoted part of the body while the message has no attachments then ask the user to verify that the lack of attachments was intentional. The words looked for are currently defined by a [regular expression][] in the Composer preferences pane.
+* If the message has no subject then the user is asked to verify that it is intentional.
+* If the message has no body text then the user is asked to verify that it is intentional.
+
+<img src="images/subject_change.png" alt="Subject Change" class="center" />
+
+[regular expression]: https://en.wikipedia.org/wiki/Regular_expression
+
+## Signatures
+
+The signatures preferences pane allows you to add, delete, and edit the set of available signatures. You can also configure whether you prefer so-called top or bottom posting. If you change this setting then you also need to “Reset Usage History” if you don't want MailMate to rely on signature placements used in the past for specific recipients.
+
+## Tags
+
+Add, remove, and order the tags available when using the tags editor. It is also possible to change the default shortcut for opening the tags editor. Note that the IMAP keyword for a tag is automatically derived from the tag name, but it is also possible to manually enter the IMAP keyword. When entering an IMAP keyword MailMate automatically tries to complete the keyword based on any keywords used for existing messages.
+
+Each tag can also be assigned a short variant for display purposes. It is intended to be used with [emoji](https://en.wikipedia.org/wiki/Emoji#In_the_Unicode_standard). This is most easily done using the OS X emoji panel opened using “Edit ▸ Emoji & Symbols” (⌃⌘Space). Note that you can enable a Tags column with these symbols in the messages outline.
+
+It is important to note that changes in the Tags preferences pane **never** affects the tags, IMAP keywords, or Gmail labels of existing messages. If you need to do this then it's a 4 step process: 1. Add the new tag to the list. 2. Tag the messages with the new tag. 3. Untag the messages with the old tag. 4. Remove the old tag from the list.
+
+### Hidden Preference
+
+Often only 4 or 5 key strokes are needed to add a tag, but if you want it to be even faster for your most often used tags then you can enable the following hidden preference:
+
+	defaults write com.freron.MailMate MmTagsPreferencesKeyEquivalentsColumnEnabled -bool YES
+
+This enables an additional column in the “Tags” preferences pane for entering key equivalents. Note that these are in plain text format (the main reason this feature is currently hidden). The plain text format is documented [here][custom key bindings].
+
+[custom key bindings]: custom_key_bindings.html#background
+
+<a name="bundles_preferences"> </a>
+## Bundles
+
+The functionality of MailMate can be extended using so-called bundles. Creating new bundles is undocumented for now, but a large set of existing bundles allow you to integrate MailMate with various third party applications. Enable your favorite applications in the Bundles preferences pane and then review the commands available in the Command menu.
+
+Note that bundles are not included when you download MailMate itself. They are fetched dynamically by MailMate when enabled and they are automatically updated independently of updating MailMate itself.
+
+<a name="security_preferences"> </a>
+## Security
+
+### Image Blocking
+
+By default, MailMate makes sure that email messages can never [“phone home”](https://en.wikipedia.org/wiki/Web_bug#E-mail_web_bugs). This happens by blocking all external references for all HTML messages displayed in MailMate. Using the Security preferences pane you can make MailMate less strict. The most important setting is “Enable for messages in:” which allows the user to define a mailbox containing the messages for which blocking should be enabled. The default is “All Messages”, but it could be the universal “Inbox” or any smart mailbox, for example, a smart mailbox excluding messages which have been identified as being safe. This could be based on headers inserted by server-side spam detection software (like `X-Spam-Score` or `X-Spam-Flag`).
+
+For convenience, the preferences also include a checkbox titled “Unless messages are marked explicitly as Not Junk” (this could also be done using a smart mailbox as described above). This is especially useful when combined with a SpamSieve option described below which allows you to automatically mark messages as “Not Junk” if they have a low spam score.
+
+Note that blocking is always enabled for messages in “Junk” or “Deleted Messages”. It is also always enabled for attached messages. This allows one to safely receive spam forwarded using something like “Message ▸ Forward as Attachment...”.
+
+### SpamSieve
+
+[SpamSieve](https://c-command.com/spamsieve/) is a third party software application which can be used to identify spam messages automatically. If enabled, MailMate attempts to launch SpamSieve when it receives a message in the mailbox configured in the Security preferences. MailMate also informs SpamSieve whenever the spam state of a message is changed.
+
+### OpenPGP and S/MIME
+
+MailMate supports both of the major protocols used for signing and encrypting emails. The [S/MIME](https://tools.ietf.org/html/rfc5751) support does not require any additional software. It uses Apple's security framework and certificates. The [OpenPGP](https://tools.ietf.org/html/rfc4880) support requires the `gpg2` command to be available. This is most easily installed using the MacGPG2 part of [GPGTools](https://www.gpgtools.org). It is also recommended to install the “GPG Keychain Access” part of GPGTools. **Warning:** Older versions of the GPGMail part of GPGTools can break the native S/MIME support in Apple Mail.
+
+It is possible to allow MailMate to index decrypted messages. This allows you to search within encrypted messages, but it also means that decrypted text is added to database files. Make sure you understand the implications of doing this. Note that if you change this setting then it only affects messages which have not yet been decrypted. Also note that attachments are saved in a decrypted state to disk if viewed.
+
+ <!-- CID and content type are always added. -->
+
+A banner is shown above the message for all signed and/or encrypted messages. You can disable this banner for messages which are successfully verified and/or decrypted, but it is always shown if there are any issues. Most often a “Show Details” button is available. For S/MIME messages this allows you to review the related certificate. For OpenPGP messages it shows the output from the `gpg2` command. The latter is documented [here](http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=blob_plain;f=doc/DETAILS;hb=refs/heads/STABLE-BRANCH-2-0).
+
+Note that MailMate always allows you to enable signing/encryption for a message. If it is not possible to actually do it then you are warned if you try to send the message.
+
+<!-- link to S/MIME error codes -->
+
+## Software Update
+
+The development process of MailMate is very open and new features are often available to users shortly after implementation. In order to not bother the average user with too many updates, the Software Update preferences pane lets you opt in/out of getting the latest beta versions. Beta versions are most often stable revisions of MailMate although there is always a risk in being among the first to try out new features.
+
+It is also possible to fetch cutting edge revisions of MailMate. These revisions are often buggy and contain incomplete features. Feedback is very welcome! You can fetch the latest cutting edge revision by holding down ⌥ when clicking “Check Now” in the Software Update preferences pane.
+
+<!-- ## Software Update -->
