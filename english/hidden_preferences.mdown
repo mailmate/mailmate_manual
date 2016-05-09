@@ -184,6 +184,24 @@ Here is an example which checks that the message contains at least one tag with 
 		);
 	}
 
+### Delayed sending
+
+MailMate has a "Send Later" feature, but it has to be set on an message by message basis.
+
+You can set a default delay for all outgoing messages by modifying the `MmSendMessageDelayEnabled` and `MmSendMessageDelay` hidden preferences.
+
+You have to turn default delay on:
+
+    defaults write com.freron.MailMate MmSendMessageDelayEnabled -bool YES
+
+And then set the delay duration (in seconds):
+
+    defaults write com.freron.MailMate MmSendMessageDelay -integer 180
+    
+The command above sets a delay of 3 minutes.
+
+Once this feature is enabled, you can cancel sending a message by selecting it in the Drafts folder and using “Message ▸ Cancel Send and Edit” (⌥⇧⌘D).
+
 ### Warn about external recipients
 
 MailMate warns about sending to external recipients if a regular expression pattern is provided for internal recipients. A simple example:
