@@ -52,6 +52,8 @@ The configurable values are as follows:
 
 	Some servers support an authentication scheme known as [OAuth2](https://tools.ietf.org/html/rfc6749). In short, this requires that the user logs into a website and explicitly allows MailMate to access the service. A special token is then returned which MailMate can use to authenticate when connecting to the server. Enabling OAuth2 in the settings only means that MailMate uses this authentication method **if** it's available. Currently, this only works with Gmail and Outlook accounts. Use “Help ▸ Send Feedback” if you have access to a different server with OAuth2 support.
 
+MailMate can also be told to recognize email addresses as belonging to the user while never using these addresses for any address headers. No GUI exists for this feature yet. You must manually add `retiredAddressPattern` to this file: `~/Library/Application Support/MailMate/Identities.plist`.
+
 ### Migration
 
 If you are migrating from an email client with support for IMAP then the easiest way to migrate is to ensure that all of your messages are located on IMAP servers.
