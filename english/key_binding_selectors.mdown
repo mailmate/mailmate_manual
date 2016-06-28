@@ -35,6 +35,8 @@ Selector | Argument | Action
 `selectPreviousMailboxRow:` | - | Select previous mailbox
 `selectNextMailbox:` | - | Select next mailbox (expand if possible)
 `selectPreviousMailbox:` | - | Select previous mailbox (same as selectPreviousMailboxRow:)
+`selectNextCountedMailbox:` | - | Select next mailbox with a non-zero displayed count (expand if possible)
+`selectPreviousCountedMailbox:` | - | Select previous mailbox with a non-zero displayed count
 `searchAllMessages:` | - | Initiate search in “All Messages”
 `mailboxSearch:` | - | Initiate search in currently selected mailbox
 `showThread:` | - | Initiate search for messages in the same thread(s)
