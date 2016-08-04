@@ -28,6 +28,10 @@ The following is a list of things you should try in MailMate. For more informati
 
 	Try both the compact mode which typically only takes up a single line and an extended mode with full standard headers. Note that you can click on almost any part of the displayed headers in order to make a related search (hold down ⌥ to search in the current mailbox only). Also note the context sensitive menu.
 
+*	Opening messages
+
+	Messages can be opened when selected in the mailbox by hitting enter or ⌘O. When multiple messages are selected, they will open in one window. To make them open in separate windows, add the shift key (⇧⌘O).
+
 *	[Message display][message view]
 
 	Messages are displayed using a standard WebView. HTML is generated for plain text messages and it is styled using CSS. Note that you can change the font and/or the font size using the “Format ▸ Fonts” menu item (the same is true for mailboxes, messages outline, and the composer). Searching within a message is similar to Safari (⌘F). Note that you can preview attachments with Quick Look (⌘Y). You can open a tag editor by hitting T (setup tags in the Tags preferences pane).
