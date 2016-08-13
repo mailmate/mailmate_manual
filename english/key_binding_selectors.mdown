@@ -75,6 +75,7 @@ Selector | Argument | Action
 `toggleTag:` | IMAP keyword | Toggle an IMAP keyword (not necessarily a tag)
 `setTag:` | IMAP keyword | Set an IMAP keyword (not necessarily a tag)
 `removeTag:` | IMAP keyword | Remove an IMAP keyword (not necessarily a tag)
+`clearTags:` | - | Remove all tags of the selected messages
 `toggleReadState:` | - | Shorthand for `( 'toggleTag:', '\\Seen' )`
 `toggleFlag:` | - | Shorthand for `( 'toggleTag:', '\\Flagged' )`
 `toggleMuteState:` | - | Shorthand for `( 'toggleTag:', '$Muted' )`
