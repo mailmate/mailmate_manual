@@ -71,14 +71,14 @@ web_css: empty
 
 ## Advanced/Experimental Features
 
+<!--
 MailMate is under continuous development and many features implemented in MailMate have only reached an experimental level. This is typically features which have no graphical user interface. The following sections describe some of these features, but remember that anything in this section can change in future updates of MailMate. Feedback is welcome.
+-->
 
 * [Hidden Preferences][]
-* [Event-Driven Scripts][]
 * [Command Line Interface (`emate`)][emate]
 * [Low-Level Customization][]
 
 [hiddenpreferences]: hidden_preferences.html
-[event-drivenscripts]: scripts.html
 [emate]: emate.html
 [low-levelcustomization]: customization.html
