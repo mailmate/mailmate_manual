@@ -15,7 +15,7 @@ The “Default Email Composer” is the email application used when the system n
 
 In order to help the future development of MailMate then it is important that you consider reporting any issues you have with MailMate. This can be done easily and discreetly by allowing MailMate to automatically send any crash reports to Freron Software. If you also identify yourself then you may get some feedback as well with help or additional questions.
 
-[custom key bindings]: custom_key_bindings.html
+[Custom key bindings]: custom_key_bindings.html
 
 <a name="spotlight"> </a>
 ### Messages Folder / Spotlight
@@ -135,6 +135,8 @@ Add, remove, and order the tags available when using the tags editor. It is also
 Each tag can also be assigned a short variant for display purposes. It is intended to be used with [emoji](https://en.wikipedia.org/wiki/Emoji#In_the_Unicode_standard). This is most easily done using the OS X emoji panel opened using “Edit ▸ Emoji & Symbols” (⌃⌘Space). Note that you can enable a Tags column with these symbols in the messages outline.
 
 It is important to note that changes in the Tags preferences pane **never** affects the tags, IMAP keywords, or Gmail labels of existing messages. If you need to do this then it's a 4 step process: 1. Add the new tag to the list. 2. Tag the messages with the new tag. 3. Untag the messages with the old tag. 4. Remove the old tag from the list.
+
+In other words, changing a tag name just changes the tag name shown for some IMAP keyword while the keyword and any messages using this keyword stay unchanged. Changing an IMAP keyword changes the tags shown for any messages with the old IMAP keyword (they “lose” a tag) and the tags shown for any messages with the new IMAP keyword (they “gain” a tag). This also means that it's possible to create a tag name for an existing IMAP keyword including some of the standard ones such as `\Flagged`.
 
 ### Hidden Preference
 

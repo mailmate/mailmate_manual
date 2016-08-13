@@ -74,13 +74,15 @@ You can add rules to any mailbox. Each rule is a set of conditions and a set of 
 
 ## Tags
 
-Tagging is a simple concept, but it's a very powerful tool when organizing your messages. You can use it to apply tags to your messages and then utilitize the tags when searching and, in particular, when creating smart mailboxes.
+Tagging is a simple concept, but it's a very powerful tool when organizing your messages. You can use it to apply tags to your messages and then utilize the tags when searching and, in particular, when creating smart mailboxes.
 
-MailMate offers two ways to create new tags. You can do it in the [“Tags” preferences pane][tagspane] or you can do it by simply entering a new tag name in the tags editor. The tags editor is shown when you hit the shortcut key which is simply `t` by default (configurable in the preferences pane). A text field is shown and you can then enter and/or remove tags for the currently selected message. Changes are committed if you hit enter (↩) and cancelled if you hit the escape key. When entering tags they are automatically completed using the set of known tags.
+MailMate offers two ways to create new tags. You can do it in the [“Tags” preferences pane][tagspane] or you can do it by simply entering a new tag name in the tags editor. The tags editor is shown when you hit the shortcut key which is simply `t` by default (configurable in the preferences pane). A text field is shown and you can then enter and/or remove tags for the currently selected message. Changes are committed if you hit enter (↩) and cancelled if you hit the escape key. When entering tags they are automatically completed using the set of known tags. If you hit the space key then all available tags are shown in the completion popup.
 
 When multiple messages are selected then the tags editor has two text fields; one for tags to be added and another for tags to be removed from the selected messages.
 
 If the currently selected message has any tags then they are shown in the expanded headers view. Clicking on a tag searches for messages with the same tag. Holding down ⌥ searches the current mailbox only (like all other link searches). The tags are also available for searching and in smart mailbox conditions.
+
+The text fields for adding/removing tags are great for keeping your hands on the keyboard, but MailMate also provides alternative ways to add/remove tags. There's a “Tag” menu in the “Message” menu and in the context sensitive menu in the message list. You can also setup a tags toolbar button with multiple tag buttons for your most frequently used tags.
 
 Note that the composer allows the user to assign tags to drafts as well. This is done by enabling the “Tags” header in the headers menu (⌃⌘H). You might also want to enable it by default using “Use as Default Headers” in the same menu.
 
