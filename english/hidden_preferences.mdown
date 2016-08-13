@@ -37,6 +37,10 @@ It's possible to force MailMate to always display attachments at the top of the 
 
 	defaults write com.freron.MailMate MmShowAttachmentsFirst -bool YES
 
+Earlier versions of MailMate had an almost text-only style. If you prefer this then it's still available using this hidden preference:
+
+	defaults write com.freron.MailMate MmUseOldToolbar -bool YES
+
 ## Navigation
 
 When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
