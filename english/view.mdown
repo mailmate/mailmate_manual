@@ -15,6 +15,8 @@ The current selection of layouts is also a proof-of-concept. They are defined us
 
 ## <a name="search">Search View</a>
 
+No matter how a search is initiated then note that you can always cancel/remove a search using the escape key or “⌘.” (these keys works in most parts of OS X whenever some kind of “cancel” behavior is needed). Also note that when multiple search items are active then a single search item can be removed using its context sensitive menu or by holding down ⌥ when clicking on it.
+
 ### Toolbar Search
 
 By default, the toolbar has a search field in the upper right corner. If the toolbar is hidden then you can temporarily show it when using the searching shortcut ⌥⌘F. If you don’t see the search field in the toolbar then right-click the toolbar to “Customize Toolbar…” and drag it into the toolbar (or drag the default set).
