@@ -86,8 +86,6 @@ It's also possible to do math inline like this, ``a^2 + b^2 = c^2``. The ASCIIMa
 <a name="markup_support"> </a>
 ### Markdown Support
 
- for emphasis, bullet points, code segments, or even tables.
-
 MailMate does not support rich text editing with WYSIWYG (What You See Is What You Get). Only plain text is allowed in the composer, but this does not mean that MailMate cannot generate nicely formatted messages when the need arises for emphasis, bullet points, code segments, or even tables.
 
 If you enable “Markdown support” in the Composer preferences then a popup menu for choosing a markup language is part of the bar below the headers in the Composer window. Currently, the only available markup language is [Markdown][]. With Markdown enabled MailMate is able to generate an HTML body part for the message as an alternative to the plain text body part. This is the opposite of what most email clients with rich text editing do. They have a [WYSIWYG][] editor for creating HTML and then they automatically generate a plain text body part based on the HTML.
@@ -102,9 +100,6 @@ The following are some technical facts about the current implementation:
 
 * Inlined images are supported using so-called `cid:` links. This is also what is used for images inlined using HTML in other email clients. You can hold down ⌥ when dragging to avoid the creation of a link.
 * Standard Markdown has special [line break rules][]. Consecutive lines are merged into paragraphs and a hard line break is then done by using two or more spaces at the end of a line. In MailMate, all line breaks are hard line breaks in order to work well with email clients which handle Markdown formatted text as ordinary plain text. This has some drawbacks though.
-* The defaults for markup language and HTML generation can be configured in the Preferences (Composer pane).
-* When replying to a message, markup language is disabled if the received message does not have the `markup` parameter or if the markup language is unknown.
-* Currently, an HTML body part is never generated if no markup is used in the message.
 
 [wysiwyg]: https://en.wikipedia.org/wiki/WYSIWYG
 [markdown]: https://daringfireball.net/projects/markdown/
