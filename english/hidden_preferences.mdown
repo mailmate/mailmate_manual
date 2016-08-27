@@ -115,6 +115,32 @@ Some users prefer to disable automatic derivation of the sender address when for
 
 	defaults write com.freron.MailMate MmForwardingDeriveIdentityFromRecipient -bool NO
 
+Some users prefer attachments to never be inlined:
+
+	defaults write com.freron.MailMate MmNeverInlineAttachments -bool YES
+
+### Retired Email Addresses
+
+If you have one or more email addresses which you no longer use for sending emails then you might face the following problem: After receiving an email sent to such an address then you would like to reply to it using a different email address. This won't work if you have listed the email address in one of your accounts, but if you have not listed it then MailMate is going to put the address in the “Cc” field (if you reply to all).
+
+You can work around this problem by explicitly telling MailMate that it's a retired email address. Quit MailMate and edit the following file:
+
+	~/Library/Application Support/MailMate/Identities.plist
+
+Add a line like this to the related account:
+
+	retiredAddressPattern = "retired@example\\.com";
+
+The pattern uses the same format as the “Address Pattern” in the IMAP account settings window.
+
+### Hardcoded CSS
+
+The default themes for generated HTML does not include a specific font, but simply states that it should be `sans-serif`. This should work well for most purposes. If you need to experiment with setting a specific font (or other CSS changes) then you can do it using the `MmDefaultCSS` hidden preference:
+
+	defaults write com.freron.MailMate MmDefaultCSS -string 'body { font-family: "Helvetica Neue", Helvetica, sans-serif; }'
+
+This is strongly discouraged, but let me know if and why you have to use this hidden preference.
+
 ### LDAP
 
 MailMate supports searching LDAP servers when autocompleting names/addresses in the composer window, but there is currently no GUI for this feature. It has only been tested with very few LDAP servers and feedback on success/failure of this feature is welcome.
@@ -273,6 +299,14 @@ Example content:
 The `userID` value is a value as described in the “HOW TO SPECIFY A USER ID” section of the man page for `gpg2`. You must restart MailMate for any changes to take effect. The `serial` value can be seen when displaying a certificate in Keychain Access.
 
 If an empty string is provided for `userID` or `serial` then it's a hint to MailMate that signing/encryption is not used for this email address. This overrides whatever the setting is in the Security preferences pane. For OpenPGP the `address` can also be the address of a recipient.
+
+## Network issues
+
+For a long time MailMate has used the `OpenSSL` libraries for its network code. This changed with the release of version 1.9.5 and MailMate now uses Apple's `CFNetwork`. The old code still works though and can be enabled like this:
+
+	defaults write com.freron.MailMate CFNetworkEnabled -bool NO
+
+If you use this setting then please let me know why. If needed, it's also possible to enable `OpenSSL` for a single account (an undocumented feature).
 
 ## IMAP Namespaces
 
