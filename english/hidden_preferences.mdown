@@ -41,6 +41,10 @@ Earlier versions of MailMate had an almost text-only style. If you prefer this t
 
 	defaults write com.freron.MailMate MmUseOldToolbar -bool YES
 
+The “Prefer Plain Text” option in the Viewer preferences pane is not quite what some users are looking for. The following preference ensures that HTML is never displayed -- not even if the email does not contain any alternative.
+
+	defaults write com.freron.MailMate MmNeverDisplayHTML -bool YES
+
 ## Navigation
 
 When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
