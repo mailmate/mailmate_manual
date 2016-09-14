@@ -6,7 +6,7 @@ web_css: empty
 # Table of Contents
 
 * [Introduction][]
-* [Account Setup][]
+* [Account Setup][accountsetup]
 	* IMAP
 	* Subscriptions
 	* Gmail
@@ -38,8 +38,8 @@ web_css: empty
 	* Bundles
 	* Security
 	* Software Update
-* [Custom Key Bindings][]
-* [Rebuild Database][]
+* [Custom Key Bindings][customkeybindings]
+* [Rebuild Database][rebuilddatabase]
 
 [introduction]: introduction.html
 [accountsetup]: account_setup.html
@@ -61,8 +61,8 @@ web_css: empty
 * Selectors for keybindings
 -->
 
-* [Key Binding Selectors][]
-* [Format String Syntax][]
+* [Key Binding Selectors][keybindingselectors]
+* [Format String Syntax][formatstringsyntax]
 * [Extended `mailto:` URL Scheme][mailtourlscheme]
 
 [keybindingselectors]: key_binding_selectors.html
@@ -75,10 +75,10 @@ web_css: empty
 MailMate is under continuous development and many features implemented in MailMate have only reached an experimental level. This is typically features which have no graphical user interface. The following sections describe some of these features, but remember that anything in this section can change in future updates of MailMate. Feedback is welcome.
 -->
 
-* [Hidden Preferences][]
+* [Hidden Preferences][hiddenpreferences]
 * [Command Line Interface (`emate`)][emate]
-* [Low-Level Customization][]
+* [Low-Level Customization][lowlevelcustomization]
 
 [hiddenpreferences]: hidden_preferences.html
 [emate]: emate.html
-[low-levelcustomization]: customization.html
+[lowlevelcustomization]: customization.html

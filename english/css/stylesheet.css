@@ -1,3 +1,63 @@
+h1 {
+	margin-bottom: 0.5em;
+}
+
+h2 {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+}
+
+h3 {
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
+}
+
+p + p {
+	margin: 1em 0;
+}
+
+p,ul,ol {
+	line-height: 1.4;
+}
+
+ul,ol {
+	margin-top: 1em;
+	margin-bottom: 1em;
+   padding-left: 20px;
+}
+
+img.centerframe, img.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body {
+	font-family: -apple-system, "Helvetica Neue", "Lucida Grande", sans-serif;
+	margin: auto;
+	padding: 0px 10px 10px 10px;
+	max-width: 760px;
+}
+
+a {
+	color: #3983C4;
+}
+
+a:link {
+	background: inherit;
+	text-decoration: none;
+}
+
+a:visited {
+	filter: brightness(150%);
+	background: inherit;
+}
+
+a:hover {
+	text-decoration:underline;
+}
+
+/*
 body {
         font:12px "Lucida Grande", sans-serif;
 }
@@ -12,14 +72,6 @@ pre {
 	overflow: auto;
 }
 
-table {
-	border-collapse: collapse;
-	margin: 1em 0em;
-	margin-left: auto;
-	margin-right: auto;
-/*	width:100%;*/
-}
-
 table th {
 	padding: 0.5em;
 }
@@ -29,37 +81,123 @@ table td {
 	border-bottom: 1px solid lightgray;
 	padding: 0.5em 1em;
 }
+*/
+
 
 /*
-table, th, td {
-	border:1px solid black;
+	The following is from Standard.mmTheme
+*/
+
+/* Block code segments */
+pre {
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	padding: 5px;
+	background-color: #F7F7F7;
+	border-radius: 5px 5px 5px 5px;
+	overflow-x: auto;
 }
 
-th, td {
-	padding:3px;
-	background-color: #B4EEB4;
-}
-
-
-table.attachments td {
-
-	max-width: 400px;
+/* Inline code segments */
+code {
+	margin: 0;
+	padding: 0 0.4em;
    white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
+	border-radius: 3px;
+	background-color: #F7F7F7;
 }
-*/
-
-
-/*
-ul {
-   list-style-type: none;
-	border-left: 1px solid blue;
+pre > code {
+	padding: 0px;
+   white-space: pre;
+}
+hr {
+	border: 0;
+	height: 1px;
+	background: #333;
+	background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
-ul li ul {
-	border-left: 1px solid green;
+hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
-*/
 
-img.center {   padding:0.5em; display: block;   margin-left: auto;   margin-right: auto; }
+/* Tables */
+table {
+	border-radius: 5px 5px 5px 5px;
+	background-color: #F7F7F7;
+	border-collapse: collapse;
+	margin: 1em 0em;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 0.9em;
+}
+th {
+	padding: 0.5em;
+}
+td {
+	border-top: 1px solid lightgray;
+	padding: 0.5em;
+}
+td+td,th+th {
+	border-left: 1px solid lightgray;
+}
+
+p.post-meta {
+	margin: 0;
+	font-size: 0.8em;
+}
+
+.post-header h1 {
+	margin-bottom: 0em;
+}
+.post-header {
+	margin-bottom: 1em;
+}
+
+/* Footnotes */
+div.footnotes {
+	font-size: 0.8em;
+}
+div.footnotes li p {
+	margin: 0.2em 0;
+}
+
+.sidebar ul {
+	list-style-type: none;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.sidebar > ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.quotes ul {
+	margin: 0.5em 0 0 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.quotes ul li {
+	margin: 0 0 5px;
+	padding-left: 5px;
+	border-left: 2px solid #777777;
+	color: #777777;
+}
+
+.quotes ul {
+	margin: 0.5em 0 0 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+blockquote {
+	margin: 1em 0;
+	padding-left: 5px;
+	border-left: 2px solid #777777;
+	color: #777777;
+}
