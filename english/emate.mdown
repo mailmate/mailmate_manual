@@ -1,6 +1,6 @@
 title: Command Line Interface (emate)
 
-# <a name="emate">Command Line Interface (emate)</a>
+# <a name="emate"></a>Command Line Interface (emate)
 
 MailMate includes a shell command named `emate` which is located inside the MailMate application bundle. It can be used to create and, optionally, send emails directly from the command line.
 

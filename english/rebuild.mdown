@@ -1,7 +1,6 @@
 title: Rebuild Database
 
-<a name="rebuild"> </a>
-# Rebuild Database
+# <a name="rebuild"></a>Rebuild Database
 
 MailMate handles a large number of files on your disk. Most of them are downloaded messages, but there are also files which are used for the indexing of all message headers. These index files are needed for almost every aspect of MailMate. In general, these files are saved very carefully by MailMate and it is even able to roll back to a safe state if MailMate terminates unexpectedly or is forced to quit.
 

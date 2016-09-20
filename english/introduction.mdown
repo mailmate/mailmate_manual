@@ -1,6 +1,6 @@
 title: Introduction
 
-# <a name="introduction">Introduction</a>
+# <a name="introduction"></a>Introduction
 
 ## The Plain Text Editor
 
@@ -22,7 +22,7 @@ To get started with MailMate, you need to configure one or more IMAP accounts. I
 
 ## Explore
 
-The following is a list of things you should try in MailMate. For more information, follow the link in the title of each item. Also note the tips displayed at the bottom of some of the windows in MailMate.
+The following is a list of things you should try in MailMate. For more information, follow the link in the title of each item. Also note the tips displayed at the bottom of some of the windows in MailMate. Alternatively, there's a [page of screenshots](https://freron.com/screenshots) available.
 
 *	[Mailboxes][organize]
 

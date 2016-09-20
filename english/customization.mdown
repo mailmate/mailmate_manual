@@ -78,7 +78,7 @@ Not customizable yet:
 
 ## Messages Viewer
 
-### <a name="mailboxes_plist">Mailboxes Outline</a>
+### <a name="mailboxes_plist"></a>Mailboxes Outline
 
 A set of standard mailboxes are defined in the file `standardMailboxes.plist` and an additional set of default example mailboxes are defined in `defaultMailboxes.plist`. The latter is copied to `Mailboxes.plist` which is located in the application support folder (`~/Library/Application Support/MailMate/`). Changes to the standard mailboxes are saved as deltas in `Mailboxes.plist`. Currently the GUI does not allow one to define custom mailbox icons for the mailboxes, but this can be done by editing `Mailboxes.plist` (you MUST quit MailMate first). In particular, one can reuse the graphics from Mail by adding the following:
 
@@ -113,7 +113,7 @@ Extendable:
 
 	MmMessagesOutlineView/outlineColumns.plist (available columns in messages outline view)
 
-### <a name="css_plist">Message Display</a>
+### <a name="css_plist"></a>Message Display
 
 Extendable stylesheet for WebView:
 

@@ -1,7 +1,6 @@
 title: Organize
 
-<a name="organize"> </a>
-# Organize
+# <a name="organize"></a>Organize
 
 ## Mailboxes
 
@@ -47,7 +46,7 @@ When creating a new smart mailbox or when editing an existing mailbox, the mailb
 
 ### Mailboxes and Conditions
 
-The content of a smart mailbox is based on the content of one or more other mailboxes and an optional set of conditions (the “Mailboxes” and “Conditions” panes). If you hold down the option key (⌥) then the plus buttons will change into “…” buttons (a general feature of Mac OS X). This can be used to create advanced any/all (boolean) constructions.
+The content of a smart mailbox is based on the content of one or more other mailboxes and an optional set of conditions (the “Mailboxes” and “Conditions” panes). If you hold down the option key (⌥) then the plus buttons will change into “…” buttons (a general feature of macOS). This can be used to create advanced any/all (boolean) constructions.
 
 <img src="images/boolean_filter.png" alt="Boolean filter" class="center" />
 

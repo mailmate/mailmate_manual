@@ -1,7 +1,6 @@
 title: Account Setup
 
-<a name="accounts"> </a>
-# Account Setup
+# <a name="accounts"></a>Account Setup
 
 ## IMAP
 
@@ -68,7 +67,7 @@ MailMate uses names of mbox files and names of folders in the hierarchy scanned 
 
 Note that the file extensions noted above are currently hardcoded, i.e., MailMate ignores all other files.
 
-### <a name="subscriptions">Subscriptions</a>
+### <a name="subscriptions"></a>Subscriptions
 
 <!--
 This is mainly used to subscribe to non-personal mailboxes if such exist on the server. For example, the server may provide newsgroups via a shared [namespace][]. 

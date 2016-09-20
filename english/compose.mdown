@@ -1,7 +1,6 @@
 title: Compose
 
-<a name="compose"> </a>
-# Compose
+# <a name="compose"></a>Compose
 
 <!--
 ## Editor
@@ -53,8 +52,6 @@ Note that MailMate handles the following caveat: If you change one of your exist
 
 Also note that [hidden preferences](hidden_preferences.html) include a setting to make MailMate see new messages and replies as two different types of messages when deriving a signature from previously sent messages.
 
-<a name="html_signatures"> </a>
-
 ### Restricting Signatures
 
 If you need to restrict one or more signatures to one or more email addresses then you can use the “Address(es)” text field in the signature editor. A so-called glob pattern is the expected input, but you don't need to know what that is. You can provide a comma separated list of email addresses using `*` as a wildcard and MailMate ensures it's a glob pattern. Here is a couple of correctly formatted examples:
@@ -64,7 +61,7 @@ If you need to restrict one or more signatures to one or more email addresses th
 
 Note that the signatures popup in the composer only displays signatures available for the currently selected “From” address. This is also useful for making sure the glob pattern works as expected.
 
-### HTML Signatures
+### <a name="html_signatures"></a>HTML Signatures
 
 MailMate is a plain text email client and the only way to generate rich text emails is to use the Markdown [markup language](preferences.html#markup_support). For some users this is a problem because they are required by company policy to include an HTML signature in every email sent. This special case is solved by MailMate by allowing a signature to be defined with an HTML variant. This is raw HTML code and when such a signature is used MailMate generates HTML for the email and inserts the HTML signature in the HTML part of the email. Note that this easily doubles the size of each email (disregarding the use of Markdown or any attachments) and therefore you shouldn't use it unless you really need to.
 

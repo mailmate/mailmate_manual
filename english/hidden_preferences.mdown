@@ -1,7 +1,7 @@
 title: Hidden Preferences
 
-<a name="hidden_preferences"> </a>
-# Hidden Preferences
+
+# <a name="hidden_preferences"></a>Hidden Preferences
 
 Some preferences are not available in any of the panes of the Preferences window. They can only be accessed using the Terminal application and thus require some technical skills. There are various reasons for keeping these preferences hidden. Some have just not been added to a Preferences pane yet, but most of them are used to enable experimental features which cannot yet be considered stable or complete features.
 

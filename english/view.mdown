@@ -1,9 +1,8 @@
 title: View
 
-<a name="view"> </a>
-# View
+# <a name="view"></a>View
 
-## <a name="layouts">Layouts</a>
+## <a name="layouts"></a>Layouts
 
 You could easily miss it if you are not looking for it. Go to the “View ▸ Layout” menu and play with the alternative layouts currently available for MailMate. The Correspondence layout allows you to immediately see any messages in any correspondence similar to the currently selected message(s). The Statistics layout replaces the message display with a simple tableview listing the frequency of any message header (again, note the “Other…” menu item in the headers popup). You can use this to easily find out who writes most often, what is the most popular email client, how many messages you have received per year and so forth. You can even combine these searches by double-clicking items. The Thread Arcs layout provides an alternative view of threads. It can be used as an immediate overview of where the currently selected message is located in a discussion (even if the other messages are in a different mailbox). Clicking on a node brings you to the corresponding message. The default layout is the standard three pane layout used by most email clients.
 
@@ -13,7 +12,7 @@ The current selection of layouts is also a proof-of-concept. They are defined us
 
 [widescreen layout]: https://blog.freron.com/2010/widescreen-layout/
 
-## <a name="search">Search View</a>
+## <a name="search"></a>Search View
 
 No matter how a search is initiated then note that you can always cancel/remove a search using the escape key or “⌘.” (these keys works in most parts of OS X whenever some kind of “cancel” behavior is needed). Also note that when multiple search items are active then a single search item can be removed using its context sensitive menu or by holding down ⌥ when clicking on it.
 
@@ -66,7 +65,7 @@ You can setup a default set of search conditions using “Edit ▸ Find ▸ Use 
 
 Note that the toolbar contains a “Thread” button and a “Correspondence” button which currently have no corresponding menu items. They can be used to expand a search to include related messages. Again, the ⌥ key can be used to do the search in “All Messages”.
 
-## <a name="messages_outline">Messages Outline</a>
+## <a name="messages_outline"></a>Messages Outline
 
 Threading of messages can be enabled or disabled (⇧⌘T). When enabled, messages are completely threaded. It is useful to know that if you hold down ⌥ while expanding an item then all subitems are expanded as well. You can jump to the root of a thread (⌃⌘R) and you can select all the messages of a thread (⌃⌘A) which is especially useful when not threading messages. The context sensitive menu has a range of options including finding messages related to the currently selected message. Double-clicking messages also initiates a search for related messages based on the column double-clicked.
 
@@ -84,11 +83,11 @@ MailMate now allows some special transformations of header values as part of its
 
 ## Message View
 
-### <a name="headers">Headers</a>
+### <a name="headers"></a>Headers
 
 The headers view has two modes. A compact mode which typically only takes up a single line and an extended mode with full standard headers. Note that you can click on almost any part of the displayed headers in order to make a related search (hold down ⌥ to search in “All Messages”). You can also copy headers to the pasteboard via the context sensitive menu.
 
-## <a name="webview">WebView</a>
+## <a name="webview"></a>WebView
 
 Messages are displayed using a standard WebView like the one used in Safari. HTML is generated for plain text messages and it is styled using CSS. Defaults are very basic, but you can [create your own CSS file][css plist] (and maybe even share it with us). Note that you can change the font and/or the font size using the Format menu (the same is true for the messages outline and the composer).
 

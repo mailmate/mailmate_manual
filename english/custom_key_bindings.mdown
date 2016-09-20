@@ -1,7 +1,7 @@
 title: Custom Key Bindings
 
-<a name="custom_key_bindings"> </a>
-# Custom Key Bindings
+
+# <a name="custom_key_bindings"></a>Custom Key Bindings
 
 If you simply want key bindings similar to those available in the [Gmail web interface][gmail key bindings] then go to the General pane of the Preferences (⌘,) and enable the default custom key bindings.
 
@@ -9,14 +9,14 @@ If you simply want key bindings similar to those available in the [Gmail web int
 
 A key binding is the translation of a key stroke (or series of keystrokes) to some action. For example, the key stroke ⌘Q is most often bound to the action of quitting. The key stroke for quitting is fairly high-level in the sense that it is handled by each application individually and this is true for most key bindings involving the use of ⌘.
 
-But there is also a more low-level system for key bindings in Mac OS X. These key bindings affect most applications and most of them affect keyboard navigation in text fields or other views. The standard definitions are located in a file named [StandardKeyBinding.dict][standard key bindings] in the so-called AppKit framework, but this file is in a binary format and viewing it either requires a property list editor as distributed with Apples developer tools or conversion using the `plutil` command line program. A detailed [description of key bindings][key bindings] has been written by Jacob Rus and this is recommended reading if you want to get the full story.
+But there is also a more low-level system for key bindings in macOS. These key bindings affect most applications and most of them affect keyboard navigation in text fields or other views. The standard definitions are located in a file named [StandardKeyBinding.dict][standard key bindings] in the so-called AppKit framework, but this file is in a binary format and viewing it either requires a property list editor as distributed with Apples developer tools or conversion using the `plutil` command line program. A detailed [description of key bindings][key bindings] has been written by Jacob Rus and this is recommended reading if you want to get the full story.
 
-This is a couple of the standard key bindings defined in Mac OS X (converted to plain text property list format):
+This is a couple of the standard key bindings defined in macOS (converted to plain text property list format):
 
 	"^a" = "moveToBeginningOfParagraph:";
 	"^e" = "moveToEndOfParagraph:";
 
-The basic format is very simple. The first string defines the key stroke and the other string defines the action (by stating its [selector][] name). In the above example ⌃a (control-a) is bound to the action of moving the caret to the beginning of a paragraph. This works in most applications on Mac OS X. The plain text format for defining key strokes with modifiers is shown in the following table:
+The basic format is very simple. The first string defines the key stroke and the other string defines the action (by stating its [selector][] name). In the above example ⌃a (control-a) is bound to the action of moving the caret to the beginning of a paragraph. This works in most applications on macOS. The plain text format for defining key strokes with modifiers is shown in the following table:
 
 Shortcut | Code   | Description
 -------: | -----: | -----------
@@ -28,7 +28,7 @@ Shortcut | Code   | Description
 
 In addition to the above, `$` can be used to bind to the shift key (⇧) for non-letter-keys and `#` can be used for the numeric key pad. Note that the order of multiple modifiers is important. It must be in this order: `#^~$@`.
 
-You could look through the standard key bindings to get an idea of what is possible by default in Mac OS X. As an example, you may not know the following useful key binding:
+You could look through the standard key bindings to get an idea of what is possible by default in macOS. As an example, you may not know the following useful key binding:
 
 	"^'" = "insertSingleQuoteIgnoringSubstitution:";
 
@@ -75,9 +75,9 @@ A complete list of the [key binding selectors][] available can be found in the a
 
 [key binding selectors]: key_binding_selectors.html
 
-## <a name="special_actions">Special Actions</a>
+## <a name="special_actions"></a>Special Actions
 
-The standard key binding system in Mac OS X supports the use of a special selector for inserting text which needs an additional argument. Here is an example binding ⇧F1 to a snippet of text:
+The standard key binding system in macOS supports the use of a special selector for inserting text which needs an additional argument. Here is an example binding ⇧F1 to a snippet of text:
 
 	"$\UF704" = ( "insertText:", "Thanks for trying out MailMate." );
 
@@ -149,7 +149,7 @@ The `selectWithFilter:` selector is quite powerful. It can be seen as a generali
 
 Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future.
 
-## <a name="special_keys">Special “Keys”</a>
+## <a name="special_keys"></a>Special “Keys”
 
 Trackpad gestures are supported by MailMate and they have been implemented with customization in mind as described in the following. The 4 standard swipe directions, left, right, up, and down, are transformed into key down events with the unicode characters `\U2193`, `\U2190`, `\U2192`, and `\U2191` (→ ← ↑ ↓). It allows for great flexibility with respect to what can now be done with gestures. By default, standard key bindings include the following:
 

@@ -1,7 +1,6 @@
 title: Preferences
 
-<a name="preferences"> </a>
-# Preferences
+# <a name="preferences"></a>Preferences
 
 The “MailMate ▸ Preferences…” (⌘,) menu item provides access to a range of preferences which you can use to tweak the look and behavior of MailMate. If you do not find what you need then you can also try to take a look at the list of [hidden preferences][].
 
@@ -17,8 +16,7 @@ In order to help the future development of MailMate then it is important that yo
 
 [Custom key bindings]: custom_key_bindings.html
 
-<a name="spotlight"> </a>
-### Messages Folder / Spotlight
+### <a name="spotlight"></a>Messages Folder / Spotlight
 
 Using [Apple's own words](https://developer.apple.com/library/mac/documentation/Carbon/Conceptual/MetadataIntro/Concepts/HowDoesItWork.html) “Spotlight provides fast desktop searching by extracting metadata in the background and storing the indexed metadata for future searches. When a query is made, the indexed metadata is searched for matching files.”
 
@@ -26,8 +24,7 @@ Apple does not index standard email files (`.eml`) which is the internal format 
 
 It only works if you enable indexing in the General preferences pane. It takes time and resources to index a large collection of emails and therefore it needs to be optional. When enabled you can use Finder (or third party applications like [HoudahSpot](https://www.houdah.com/houdahSpot/)) to search for emails, but it still won't work in Spotlight. This is because Spotlight ignores files in the application support folder. Therefore MailMate offers the slightly mysterious “Custom location” option which can be used to move the `Messages` folder to a Spotlight searched location. If desired this folder can be hidden in the Finder just like the `Library` folder is hidden by default in OS X.
 
-<a name="notifications"> </a>
-## Counters (Notifications)
+## <a name="notifications"></a>Counters (Notifications)
 
 MailMate allows you to configure 4 message counters which can be displayed in the dock and/or the menu bar. For each counter you need to select a mailbox and what to count in the mailbox. If displayed in the menu bar then each counter includes a submenu with up to the 10 most recent messages related to the counter. Selecting a message brings you to the relevant mailbox. Each counter can have its own sound which is triggered when a counter is increased due to the arrival of new messages. Finally, it is also possible to enable notifications for each counter. An advanced [format string](format_string_syntax.html) can be used to define the information shown about the message. The same format string is used for the messages shown in the menu bar submenus.
 
@@ -47,13 +44,11 @@ Most of the viewer related preferences are self-explanatory. An exception is the
 
 Inlined PDFs are shown using the `img` HTML tag (primarily to avoid PDF plugins), but the PDF format can be used for both small images and large PDF documents. This makes some users prefer to never inline PDFs. Note that you can always Quick Look attachments (⌘Y).
 
-<a name="composer_preferences"> </a>
-## Composer
+## <a name="composer_preferences"></a>Composer
 
 When creating a new message (not a reply) then the default `From` address is based on the current context (mailbox and currently displayed/selected messages). You can override this behavior using the “New Message” preference. If you select an explicit account then the default `From` address is the first address defined for the account. *In any case, as soon as you update the `To` header of a message then the `From` address is updated if you have previously sent anything to the same recipient.*
 
-<a name="embedding"> </a>
-### Replying/Forwarding HTML
+### <a name="embedding"></a>Replying/Forwarding HTML
 
 MailMate does not support rich text editing with WYSIWYG (What You See Is What You Get). Only plain text is allowed in the composer window, but this does not mean that MailMate cannot generate nicely formatted emails when the need arises. In fact, MailMate is a very powerful rich text email client — it's just all handled using plain text.
 
@@ -67,7 +62,7 @@ For a number of different reasons MailMate might need to generate HTML for an ou
 
 In addition to basic styling of emails, you can also do some very powerful automatic styling if you have mathetmatics or source code in your emails. (Note: The latter currently only works if Markdown is also used.)
 
-To do this you need to enabled some of the relate bundles in the Bundles preferences pane. Currently, the only options are “Pygments” (for souce code highligting) and “ASCIIMath”/“TeX to Math” (for styling of mathematics). Here is an example of what to write to style a section of HTML code:
+To do this you need to enable some of the related bundles in the Bundles preferences pane. Currently, the only options are “Pygments” (for source code highlighting) and “ASCIIMath”/“TeX to Math” (for styling of mathematics). Here is an example of what to write to style a section of HTML code:
 
 	~~~html
 	<p>This is a paragraph with a <a href="https://freron.com">link</a>.</p>
@@ -83,8 +78,7 @@ If mixing ASCIIMath and TeX math then it's also possible to use `~~~asciimath` a
 
 It's also possible to do math inline like this, ``a^2 + b^2 = c^2``. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
 
-<a name="markup_support"> </a>
-### Markdown Support
+### <a name="markup_support"></a>Markdown Support
 
 MailMate does not support rich text editing with WYSIWYG (What You See Is What You Get). Only plain text is allowed in the composer, but this does not mean that MailMate cannot generate nicely formatted messages when the need arises for emphasis, bullet points, code segments, or even tables.
 
@@ -143,15 +137,13 @@ This enables an additional column in the “Tags” preferences pane for enterin
 
 [custom key bindings]: custom_key_bindings.html#background
 
-<a name="bundles_preferences"> </a>
-## Bundles
+## <a name="bundles_preferences"></a>Bundles
 
 The functionality of MailMate can be extended using so-called bundles. Creating new bundles is undocumented for now, but a large set of existing bundles allow you to integrate MailMate with various third party applications. Enable your favorite applications in the Bundles preferences pane and then review the commands available in the Command menu.
 
 Note that bundles are not included when you download MailMate itself. They are fetched dynamically by MailMate when enabled and they are automatically updated independently of updating MailMate itself.
 
-<a name="security_preferences"> </a>
-## Security
+## <a name="security_preferences"></a>Security
 
 ### Image Blocking
 
