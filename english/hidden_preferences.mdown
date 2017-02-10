@@ -255,9 +255,13 @@ The following is an example which tells MailMate which addresses are to be consi
 
 ### Fixed IP
 
-A few users may want to hardcode the IP used for the EHLO SMTP response.
+A few users may want to hardcode the IP used for the EHLO SMTP command:
 
 	defaults write com.freron.MailMate MmSMTPFixedIP -string "127.0.0.1"
+
+Alternatively, a hostname can be fixed like this (in this case it's important to not use `MmSMTPFixedIP`):
+
+	defaults write com.freron.MailMate MmSMTPFixedHostname -string "example.com"
 
 ## Sending PDFs
 
