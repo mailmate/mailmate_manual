@@ -127,4 +127,6 @@ Selector | Argument | Action
 
 ## Other
 
+Selector | Argument | Action
+---------|----------|-------
 `performBundleItemWithUUID:` | Command UUID | Launch bundle command with the given UUID.
