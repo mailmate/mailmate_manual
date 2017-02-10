@@ -82,7 +82,7 @@ Not customizable yet:
 
 A set of standard mailboxes are defined in the file `standardMailboxes.plist` and an additional set of default example mailboxes are defined in `defaultMailboxes.plist`. The latter is copied to `Mailboxes.plist` which is located in the application support folder (`~/Library/Application Support/MailMate/`). Changes to the standard mailboxes are saved as deltas in `Mailboxes.plist`. Currently the GUI does not allow one to define custom mailbox icons for the mailboxes, but this can be done by editing `Mailboxes.plist` (you MUST quit MailMate first). In particular, one can reuse the graphics from Mail by adding the following:
 
-**Note:** On OS X 10.8 and earlier you must replace `tiff` with `png`.
+**Note:** On macOS 10.8 and earlier you must replace `tiff` with `png`.
 
 	deltaMailboxes =
 	(
@@ -102,6 +102,39 @@ A set of standard mailboxes are defined in the file `standardMailboxes.plist` an
 			uuid = "TRASH";
 		}
 	);
+
+On macOS Sierra:
+
+	deltaMailboxes =
+	(
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarInbox.icns";
+			uuid = "INBOX";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarDrafts.icns";
+			uuid = "DRAFTS";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarArchive.icns";
+			uuid = "ARCHIVE";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarSent.icns";
+			uuid = "SENT";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarJunk.icns";
+			uuid = "JUNK";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarTrash.icns";
+			uuid = "TRASH";
+		},
+		{	imagePath = "/Applications/Mail.app/Contents/Resources/SidebarFlag.icns";
+			uuid = "FLAGGED";
+		},
+	);
+
+<!--
+SidebarFolder.icns
+SidebarSmartFolder.icns
+SidebarWhiteFolder.icns
+-->
 
 Extendable file defining the set of possible counters for each mailbox (defaults are All, Unread, Flagged, and Unreplied):
 
