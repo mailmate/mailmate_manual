@@ -76,7 +76,7 @@ Here is an example of how to create a math block with “ASCIIMath”:
 
 If mixing ASCIIMath and TeX math then it's also possible to use `~~~asciimath` and `~~~texmath`, but this should rarely be necessary. Most users would only use one type and this is saved by MailMate in the `Content-Type` header.
 
-It's also possible to do math inline like this, ``a^2 + b^2 = c^2``. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
+It's also possible to do math inline like this, ` ``a^2 + b^2 = c^2`` `. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
 
 ### <a name="markup_support"></a>Markdown Support
 
@@ -170,6 +170,8 @@ A banner is shown above the message for all signed and/or encrypted messages. Yo
 Note that MailMate always allows you to enable signing/encryption for a message. If it is not possible to actually do it then you are warned if you try to send the message.
 
 <!-- link to S/MIME error codes -->
+
+It has been reported by a user that MailMate also works with `gpg2` installed using `homebrew` if `pinentry-mac` is also installed. The user also wrote: “... in ~/.gnupg/gpg-agent.conf add the following line `pinentry-program /usr/local/bin/pinentry-mac`.”
 
 ## Software Update
 
