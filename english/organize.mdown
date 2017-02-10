@@ -16,11 +16,13 @@ The basic means of organizing email is through the use of mailboxes. MailMate su
 
 ### Standard Mailboxes
 
-The standard mailboxes are the mailboxes which cannot be changed, because they have a standard purpose. The first mailbox in the mailbox outline, “All Messages”, contains all messages in your IMAP account(s) except those in the designated mailboxes for deleted messages or messages marked as junk.
+The MAILBOXES section includes a set of standard mailboxes: “Inbox”, “Drafts”, “Sent Messages”, “Junk”, and “Deleted Messages”. They cannot be changed, because they have a standard purpose, as implied by their names. Each IMAP account may have only one mailbox of each type, although the actual name can vary from IMAP account to IMAP account. There is also a mailbox named “Archive” which is intended for archiving messages in a separate IMAP mailbox.
 
-Below “All Messages” you find the a well-known set of standard mailboxes: “Inbox”, “Drafts”, “Sent Messages”, “Junk”, and “Deleted Messages”. There is also a mailbox named “Archive”. As the name implies, this mailbox is intended for archiving messages. If you have multiple IMAP accounts configured then these mailboxes are universal, that is, they unify mailboxes across multiple IMAP accounts. It is possible to expand these mailboxes if one wants to see which account a message is located in.
+If you have multiple IMAP accounts configured, then these mailboxes are universal, that is they unify mailboxes of a given type across multiple IMAP accounts. It is possible to expand these mailboxes if one wants to see which messages are in which account.
 
-The universal mailboxes can also be used as targets for moving messages. MailMate will move the messages such that they each stay within their original IMAP account.
+The mailbox “All Messages” is a special mailbox which contains all messages in your IMAP accounts except those that are in the mailboxes used for deleted messages or junk. This means that it combines messages from “Inbox”, “Drafts”, “Sent”, “Archive”, and any additional IMAP mailboxes in your accounts. This mailbox is often set in smart mailboxes as the source mailbox.
+
+Universal mailboxes can be used as targets for moving messages. MailMate will move the messages such that they each stay within their original IMAP account.
 
 Note: The mailbox for “Sent Messages” has an additional level of mailboxes if an account has multiple addresses. One mailbox for each identity used as a from address.
 
