@@ -86,6 +86,7 @@ Selector | Argument | Action
 `undo:` | - | Undo action (moved messages or keyword changes)
 `redo:` | - | Redo action (moved messages or keyword changes)
 `copyAsLink:` | - | Put the `message:` URL of the currently selected message on the pasteboard.
+`loadImagesOnce:` | - | Allow the external images of the currently displayed message to be displayed once (potentially allowing the action to be tracked by the external server).
 
 ## Mailbox actions
 
