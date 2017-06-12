@@ -10,16 +10,13 @@ Most of the hidden preferences are configured using the `defaults` command. Note
 	defaults read com.freron.MailMate MmDefaultBccHeader
 	defaults delete com.freron.MailMate MmDefaultBccHeader
 
+You **must** relaunch MailMate after changing anything using the `defaults` command.
+
 ## Visual Appearance
 
-This is an example of how you can change the font of the headers view:
+Note that font settings can be handled via the “Format ▸ Show Fonts” menu item. You need to focus the part of the interface that you would like to change.
 
-	defaults write com.freron.MailMate MmHeadersViewFontName -string "LucidaGrande"
-	defaults write com.freron.MailMate MmHeadersViewFontSize -float 16
-
-Note that most other font settings can be handled via the “Format ▸ Show Fonts” menu item.
-
-You can also change the maximum number of email addresses shown in the headers view (the default is 30):
+You can change the maximum number of email addresses shown in the headers view (the default is 30):
 
 	defaults write com.freron.MailMate MmHeadersViewMaximum -integer 10
 
