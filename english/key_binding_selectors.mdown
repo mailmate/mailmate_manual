@@ -83,6 +83,7 @@ Selector | Argument | Action
 `markAsNotJunk:` | - | Shorthand for `( 'setTag:', '$NotJunk' )` — automatically clears junk related tags
 `saveAttachments:` | - | Display “Save Attachments” panel
 `saveAttachmentsInDownloads:` | - | Save attachments in the default downloads folder
+`removeAttachments:` | - | Remove all attachments and update the message on the IMAP server (with the stripped variant).
 `undo:` | - | Undo action (moved messages or keyword changes)
 `redo:` | - | Redo action (moved messages or keyword changes)
 `copyAsLink:` | - | Put the `message:` URL of the currently selected message on the pasteboard.
