@@ -191,7 +191,7 @@ This is all experimental and how it works may change slightly before becoming a 
 
 This is a functional but somewhat incomplete feature allowing you to select an alternative SMTP server in the Composer. It is described in more detail in [this mailing list post](https://lists.freron.com/mailmate/2016-January/005366.html).
 
-	defaults write com.freron.MailMate MmSentMailbox -string 8F9C1062-E4F8-4949-B5DC-BAB7CDEC4110
+	defaults write com.freron.MailMate MmSMTPAlternativeEnabled -bool YES
 
 ### Internationalized Email
 
