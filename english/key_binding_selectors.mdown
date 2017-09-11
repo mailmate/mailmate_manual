@@ -98,6 +98,7 @@ Selector | Argument | Action
 `mailboxToggleTag:` | IMAP keyword | Toggle tag for messages in currently displayed mailbox (or search result)
 `mailboxSetTag:` | IMAP keyword | Set tag for messages in currently displayed mailbox (or search result)
 `mailboxRemoveTag:` | IMAP keyword |  Remove tag for messages in currently displayed mailbox (or search result)
+`markAllAsRead:` | - | Mark all emails in the current mailbox as read.
 `expungeDeletedMessages:`\* | - | Permanently delete any messages marked as `\Deleted` in the currently displayed mailbox (or search result)
 `emptyMailbox:` | - | Empty the current mailbox (by default this only works for junk/trash mailboxes)
 `applyRules:` | - | Apply the rules of the currently selected mailbox to the currently selected messages
