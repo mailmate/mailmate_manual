@@ -42,6 +42,10 @@ The “Prefer Plain Text” option in the Viewer preferences pane is not quite w
 
 	defaults write com.freron.MailMate MmNeverDisplayHTML -bool YES
 
+The following is a quick hack for users wanting the “SOURCES” above the “MAILBOXES” section in the mailbox outline:
+
+	defaults write com.freron.MailMate MmSourcesAboveMailboxes -bool YES
+
 ## Navigation
 
 When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
@@ -64,7 +68,7 @@ When following an external link then MailMate can be told to use a specific brow
 
 Some users prefer the single message window to close after, e.g., archiving. This can be done by enabling this preference:
 
-	defaults write com.freron.MailMate MmMessageWindowActionAfterMove -string "closeWindow"
+	defaults write com.freron.MailMate MmSingleMessageWindowClosesAfterMove -bool YES
 
 On earlier releases of OS X it was common that a vertical drag in a list could be used to select multiple lines. A horizontal drag was required to initiate a drag action. The following preference enables the old behavior in the message list:
 
@@ -75,6 +79,14 @@ Under certain circumstances, MailMate tries to keep messages in the currently di
 	defaults write com.freron.MailMate MmStickyMessagesEnabled -bool NO
 
 Alternatively, the user can setup a key binding for the `refreshMailbox:` selector.
+
+## Searching
+
+The “Edit ▸ Find ▸ Mailbox Search” defaults to searching the “From” header of all messages. The syntax is not well documented, but this behavior can be overridden as follows:
+
+	defaults write MmDefaultMailboxSearchFilter -string "subject.body ~ ''"
+
+(Ideally, the GUI should allow the user to save the current search as the default.)
 
 ## Composing
 
