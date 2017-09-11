@@ -54,7 +54,7 @@ The content of a smart mailbox is based on the content of one or more other mail
 
 The most interesting part of the mailbox editor is the popup for choosing the headers used for filtering. The default set of headers is reminiscent of other email applications, but there are some important differences. Many of the headers in the menu have submenus providing more exact values for filtering. For example, instead of searching the entire “From” header for an email address, you can explicitly match the email address with “From ▸ Address”. Also note that when entering a value in the text field for a match, the value is automatically completed. Finally, if you try the “Other…” menu item then you get access to a full list of all headers seen in the imported messages.
 
-Two special “headers” can be used to search in the body text of messages. One for unqouted body text and another for quoted body text.
+Two special “headers” can be used to search in the body text of messages. One for unquoted body text and another for quoted body text.
 
 The popup used to select the type of comparison is also interesting. Case sensitivity is an option and you can also choose to match on the headers in any body part of a message. Make sure you try selecting the “is in” type of comparison. This allows you to compare with the headers of messages in some other mailbox. For an example of this, try editing the “Examples ▸  Personal Inbox” mailbox.
 

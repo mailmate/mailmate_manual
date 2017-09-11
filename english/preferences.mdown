@@ -20,7 +20,7 @@ In order to help the future development of MailMate then it is important that yo
 
 Using [Apple's own words](https://developer.apple.com/library/mac/documentation/Carbon/Conceptual/MetadataIntro/Concepts/HowDoesItWork.html) “Spotlight provides fast desktop searching by extracting metadata in the background and storing the indexed metadata for future searches. When a query is made, the indexed metadata is searched for matching files.”
 
-Apple does not index standard email files (`.eml`) which is the internal format used by MailMate, but fortunately MailMate can and does provide its own Spotlight plugin for this type of file. In other words, you can use Spotlight to search your emails, but there are some cavets.
+Apple does not index standard email files (`.eml`) which is the internal format used by MailMate, but fortunately MailMate can and does provide its own Spotlight plugin for this type of file. In other words, you can use Spotlight to search your emails, but there are some caveats.
 
 It only works if you enable indexing in the General preferences pane. It takes time and resources to index a large collection of emails and therefore it needs to be optional. When enabled you can use Finder (or third party applications like [HoudahSpot](https://www.houdah.com/houdahSpot/)) to search for emails, but it still won't work in Spotlight. This is because Spotlight ignores files in the application support folder. Therefore MailMate offers the slightly mysterious “Custom location” option which can be used to move the `Messages` folder to a Spotlight searched location. If desired this folder can be hidden in the Finder just like the `Library` folder is hidden by default in OS X.
 
