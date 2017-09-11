@@ -70,6 +70,12 @@ On earlier releases of OS X it was common that a vertical drag in a list could b
 
 	defaults write com.freron.MailMate MmMessagesOutlineVerticalDragSelects -bool YES
 
+Under certain circumstances, MailMate tries to keep messages in the currently displayed mailbox even if they no longer strictly belong to that mailbox. This happens, for example, when marking a message read in the default “Unread” mailbox. This is likely what most users would prefer, but it can be disabled as follows:
+
+	defaults write com.freron.MailMate MmStickyMessagesEnabled -bool NO
+
+Alternatively, the user can setup a key binding for the `refreshMailbox:` selector.
+
 ## Composing
 
 The following can be used to add a BCC (blind carbon copy) header by default to all outgoing messages:
