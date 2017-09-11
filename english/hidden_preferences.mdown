@@ -134,6 +134,12 @@ Alternatively, it's possible to replace the button with a “Delete” button:
 
 	defaults write com.freron.MailMate MmNotificationDeleteButtonEnabled -bool YES
 
+The recipient text fields in the Composer display at most 6 lines by default. This can be changed as follows:
+
+	defaults write com.freron.MailMate MmComposerMaximumNumberOfRecipientLines -integer 10
+
+You might prefer that if you often send to a large number of recipients. If you do then please remember to use the `Bcc:` header instead of the `To:` or `Cc:` headers.
+
 ### Retired Email Addresses
 
 If you have one or more email addresses which you no longer use for sending emails then you might face the following problem: After receiving an email sent to such an address then you would like to reply to it using a different email address. This won't work if you have listed the email address in one of your accounts, but if you have not listed it then MailMate is going to put the address in the “Cc” field (if you reply to all).
