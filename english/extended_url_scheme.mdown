@@ -64,3 +64,13 @@ In addition to the `mailto:` scheme MailMate has its own URI scheme named `mlmt`
 This searches subject lines for the value `mlmt`.  and `+` are reserved characters. 
 
 In general, `=` and `&` are reserved characters in the query part of the URI since they are used to separate key/value parameters. For convenience, the `+` is also a reserved character since it's replaced with the space character. If you need to use any of these reserved characters then they must be percent encoded.
+
+# AppleScript
+
+AppleScript support is somewhat limited. You can use the `mailto:` scheme as described further above, but you can also do anything you can do with [custom key bindings](custom_key_bindings.html). It's done like this:
+
+	tell application "MailMate" to perform { "toggleFlag:" }
+
+Note that this can also be used to trigger any bundle command available in MailMate:
+
+	tell application "MailMate" to perform { "performBundleItemWithUUID:", "<UUID from bundle command>" }
