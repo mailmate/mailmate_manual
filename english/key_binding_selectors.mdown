@@ -50,7 +50,7 @@ Selector | Argument | Action
 `deselectAll:` | - | Clear selection of messages
 `moveDownAndModifySelection:` | - | Extend selection downwards
 `moveUpAndModifySelection:` | - | Extend selection upwards
-`selectWithFilter:` | Filter string | Select a subset of messages matched by the filter
+`selectWithFilter:` | [Filter format string](custom_key_bindings.html#special_actions) | Select a subset of messages matched by the filter
 
 ## Message actions
 
