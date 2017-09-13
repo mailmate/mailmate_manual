@@ -67,7 +67,7 @@ In general, `=` and `&` are reserved characters in the query part of the URI sin
 
 # AppleScript
 
-AppleScript support is somewhat limited. You can use the `mailto:` scheme as described further above, but you can also do anything you can do with [custom key bindings](custom_key_bindings.html). It's done like this:
+AppleScript support is somewhat limited. You can use the `mailto:` scheme via AppleScript as described further above, but you can also do anything you can do with [custom key bindings](custom_key_bindings.html). It's done like this:
 
 	tell application "MailMate" to perform { "toggleFlag:" }
 
