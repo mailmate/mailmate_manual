@@ -83,6 +83,20 @@ Note that some email clients do not (and cannot be configured to) respect server
 [namespace]: https://tools.ietf.org/html/rfc2342
 [handling gmail]: https://blog.freron.com/2010/using-gmail-with-mailmate/
 
+### Account States
+
+When you look under “SOURCES” in the mailbox list then you might see one or more accounts in a greyed out state. This means that the account is not online. When this happens then a state string is shown in parentheses. These should be interpreted as follows:
+
+State       | Description
+----------- | -----------------------
+Offline     | This should only happen if the account was explicitly taken offline by the user. You can take it online in the “Mailbox” menu. Individual mailboxes within an account can also be taken offline.
+Disconnected | The system tells MailMate that the server is unreachable. This is not always correct and therefore MailMate is still going to occasionally try to connect. This mostly happens when there is a network issue or the machine is offline.
+Unavailable | Similar to “Disconnected” but it's not the system that claims the server is unreachable. MailMate will automatically try to reconnect later.
+Failed      | Some persistent issue with a response from the server has triggered the account (or possible just a single mailbox) to enter the “Failed” state.
+Throttled   | Some servers throttle traffic when a lot of bandwidth is used, especially when initially synchronizing an account. MailMate automatically waits a bit before continuing the synchronization. This works for accounts using the `[THROTTLED]` response code. Currently this only means Gmail.
+
+Whenever something is failing then the “Activity Viewer” (⌥⌘0) can be used to learn more. Logging is enabled whenever the window is open and the log of each connection can be viewed in the lower part of the window.
+
 ### Gmail
 
 MailMate aims to support all standards compliant IMAP servers and as many non-standard IMAP servers as possible. One of the non-standard IMAP servers is the one provided by [Gmail][] (Googles free webmail service). Its name is Gimap. The following explains how Gmail works via IMAP and how MailMate handles it.
