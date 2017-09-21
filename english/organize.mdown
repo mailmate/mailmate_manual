@@ -8,7 +8,7 @@ The basic means of organizing email is through the use of mailboxes. MailMate su
 
 * You can change the displayed count of messages for a mailbox (unread, flagged, …). By default, most mailboxes inherit the type of count from the parent mailbox.
 
-* You can change the currently selected mailbox using “Go to Mailbox…” (⌘T). This opens a window listing all mailboxes. Advanced filtering is supported and your favorite abbreviations for mailboxes are cached. Without filtering, the list is sorted such that the most recently used mailbox is at the top.
+* You can change the currently selected mailbox using “Go to Mailbox…” (⌘T). This opens a window listing all mailboxes. Advanced filtering is supported and your favorite abbreviations for mailboxes are cached. Without filtering, the list is sorted such that the most recently used mailbox is at the top. Holding down ⌥ when selecting a mailbox opens the mailbox editor. Holding down ⇧ opens a new window with the mailbox selected.
 
 * You can move selected messages to any (IMAP) mailbox using “Move to Mailbox…” (⌥⌘T). Again, filtering and abbreviations are supported.
 
@@ -86,6 +86,8 @@ If the currently selected message has any tags then they are shown in the expand
 The text fields for adding/removing tags are great for keeping your hands on the keyboard, but MailMate also provides alternative ways to add/remove tags. There's a “Tag” menu in the “Message” menu and in the context sensitive menu in the message list. You can also setup a tags toolbar button with multiple tag buttons for your most frequently used tags.
 
 Note that the composer allows the user to assign tags to drafts as well. This is done by enabling the “Tags” header in the headers menu (⌃⌘H). You might also want to enable it by default using “Use as Default Headers” in the same menu.
+
+Within any Tags text field the F5 key opens a popup menu with all available tags.
 
 [tagspane]: preferences.html#tags
 
