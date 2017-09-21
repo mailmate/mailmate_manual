@@ -104,6 +104,7 @@ Selector | Argument | Action
 `emptyMailbox:` | - | Empty the current mailbox (by default this only works for junk/trash mailboxes)
 `applyRules:` | - | Apply the rules of the currently selected mailbox to the currently selected messages
 `refreshMailbox:` | - | Forces a refresh of smart mailboxes hanging on to certain types of messages (like recently read messages in the Unread mailbox)
+`toggleFilterKey:` | key | [Experimental feature](https://www.mail-archive.com/mailmate@lists.freron.com/msg07695.html) allowing the user to temporarily enable/disable a filter. Currently, the only supported key is `unread`.
 `saveMailboxExpansions:` | - | Save the set of currently expanded mailboxes.
 `restoreMailboxExpansions:` | - | Restore the set of currently expanded mailboxes to the saved state. By default, this expands the top-level mailboxes.
 \* Experimental feature which can be used to make MailMate behave like a traditional IMAP email client. Currently this also requires enabling the following preference in the Terminal (to prevent MailMate from hiding `\Deleted` messages):
