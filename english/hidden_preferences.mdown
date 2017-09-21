@@ -226,6 +226,10 @@ The value given should be the UUID of a mailbox. The UUID can be copied to the p
 		
 This is all experimental and how it works may change slightly before becoming a GUI feature.
 
+Some users might prefer that an offline IMAP account also means that messages are not sent using the corresponding SMTP server. For now, this can be done by enabling the following preference:
+
+	defaults write com.freron.MailMate MmDoNotSendFromOfflineAccounts -bool YES
+
 ### Alternative SMTP server
 
 This is a functional but somewhat incomplete feature allowing you to select an alternative SMTP server in the Composer. It is described in more detail in [this mailing list post](https://lists.freron.com/mailmate/2016-January/005366.html).
