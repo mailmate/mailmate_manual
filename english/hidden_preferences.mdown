@@ -118,9 +118,11 @@ Finally, it is possible to customize the generated “On ... John Appleseed wrot
 
 	defaults write com.freron.MailMate MmReplyWroteString -string 'On %e %b %Y, at %k:%M, ${from.name:${from.address}} wrote:'
 
-The placeholders for date and time are the same as described in the manual page for the `strftime` function. The following describes this function in the Terminal:
+The placeholders for date and time are the same as described in the manual page for the `strftime` function. The following describes this function in the Terminal if you have Xcode installed:
 
 	man strftime
+
+Otherwise, it's available [here](https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man3/strftime.3.html).
 
 MailMate uses the plain text body part of an email when generating the quoted text for a reply. Unfortunately some email clients (including Gmail) hard-wrap the plain text body part. As an experimental workaround, MailMate can be told to try to unwrap the plain text body part before creating the reply. Feedback is welcome:
 
