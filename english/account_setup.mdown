@@ -97,30 +97,43 @@ Throttled   | Some servers throttle traffic when a lot of bandwidth is used, esp
 
 Whenever something is failing then the “Activity Viewer” (⌥⌘0) can be used to learn more. Logging is enabled whenever the window is open and the log of each connection can be viewed in the lower part of the window.
 
-### Gmail
+## Gmail
 
-MailMate aims to support all standards compliant IMAP servers and as many non-standard IMAP servers as possible. One of the non-standard IMAP servers is the one provided by [Gmail][] (Googles free webmail service). Its name is Gimap. The following explains how Gmail works via IMAP and how MailMate handles it.
+MailMate aims to support all standards compliant IMAP servers and as many non-standard IMAP servers as possible. One of the non-standard IMAP servers is the one provided by [Gmail][] (Google's free webmail service). Its name is Gimap. The following explains how Gmail works via IMAP and how MailMate handles it. You only really need to know the following if you use labels in Gmail like you would use tags in other applications. Otherwise, you just need to know that MailMate works well with Gmail.
 
-MailMate encourages the use of a single mailbox for archiving messages (for each IMAP account). This concept is similar to the “All Mail” mailbox in Gmail, but unfortunately it is not quite the same thing. In MailMate, a message is not in the “Archive” mailbox unless it has been explicitly archived. In Gmail, a message is (almost) always in “All Mail” and is simply removed from the “Inbox” when it is archived. In other words, in Gmail, a message can be in multiple mailboxes. This is even more apparent when using labels (or starring messages).
+The official IMAP email client instructions from Google can be found [here](https://support.google.com/mail/troubleshooter/1668960). There's also a [technical page](https://developers.google.com/gmail/imap/imap-extensions) describing how Google thinks of Gimap as an extension of IMAP. The truth is that it is more like a replacement. It has to be emphasized that it does *not* behave like a standard IMAP server which is also why it has a special section in this manual.
 
-IMAP does not support the Gmail model. If a message needs to be in multiple mailboxes then it must be duplicated. IMAP supports so-called [keywords][] (flags), but Google decided not to use these for labels. The main reasons (good or bad) are probably that IMAP keywords are/were not well supported by many email clients and it would require users to manually setup smart mailboxes for all their Gmail labels. Instead, Google chose a different approach which can be best described as a hack.
+### “All Mail” and Gmail labels
+
+MailMate encourages the use of a single mailbox for archiving messages (for each IMAP account). This concept is similar to the “All Mail” mailbox in Gmail, but unfortunately it is not quite the same thing. With MailMate, a message is not in the “Archive” mailbox unless it has been explicitly archived. With Gmail, a message is (almost) always in “All Mail” and is simply removed from the “Inbox” when it is archived. In other words, with Gmail, the same message can be in multiple IMAP mailboxes. This is even more apparent when using labels (or starring messages).
+
+IMAP does not support the Gmail model. If a message needs to be in multiple mailboxes then it must be duplicated. Instead, IMAP supports so-called [keywords][] (flags), but Google decided to not use these for labels. The main reasons (good or bad) are probably that IMAP keywords are/were not well supported by many email clients and that it would require users to manually setup smart mailboxes for all their Gmail labels. Google chose a different approach which can be best described as a hack.
 
 Each label in Gmail becomes a real mailbox when accessing the messages via IMAP. Existing email clients do not expect this and the result is that each message is fetched multiple times, once for each of its labels. Even if not using labels, the problem persists since every message in Inbox, Sent Mail or Drafts are also located in All Mail. In MailMate it becomes even worse because of the special “All Messages” virtual mailbox which is going to include all the duplicates.
 
-MailMate tries to handle Gmail within the rules of IMAP. Unfortunately part of this means that it is not recommended to use Gmail labels unless they are essentially used as mailboxes (only 1 label for each message). The only exception it the star symbol (“\[Gmail\]/Starred”) which is mapped by Gmail to the standard IMAP keyword named “\\Flagged” (which works in most email clients including MailMate).
-
-* MailMate automatically unsubscribes the following mailboxes: “\[Gmail\]/All Mail”, “\[Gmail\]/Starred”, and “\[Gmail\]/Important”.
-* MailMate creates a mailbox named “\[Gmail\]/Archive” (when it is needed).
-* MailMate automatically maps the standard mailboxes of Gmail to the standard mailboxes of MailMate.
-
-The main problem with the above is that you can no longer access messages which are only in the “All Mail” mailbox. To be able to access these you need to mark them all with the “\[Gmail\]/Archive” label. This can be done as follows within the Gmail web client:
-
-* Mark all conversations in All Mail as “\[Gmail\]/Archive”.
-* Remove the “\[Gmail\]/Archive” label from all messages in the Inbox and any other standard mailboxes (except those in “\[Gmail\]/Starred”!)
-* Remove the “\[Gmail\]/Archive” label from all messages which has been assigned a label within Gmail.
-
-[gmail]: https://mail.google.com
 [keywords]: https://tools.ietf.org/html/rfc3501#section-2.3.2
+
+Fortunately, MailMate can work around this problem.
+
+### How to configure MailMate
+
+If you click “Edit Subscriptions” in the IMAP account editor for a Gmail account then you might notice that “\[Gmail\]/Starred” and “\[Gmail\]/Important” are unsubscribed. It is important to keep it that way. The starred emails are equivalent to flagged emails. If you need the “Important” emails then you must setup a tag in MailMate to match the special `\\Important` Gmail label.
+
+The “\[Gmail\]/All Mail” mailbox might also be unsubscribed, but this is optional. If you don't subscribe to it then there's is likely going to be emails on the server which do not appear in MailMate. If you do subscribe to it then MailMate will do its best to only synchronize the emails which do not exist in any of your other Gmail mailboxes (in order to avoid duplicates in MailMate). It'll also be used as your “Archive” mailbox when it is subscribed. Otherwise, a new mailbox named “[Gmail]/Archive” is created and used as the archive mailbox.
+
+Here comes the important part. Gmail labels falls into two categories:
+
+* A label used as a folder: This kind of label is just like a standard IMAP mailbox. Labelling a message in Gmail is equivalent to moving it to a mailbox in MailMate. This is how Gmail labels are handled in MailMate by default. For example, you might like to move a message from the Inbox to a mailbox named “Receipts”.
+* A label used as a tag: This is equivalent to flagging/starring/tagging a message. The message is not moved, but it is marked in order to be more easily found when searching or to be part of some virtual mailbox. MailMate must explicitly be told about this kind of label in the Tags preferences pane.
+
+If you go to the Tags preferences pane in MailMate (⌘,) then notice the “Gmail Label” column. This can be used to tell MailMate to consider some tag name to be equivalent to a specific Gmail label. This has the following consequences:
+
+* It is no longer considered to be an IMAP mailbox and it'll disappear from the list of mailboxes in MailMate. This is implicitly how synchronizing duplicates are avoided in MailMate.
+* Whenever you tag an email in MailMate then its corresponding Gmail label is also applied. This means it'll show up with this label in the Gmail web interface.
+* Whenever a Gmail label is applied via webmail then MailMate detects it and makes sure it shows up with the corresponding tag.
+* If moving a message to a non-Gmail IMAP server then it keeps its IMAP keyword and thereby its tag in MailMate.
+
+The end result of all this is that Gmail accounts and IMAP accounts can nicely co-exist without MailMate becoming a Gmail email client instead of an IMAP email client.
 
 
 <!--
