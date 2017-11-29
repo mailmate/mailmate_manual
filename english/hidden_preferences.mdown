@@ -303,6 +303,8 @@ The following is an example which tells MailMate which addresses are to be consi
 	internalAddressPattern = ".*@freron\\.com";
 	internalAddressPatternEnabled = 1;
 
+By default the pattern is interpreted as being case insensitive.
+
 ### Fixed IP
 
 A few users may want to hardcode the IP used for the EHLO SMTP command:
