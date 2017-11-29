@@ -56,12 +56,12 @@ Similar to the standard key bindings system, the behavior of MailMate can be twe
 
 Do **not** edit these files. Changes should be placed in separate files as described further below. The file named `Standard.plist` is always in use, but `Gmail.plist` is more interesting. It shows how to replicate many of the [Gmail key bindings][] available when using Gmails web interface. Here is a simple file content example based on a subset of key bindings in the Gmail file:
 
-{
-	"c"	= "newMessage:";
-	"r"	= "reply:";
-	"f"	= "forwardMessage:";
-	"s"	= "toggleFlag:";
-}
+	{
+		"c"	= "newMessage:";
+		"r"	= "reply:";
+		"f"	= "forwardMessage:";
+		"s"	= "toggleFlag:";
+	}
 
 You can enable these key bindings in the Preferences (General pane). Note that you can specify a comma-separated list of key bindings files (without file extensions). The order determines the priority of the files and `Standard` is automatically appended to the list. The first item in the list has the highest priority.
 
