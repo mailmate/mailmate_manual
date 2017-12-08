@@ -78,7 +78,7 @@ The following is a list of things you should try in MailMate. For more informati
 
 *	[Toolbar][search view]
 
-	The search field in the toolbar can be activated using ⌥⌘F and closed/cancelled using “⌘.” or the escape key. It supports a simple syntax for searching the most interesting messages headers and the body, for example, `reciept f amazon t freron` would find all messages containing the word `receipt` sent from an address containing `amazon` and to an address containing `freron`. The toolbar also contains a “Thread” button and a “Correspondence” button. These can be used to expand a search to include related messages. Also note the arrows for going back (⌘[) and forward (⌘]) in search history. This is similar to using a web browser.
+	The search field in the toolbar can be activated using ⌥⌘F and closed/cancelled using “⌘.” or the escape key. It supports a simple syntax for searching the most interesting messages headers and the body, for example, `receipt f amazon t freron` would find all messages containing the word `receipt` sent from an address containing `amazon` and to an address containing `freron`. The toolbar also contains a “Thread” button and a “Correspondence” button. These can be used to expand a search to include related messages. Also note the arrows for going back (⌘[) and forward (⌘]) in search history. This is similar to using a web browser.
 
 *	[Advanced Search][search view]
 
