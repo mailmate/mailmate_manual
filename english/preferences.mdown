@@ -139,9 +139,11 @@ This enables an additional column in the “Tags” preferences pane for enterin
 
 ## <a name="bundles_preferences"></a>Bundles
 
-The functionality of MailMate can be extended using so-called bundles. Creating new bundles is undocumented for now, but a large set of existing bundles allow you to integrate MailMate with various third party applications. Enable your favorite applications in the Bundles preferences pane and then review the commands available in the Command menu.
+The functionality of MailMate can be extended using so-called bundles. A large set of existing bundles allow you to integrate MailMate with various third party applications. Enable your favorite applications in the Bundles preferences pane and then review the commands available in the Command menu.
 
 Note that bundles are not included when you download MailMate itself. They are fetched dynamically by MailMate when enabled and they are automatically updated independently of updating MailMate itself.
+
+If you want to create your own bundle then you can find the documentation [here](https://github.com/mailmate/mailmate_manual/wiki/Bundles).
 
 ## <a name="security_preferences"></a>Security
 
