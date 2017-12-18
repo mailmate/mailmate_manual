@@ -6,6 +6,8 @@ All of the following is *subject to change*. It is essentially a peek into some 
 
 That said, the following is also an opportunity to play with aspects of an email program which are most often strictly off limits.
 
+Integration with other applications can be done using so-called [bundles](preferences.html#bundles_preferences).
+
 ## General
 
 Most of the following files are located in the `Resources` folder of MailMate. A custom version of a file can be made by making a copy in `~/Library/Application Support/MailMate/Resources/` and then edit it. In some cases, the copy replaces the original and in others, the copy extends the original.
