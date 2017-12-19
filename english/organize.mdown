@@ -30,9 +30,7 @@ Note: The mailbox for “Sent Messages” has an additional level of mailboxes i
 
 MailMate encourages the use of so-called “smart” mailboxes. These are virtual mailboxes which show messages which belong to a specified set of mailboxes and which match some set of conditions. When handling a new message in the Inbox, the basic decision to make is whether it should be archived or trashed. The rest should be handled by smart mailboxes.
 
-Below the universal mailboxes in the mailbox outline you find a range of smart mailboxes which exemplifies what is possible with MailMate. In particular, note the “Mailing Lists” mailbox: If you have any mailing list messages they are automatically divided into smart mailboxes as children of the “Mailing Lists” mailbox. There is currently no graphical user interface for making this kind of mailbox yourself (but you can [edit][mailboxes plist] a file). The same goes for the automatically displayed children of the “Unread” mailbox.
-
-[mailboxes plist]: customization.html#mailboxes_plist
+Below the universal mailboxes in the mailbox outline you find a range of smart mailboxes which exemplifies what is possible with MailMate. In particular, note the “Mailing Lists” mailbox: If you have any mailing list messages they are automatically divided into smart mailboxes as children of the “Mailing Lists” mailbox. You can see how this is configured in the “Submailboxes” pane of the mailbox editor.
 
 Double-click any smart mailbox in order to see how it has been configured.
 
