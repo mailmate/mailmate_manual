@@ -81,7 +81,7 @@ Note that some email clients do not (and cannot be configured to) respect server
 
 [mailbox subscriptions]: https://tools.ietf.org/html/rfc3501#section-6.3.6
 [namespace]: https://tools.ietf.org/html/rfc2342
-[handling gmail]: https://blog.freron.com/2010/using-gmail-with-mailmate/
+[handling Gmail]: https://blog.freron.com/2010/using-gmail-with-mailmate/
 
 ### Account States
 
@@ -117,7 +117,7 @@ Fortunately, MailMate can work around this problem.
 
 ### How to configure MailMate
 
-If you click “Edit Subscriptions” in the IMAP account editor for a Gmail account then you might notice that “\[Gmail\]/Starred” and “\[Gmail\]/Important” are unsubscribed. It is important to keep it that way. The starred emails are equivalent to flagged emails. If you need the “Important” emails then you must setup a tag in MailMate to match the special `\\Important` Gmail label.
+If you click “Edit Subscriptions” in the IMAP account editor for a Gmail account then you might notice that “\[Gmail\]/Starred” and “\[Gmail\]/Important” are unsubscribed. It is important to keep it that way. The starred emails are equivalent to flagged emails. If you need the “Important” emails then you must setup a tag in MailMate to match the special `\Important` Gmail label.
 
 The “\[Gmail\]/All Mail” mailbox might also be unsubscribed, but this is optional. If you don't subscribe to it then there's is likely going to be emails on the server which do not appear in MailMate. If you do subscribe to it then MailMate will do its best to only synchronize the emails which do not exist in any of your other Gmail mailboxes (in order to avoid duplicates in MailMate). It'll also be used as your “Archive” mailbox when it is subscribed. Otherwise, a new mailbox named “[Gmail]/Archive” is created and used as the archive mailbox.
 
@@ -133,7 +133,7 @@ If you go to the Tags preferences pane in MailMate (⌘,) then notice the “Gma
 * Whenever a Gmail label is applied via webmail then MailMate detects it and makes sure it shows up with the corresponding tag.
 * If moving a message to a non-Gmail IMAP server then it keeps its IMAP keyword and thereby its tag in MailMate.
 
-The end result of all this is that Gmail accounts and IMAP accounts can nicely co-exist without MailMate becoming a Gmail email client instead of an IMAP email client.
+The end result of all this is that Gmail accounts and IMAP accounts can nicely co-exist without MailMate becoming a Gmail email client instead of an IMAP email client. You *must* subscribe to “[Gmail]/All Mail” for this to work when the labelled emails do not exist in any other mailboxes.
 
 
 <!--
