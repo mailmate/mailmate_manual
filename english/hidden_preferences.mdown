@@ -45,6 +45,11 @@ The “Prefer Plain Text” option in the Viewer preferences pane is not quite w
 The following is a quick hack for users wanting the “SOURCES” above the “MAILBOXES” section in the mailbox outline:
 
 	defaults write com.freron.MailMate MmSourcesAboveMailboxes -bool YES
+	
+a regular expression to allow certain images:	
+
+	defaults write com.freron.MailMate MmAllowedImageURLRegexp -string "https://(freron\.com|example\.com)/.*"
+
 
 ## Navigation
 
