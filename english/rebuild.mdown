@@ -21,15 +21,15 @@ Then restart MailMate. When the rebuilding has finished, you should take a look 
 
 	~/Library/Application\ Support/MailMate/OldDatabase/
 
-Again, if you had to do this due to what you think is a MailMate bug then please report it.
+**Again, if you had to do this due to what you think is a MailMate bug then please report it.**
 
-## Transfer MailMate Settings to an other computer
+## How to transfer MailMate Settings to another computer
 
-To copy your settings to an other coputer you need this files:
+To copy your settings to another computer you need this files (depending on what you have customized):
 
-	~/Library/Application Support/MailMate/*.plist
-	~/Library/Application Support/MailMate/Resources/
-	~/Library/Application Support/MailMate/Bundles/
-	~/Library/Preferences/com.freron.MailMate.plist
+	/Users/<username>/Library/Application Support/MailMate/*.plist
+	/Users/<username>/Library/Application Support/MailMate/Resources/
+	/Users/<username>/Library/Application Support/MailMate/Bundles/
+	/Users/<username>/Library/Preferences/com.freron.MailMate.plist
 	
-you also need your custom settings from the `defaults write`  
+Note that the last file also contains most of what you have changed in MailMate preferences or have changed using the `defaults` command. You can only copy this file *before* launching MailMate on the destination machine. Otherwise, you might have problems with the file being overwritten by an older version cached by the system.
