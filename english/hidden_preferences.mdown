@@ -33,6 +33,10 @@ This should hide quote levels of level 3 or more. This currently also works for 
 It's possible to force MailMate to always display attachments at the top of the message display. This is a stop-gap solution until better handling of attachments has been implemented:
 
 	defaults write com.freron.MailMate MmShowAttachmentsFirst -bool YES
+	
+The “QuickLook” and “Save” buttons on an attachment can be moved to the left side of an attachment line:
+ 
+	defaults write com.freron.MailMate MmAttachmentButtonsOnLeft -bool YES
 
 Earlier versions of MailMate had an almost text-only style. If you prefer this then it's still available using this hidden preference:
 
