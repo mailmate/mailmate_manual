@@ -46,7 +46,7 @@ The following is a quick hack for users wanting the “SOURCES” above the “M
 
 	defaults write com.freron.MailMate MmSourcesAboveMailboxes -bool YES
 	
-a regular expression to allow certain images:	
+A regular expression can be defined to override image blocking settings:
 
 	defaults write com.freron.MailMate MmAllowedImageURLRegexp -string "https://(freron\.com|example\.com)/.*"
 
