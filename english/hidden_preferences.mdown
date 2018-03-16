@@ -34,7 +34,7 @@ It's possible to force MailMate to always display attachments at the top of the 
 
 	defaults write com.freron.MailMate MmShowAttachmentsFirst -bool YES
 	
-'QuickLook' and 'Save' buttons on an attachment note will to be moved to the left hand of the line:
+The “QuickLook” and “Save” buttons on an attachment can be moved to the left side of an attachment line:
  
 	defaults write com.freron.MailMate MmAttachmentButtonsOnLeft -bool YES
 
