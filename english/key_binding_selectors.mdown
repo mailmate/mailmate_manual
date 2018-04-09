@@ -49,6 +49,7 @@ Selector | Argument | Action
 ---------|----------|-------
 `selectAll:` | - | Select all messages
 `deselectAll:` | - | Clear selection of messages
+`selectThread:` | - | Select all messages in a thread
 `moveDownAndModifySelection:` | - | Extend selection downwards
 `moveUpAndModifySelection:` | - | Extend selection upwards
 `selectWithFilter:` | [Filter format string](custom_key_bindings.html#special_actions) | Select a subset of messages matched by the filter
