@@ -163,6 +163,8 @@ The recipient text fields in the Composer display at most 6 lines by default. Th
 
 You might prefer that if you often send to a large number of recipients. If you do then please remember to use the `Bcc:` header instead of the `To:` or `Cc:` headers.
 
+### External Editor
+
 MailMate supports using external editors to write emails. This is done by enabling the corresponding bundle in the Bundles preferences pane and then use the ⌃⇧O shortcut to edit the currently open draft. It is also possible to trigger this automatically when using tab to move into the main text field of the Composer. This is enabled as follows:
 
 	defaults write com.freron.MailMate MmBundleCommandLaunchedOnTab "46C1F8A8-A069-4E54-A427-30D45342674F"
@@ -174,9 +176,9 @@ The `UUID` argument is a bit tricky to find. Here are the values needed for the 
 | Atom         | `18C8A279-7953-4E52-84D3-DE5F4F2C6E10` |
 | BBEdit       | `4382C559-76C1-4950-BD10-33A1EBCA9B5D` |
 | MacVim       | `5A2D62AF-4725-492B-BFC6-DAB411D1AA86` |
+| Sublime Text | `2EF4C1A0-8FE2-11E3-BAA8-0800200C9A66` |
 | TextMate     | `46C1F8A8-A069-4E54-A427-30D45342674F` |
-
-<!-- | Sublime Text | `2EF4C1A0-8FE2-11E3-BAA8-0800200C9A66` | -->
+| VS Code      | `F71DDBD6-E868-418B-956D-2EA0208538DB` |
 
 ### Retired Email Addresses
 
