@@ -97,6 +97,18 @@ Throttled   | Some servers throttle traffic when a lot of bandwidth is used, esp
 
 Whenever something is failing then the “Activity Viewer” (⌥⌘0) can be used to learn more. Logging is enabled whenever the window is open and the log of each connection can be viewed in the lower part of the window.
 
+### Synchronization Schedule
+
+The “Mailbox” menu has a “Synchronization Schedule” submenu which can be used to tell MailMate when to synchronize the emails in a given mailbox. If a mailbox has not been configured to use a specific schedule then it uses the schedule of its parent mailbox. This also means that setting a schedule on the account itself works as a default for the entire account. The `INBOX` is special since it always defaults to using the “Connected” state.
+
+Schedule    | Description
+----------- | -----------------------
+Connected   | The connection to the mailbox is never closed and therefore new messages and other changes should be detected immediately (depending on server behavior). This is also known as IMAP IDLE. You should not have more than 2 or 3 mailboxes using this schedule in a given account.
+Every ...   | MailMate checks the mailbox on a regular basis ranging from 5 minutes to 1 hour.
+Manually    | The mailbox is not checked on a regular basis.
+
+In any case, an IMAP mailbox is always synchronized when it's selected or if there exists any client side changes which need to be synchronized with the server. The only way to prevent synchronization completely is to take the mailbox offline.
+
 ## Gmail
 
 MailMate aims to support all standards compliant IMAP servers and as many non-standard IMAP servers as possible. One of the non-standard IMAP servers is the one provided by [Gmail][] (Google's free webmail service). Its name is Gimap. The following explains how Gmail works via IMAP and how MailMate handles it. You only really need to know the following if you use labels in Gmail like you would use tags in other applications. Otherwise, you just need to know that MailMate works well with Gmail.
