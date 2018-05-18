@@ -36,7 +36,7 @@ If you have more than 1 email address configured in your IMAP accounts (in total
 
 <!-- Describe derivation heuristic -->
 
-The menu also includues a “Customize...” menu item which allows you to alter the currently selected identity. The text field shown supports completion based on the `From` header of all previously sent messages.
+The menu also includes a “Customize...” menu item which allows you to alter the currently selected identity. The text field shown supports completion based on the `From` header of all previously sent messages.
 
 ## Signatures
 
