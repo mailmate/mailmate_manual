@@ -34,16 +34,17 @@ Here are the currently supported modifiers:
 
 | Modifier | Search scope |
 |----------|--------------|
-| f        |  From        |
-| s        |  Subject     |
-| t        |  To (Recipients)|
-| a        |  Any address header |
-| b        |  Body text (unquoted body text)|
-| q        |  Quoted text|
-| m        |  Message (Common Headers or Body)|
-| T        |  Tags |
-| K        |  All IMAP keywords |
-| A        |  Attachment filenames |
+| `f`        |  From        |
+| `s`        |  Subject     |
+| `t`        |  To (Recipients)|
+| `a`        |  Any address header |
+| `b`        |  Body text (unquoted body text)|
+| `q`        |  Quoted text|
+| `m`        |  Message (Common Headers or Body)|
+| `M`        |  Like `m` but includes quoted text|
+| `T`        |  Tags |
+| `K`        |  All IMAP keywords |
+| `A`        |  Attachment filenames |
 
 Searching is initiated when hitting “Enter”. Holding down ⌥ tells MailMate to stay in the current mailbox. The menu of the toolbar search field allows setting the default search mailbox. (If “Current Mailbox” is selected then holding down ⌥ makes MailMate search “All Messages”.)
 
