@@ -53,7 +53,13 @@ The following is a quick hack for users wanting the “SOURCES” above the “M
 A regular expression can be defined to override image blocking settings:
 
 	defaults write com.freron.MailMate MmAllowedImageURLRegexp -string "https://(freron\.com|example\.com)/.*"
+	
+An auto-expand feature has two options:
 
+	defaults write com.freron.MailMate MmAutomaticallyExpandThreadsEnabled -bool YES
+	defaults write com.freron.MailMate MmAutomaticallyExpandOnlyWhenCounted -bool YES
+
+The first one makes MailMate always expand all threads. Combined with the second one, only threads with emails “counted” are expanded. That might seem strange, but it means that if you have a mailbox with an unread count in the mailbox list then only threads with unread messages are going to be expanded (or the parts of the threads with unread messages). New messages also trigger auto-expansion. *(Note: It might be changed how this works. In particular, these features could be more independent of each other.)*
 
 ## Navigation
 
