@@ -155,6 +155,7 @@ The filter is actually a [format string](format_string_syntax.html). This can be
 
 Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future.
 
+<!-- This no longer works.
 ## <a name="special_keys"></a>Special “Keys”
 
 Trackpad gestures are supported by MailMate and they have been implemented with customization in mind as described in the following. The 4 standard swipe directions, left, right, up, and down, are transformed into key down events with the unicode characters `\U2193`, `\U2190`, `\U2192`, and `\U2191` (→ ← ↑ ↓). It allows for great flexibility with respect to what can now be done with gestures. By default, standard key bindings include the following:
@@ -169,6 +170,7 @@ Trackpad gestures are supported by MailMate and they have been implemented with 
 	"^↓" = "nextUnreadThread:";
 
 Using your own key bindings, you can override the above or create more using other modifier keys. Swipe to archive, switch mailbox, delete messages, or whatever you like.
+-->
 
 ## AppleScript
 
