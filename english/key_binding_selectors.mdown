@@ -108,6 +108,7 @@ Selector | Argument | Action
 `toggleFilterKey:` | key | [Experimental feature](https://www.mail-archive.com/mailmate@lists.freron.com/msg07695.html) allowing the user to temporarily enable/disable a filter. Currently, the only supported key is `unread`.
 `saveMailboxExpansions:` | - | Save the set of currently expanded mailboxes.
 `restoreMailboxExpansions:` | - | Restore the set of currently expanded mailboxes to the saved state. By default, this expands the top-level mailboxes.
+`synchronize:` | Mailbox UUID (optional) | Synchronize the given mailbox or any IMAP mailboxes on which it is based. If no mailbox is given then any selected mailboxes are synchronized.
 `toggleOnlineState:` | - | Toggle online state of the selected mailboxes.
 `toggleOnlineStateOfAllAccounts:` | - | Toggle online state of *all* accounts.
 
