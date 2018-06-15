@@ -17,7 +17,7 @@ Selector | Argument | Action
 `rootOfThread:` | - | Move to root of thread (search for thread if necessary)
 `lastOfThread:` | - | Move to last message of thread (with respect to received date)
 `selectNextMessageRow:` | - | Select next message (without expanding)
-`selectPreviousMessageRow:` | - | Select previous message (same as previousMessage:)
+`selectPreviousMessageRow:` | - | Select previous message (same as `previousMessage:`)
 `selectFirstMessageRow:` | - | Select first message
 `selectLastMessageRow:` | - | Select last message
 `expand:` | - | Expand selected messages
@@ -38,6 +38,8 @@ Selector | Argument | Action
 `selectPreviousMailbox:` | - | Select previous mailbox (same as selectPreviousMailboxRow:)
 `selectNextCountedMailbox:` | - | Select next mailbox with a non-zero displayed count (expand if possible)
 `selectPreviousCountedMailbox:` | - | Select previous mailbox with a non-zero displayed count
+`selectNextCountedMailboxRow:` | - | Select next mailbox with a non-zero displayed count (without expanding)
+`selectPreviousCountedMailboxRow:` | - | Select previous mailbox with a non-zero displayed count (same as `selectPreviousCountedMailbox:``)
 `searchAllMessages:` | - | Initiate search in “All Messages”
 `mailboxSearch:` | - | Initiate search in currently selected mailbox
 `showThread:` | - | Initiate search for messages in the same thread(s)
