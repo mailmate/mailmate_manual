@@ -42,7 +42,7 @@ In practice, the extended `mailto:` URI scheme should allow MailMate to be integ
 	mv /Applications/iCal.app/Contents/Resources/Scripts/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/MailBackup.scpt
 	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/iCal/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/
 
-*Note:* The above does not work on Mountain Lion or later versions of OS X since Apple no longer uses the `Mail.scpt` file. It is unknown whether or not a workaround exists.
+*Note:* The above does not work on Mountain Lion or later versions of macOS since Apple no longer uses the `Mail.scpt` file. It is unknown whether or not a workaround exists.
 
 ### BusyCal
 

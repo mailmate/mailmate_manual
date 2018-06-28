@@ -14,7 +14,7 @@ The current selection of layouts is also a proof-of-concept. They are defined us
 
 ## <a name="search"></a>Search View
 
-No matter how a search is initiated, note that you can always cancel/remove a search using the escape key or “⌘.” (these keys works in most parts of OS X whenever some kind of “cancel” behavior is needed). Also note that when multiple search items are active then a single search item can be removed using its context sensitive menu or by holding down ⌥ when clicking on it.
+No matter how a search is initiated, note that you can always cancel/remove a search using the escape key or “⌘.” (these keys works in most parts of macOS whenever some kind of “cancel” behavior is needed). Also note that when multiple search items are active then a single search item can be removed using its context sensitive menu or by holding down ⌥ when clicking on it.
 
 ### Toolbar Search
 

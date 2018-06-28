@@ -85,7 +85,7 @@ Some users prefer the single message window to close after, e.g., archiving. Thi
 
 	defaults write com.freron.MailMate MmSingleMessageWindowClosesAfterMove -bool YES
 
-On earlier releases of OS X it was common that a vertical drag in a list could be used to select multiple lines. A horizontal drag was required to initiate a drag action. The following preference enables the old behavior in the message list:
+On earlier releases of macOS it was common that a vertical drag in a list could be used to select multiple lines. A horizontal drag was required to initiate a drag action. The following preference enables the old behavior in the message list:
 
 	defaults write com.freron.MailMate MmMessagesOutlineVerticalDragSelects -bool YES
 
@@ -348,7 +348,7 @@ Alternatively, a hostname can be fixed like this (in this case it's important to
 
 ## Sending PDFs
 
-The following is a [feature of OS X](https://support.apple.com/kb/PH11479?viewlocale=en_US&locale=en_US) which is not obvious. You can add a menu item to the PDF menu of the Print dialogue which makes it easier to create a new message with a PDF attached. You just need to make an alias to the MailMate application in the following folder:
+The following is a [feature of macOS](https://support.apple.com/kb/PH11479?viewlocale=en_US&locale=en_US) which is not obvious. You can add a menu item to the PDF menu of the Print dialogue which makes it easier to create a new message with a PDF attached. You just need to make an alias to the MailMate application in the following folder:
 
 	~/Library/PDF Services/
 
