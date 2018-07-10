@@ -37,3 +37,7 @@ This is the current output when asking `emate` for `--help`:
 The following is an example of creating a message with a tag named `special`:
 
 	echo "The body of the message." | emate mailto --to "Info <info@example.com>" --subject "The subject of the message." --header "#flags: special"
+
+Here is an example of attaching a file to a new message:
+
+	echo "The body of the message." | emate mailto --to "Info <info@example.com>" ~/Desktop/file.txt
