@@ -76,7 +76,7 @@ Here is an example of how to create a math block with “ASCIIMath”:
 
 If mixing ASCIIMath and TeX math then it's also possible to use `~~~asciimath` and `~~~texmath`, but this should rarely be necessary. Most users would only use one type and this is saved by MailMate in the `Content-Type` header.
 
-It's also possible to do math inline like this, ` ``a^2 + b^2 = c^2`` `. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
+It's also possible to do math inline like this, ``` ``a^2 + b^2 = c^2`` ```. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
 
 ### <a name="markup_support"></a>Markdown Support
 
