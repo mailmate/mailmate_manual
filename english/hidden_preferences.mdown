@@ -63,7 +63,7 @@ The first one makes MailMate always expand all threads. Combined with the second
 
 ## Colored Messages
 
-You need to explicitly enable this feature:
+There is some low-level support for coloring/styling lines in the message list. First, you need to explicitly enable this feature:
 
 	defaults write com.freron.MailMate MmMessageColorsEnabled -bool YES
 
@@ -71,29 +71,28 @@ You also need to manually configure it by creating this file:
 
 	~/Library/Application Support/MailMate/Styles.plist
 
-Here's an example file I've used for testing. I shows the use of 3 types of colorings. You can add as many as you like of these 3 types (although only the first 2 are useful for now). It also shows the use of bold/italic fonts:
+The following is an example file. It shows the use of 3 types of colorings. You can add as many as you like of these 3 types (although only the first 2 are useful for now). It also shows the use of bold/italic fonts:
 
 	{   styles = (
-        	{   type = keyword;
-	            keyword = '\\Flagged';
-	            color = "#00FF00";
-	            fontStyle = "bold";
-	
-	        },
-	        {   type = mailbox;
-	            color = "#00FFFF";
-	            uuid = 'INBOX';
-	            fontStyle = "italic"; // boldAndItalic can also be used
-	        },
-	        {   /*disabled = ":true";*/
-	            type = filter;
-	            color = "#FF0000";
-	            uuid = '0249F96D-9B86-452A-B34A-83D83B0125FE';
-	        },
-	    );
+		{   type = keyword;
+				keyword = '\\Flagged';
+				color = "#00FF00";
+				fontStyle = "bold";
+			},
+			{   type = mailbox;
+				color = "#00FFFF";
+				uuid = 'INBOX';
+				fontStyle = "italic"; // boldAndItalic can also be used
+			},
+			{   /*disabled = ":true";*/
+				type = filter;
+				color = "#FF0000";
+				uuid = '0249F96D-9B86-452A-B34A-83D83B0125FE';
+			},
+		);
 	}
 
-The first one is the keyword type. This colors emails matching a specific IMAP keywords. This can also be used for tags (which always map to an IMAP keyword). The second one is the mailbox type which colors messages which are in any one of the available mailboxes and smart mailboxes (the uuid value can be put on the pasteboard by selecting a mailbox and then hit ⌘C). The last one is currently a semi-hardcoded option. It makes emails pending deletion colored red similar to what is currently fully hardcoded in MailMate.
+The first example is of the `keyword` type. This colors emails matching a specific IMAP keyword. This can also be used for tags (which always map to an IMAP keyword). The second example is the `mailbox` type which colors messages which are in any one of the available mailboxes and smart mailboxes (the UUID value of a mailbox can be put on the pasteboard by selecting the mailbox and then hit ⌘C). The last example is currently a semi-hardcoded option. It makes emails pending deletion colored red similar to what is currently fully hardcoded in MailMate.
 
 ## Navigation
 
