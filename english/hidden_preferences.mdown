@@ -61,6 +61,40 @@ An auto-expand feature has two options:
 
 The first one makes MailMate always expand all threads. Combined with the second one, only threads with emails “counted” are expanded. That might seem strange, but it means that if you have a mailbox with an unread count in the mailbox list then only threads with unread messages are going to be expanded (or the parts of the threads with unread messages). New messages also trigger auto-expansion. *(Note: It might be changed how this works. In particular, these features could be more independent of each other.)*
 
+## Colored Messages
+
+You need to explicitly enable this feature:
+
+	defaults write com.freron.MailMate MmMessageColorsEnabled -bool YES
+
+You also need to manually configure it by creating this file:
+
+	~/Library/Application Support/MailMate/Styles.plist
+
+Here's an example file I've used for testing. I shows the use of 3 types of colorings. You can add as many as you like of these 3 types (although only the first 2 are useful for now). It also shows the use of bold/italic fonts:
+
+	{   styles = (
+        	{   type = keyword;
+	            keyword = '\\Flagged';
+	            color = "#00FF00";
+	            fontStyle = "bold";
+	
+	        },
+	        {   type = mailbox;
+	            color = "#00FFFF";
+	            uuid = 'INBOX';
+	            fontStyle = "italic"; // boldAndItalic can also be used
+	        },
+	        {   /*disabled = ":true";*/
+	            type = filter;
+	            color = "#FF0000";
+	            uuid = '0249F96D-9B86-452A-B34A-83D83B0125FE';
+	        },
+	    );
+	}
+
+The first one is the keyword type. This colors emails matching a specific IMAP keywords. This can also be used for tags (which always map to an IMAP keyword). The second one is the mailbox type which colors messages which are in any one of the available mailboxes and smart mailboxes (the uuid value can be put on the pasteboard by selecting a mailbox and then hit ⌘C). The last one is currently a semi-hardcoded option. It makes emails pending deletion colored red similar to what is currently fully hardcoded in MailMate.
+
 ## Navigation
 
 When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
