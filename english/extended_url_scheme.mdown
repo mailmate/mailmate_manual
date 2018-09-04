@@ -22,7 +22,13 @@ MailMate also extends the `mailto:` syntax to include some additional special pa
 
 The “`with trust`” part of the AppleScript command tells MailMate to not ignore the special parameters.
 
-The `from` value should just be an email address and MailMate then takes care of finding the corresponding identity. It works with all identity settings including address patterns. If an unknown address is given then MailMate falls back to the default account.
+The `from` value should just be an email address and MailMate then takes care of finding the corresponding identity. It works with all identity settings including address patterns. If an unknown address is given then MailMate falls back to the default account. The `open location` command can also be used to open `mid:`, `cid:` or `message:` URLs. They are all based on the `Message-ID` header of emails.
+
+Alternatively, there is a specific command to open a `mailto:` URL:
+
+		osascript -e 'tell application "MailMate" to open mailto "me@example.com?subject=Test&body=Body%20text&attachment-url=file:///full/path/to/file.txt&send-now=yes"'
+
+This one has the advantage of working with AppleScript [access groups](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/EnablingAppSandbox.html#//apple_ref/doc/uid/TP40011195-CH4-SW25) for sandboxed applications. The scripting access group name is `com.freron.MailMate.compose`.
 
 Note that it is also possible (and easier for shell scripts) to create messages using the [`emate`][emate] command. The `emate` command is a simple interface to the `mailto:` URIs described above.
 
