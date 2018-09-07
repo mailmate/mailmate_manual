@@ -47,7 +47,7 @@ Here are the currently supported modifiers:
 | `K`      | All IMAP keywords |
 | `A`      | Attachment filenames |
 
-The `d` modifier supports both explicit dates and dates relative to the current time. Explicit dates are provided using a date in year-month-day format. Day and month are optional. Relative dates are provided using a number and a single letter for hours/days/weeks/months/years. They are all limited to the beginning of the time unit, for example, `1y` means this year and not 365 days. The following is a list of examples:
+The `d` modifier supports both explicit dates and dates relative to the current time. Explicit dates are provided using a date in year-month-day format where day and month are optional **or** day-month-year format where month and year are optional. Date-separators can be `-`, `/`, or `.`. Relative dates are provided using a number and a single letter for hours/days/weeks/months/years. They are all limited to the beginning of the time unit, for example, `1y` means this year and not 365 days. The following is a list of examples showing most of the variations possible:
 
 | Search string      | Meaning               |
 |--------------------|-----------------------|
@@ -55,8 +55,14 @@ The `d` modifier supports both explicit dates and dates relative to the current 
 | `d 2005-04`        | Received April 2005   |
 | `d 2005-04-01`     | Received April 1st 2005   |
 | `d 2005/04/01`     | Received April 1st 2005   |
+| `d 2005.04.01`     | Received April 1st 2005   |
+| `d 2005-4-1`       | Received April 1st 2005   |
 | `d <2005-04`       | Received before April 2005 |
 | `d >2005-04`       | Received in or after April 2005 |
+| `d >2005-04`       | Received in or after April 2005 |
+| `d 7`              | Received on day 7 of current month (or previous month if current day is smaller) |
+| `d 7-4`            | Received on day 7 of april (or previous year if current month is earlier than april) |
+| `d 7-4-2005`       | Received on April 7th 2005 |
 | `d 1y`             | Received this year |
 | `d 365d`           | Received within the past 365 days |
 | `d !3d`            | Not received within the past 3 days |
