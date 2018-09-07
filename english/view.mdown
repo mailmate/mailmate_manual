@@ -69,7 +69,7 @@ The `d` modifier supports both explicit dates and dates relative to the current 
 | `d 5y !2y`         | Received 2-5 years ago|
 | `d today`          | Received today |
 | `d yesterday`      | Received yesterday |
-| `d 2005 or 2007 or 2y` | Received 2005 or 2005 or within the past 2 years |
+| `d 2005 or 2007 or 2y` | Received 2005 or 2007 or within the past 2 years |
 
 Searching is initiated when hitting “Enter”. Holding down ⌥ tells MailMate to stay in the current mailbox. The menu of the toolbar search field allows setting the default search mailbox. (If “Current Mailbox” is selected then holding down ⌥ makes MailMate search “All Messages”.)
 
