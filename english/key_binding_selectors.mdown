@@ -29,7 +29,9 @@ Selector | Argument | Action
 `scrollPageDown:` | - | Scroll one page down
 `scrollPageUp:` | - | Scroll one page up
 `scrollPageDownOrNextUnreadMessage:` | - | Scroll one page down if possible or skip to next message
-`makeFirstResponder:` | View identifier | Identifiers can be found in layout files
+`makeFirstResponder:` | View identifier | Move focus to a specific view (identifiers can be found in layout files)
+`selectNextKeyView:` | Move focus to the next key view as when using tab (⇥)
+`selectPreviousKeyView:` | Move focus to the previous key view as when using shift-tab (⇧⇥)
 `goToMailbox:` | Mailbox UUID (optional) | Select mailbox (or show mailbox selection window)
 `goToDestinationMailbox:` | - | Select the destination mailbox of the most recently moved message and select the message
 `selectNextMailboxRow:` | - | Select next mailbox (without expanding)
