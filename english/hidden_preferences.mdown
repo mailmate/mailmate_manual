@@ -74,7 +74,7 @@ You also need to manually configure it by creating this file:
 The following is an example file. It shows the use of 3 types of colorings. You can add as many as you like of these 3 types (although only the first 2 are useful for now). It also shows the use of bold/italic fonts:
 
 	{   styles = (
-		{   type = keyword;
+			{   type = keyword;
 				keyword = '\\Flagged';
 				color = "#00FF00";
 				fontStyle = "bold";
@@ -83,6 +83,14 @@ The following is an example file. It shows the use of 3 types of colorings. You 
 				color = "#00FFFF";
 				uuid = 'INBOX';
 				fontStyle = "italic"; // boldAndItalic can also be used
+			},
+			{   type = mailbox;
+				color = "#333366";
+				uuid = 'imap://username%40gmail.com@imap.gmail.com';
+			},
+			{   type = mailbox;
+				color = "#006633";
+				uuid = 'imap://username%40otherdomain.ca@imap.otherdomain.com';
 			},
 			{   /*disabled = ":true";*/
 				type = filter;
