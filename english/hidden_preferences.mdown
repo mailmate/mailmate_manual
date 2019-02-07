@@ -420,7 +420,7 @@ Example content:
 		);
 	}
 
-The `userID` value is a value as described in the “HOW TO SPECIFY A USER ID” section of the man page for `gpg2`. You must restart MailMate for any changes to take effect. The `serial` value can be seen when displaying a certificate in Keychain Access.
+The `userID` value is a value as described in the “HOW TO SPECIFY A USER ID” section of the man page for `gpg`. You must restart MailMate for any changes to take effect. The `serial` value can be seen when displaying a certificate in Keychain Access.
 
 If an empty string is provided for `userID` or `serial` then it's a hint to MailMate that signing/encryption is not used for this email address. This overrides whatever the setting is in the Security preferences pane. For OpenPGP the `address` can also be the address of a recipient.
 

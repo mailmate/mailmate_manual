@@ -161,19 +161,17 @@ Note that blocking is always enabled for messages in “Junk” or “Deleted Me
 
 ### OpenPGP and S/MIME
 
-MailMate supports both of the major protocols used for signing and encrypting emails. The [S/MIME](https://tools.ietf.org/html/rfc5751) support does not require any additional software. It uses Apple's security framework and certificates. The [OpenPGP](https://tools.ietf.org/html/rfc4880) support requires the `gpg2` command to be available. This is most easily installed using the MacGPG2 part of [GPGTools](https://www.gpgtools.org). It is also recommended to install the “GPG Keychain Access” part of GPGTools. **Warning:** Older versions of the GPGMail part of GPGTools can break the native S/MIME support in Apple Mail.
+MailMate supports both of the major protocols used for signing and encrypting emails. The [S/MIME](https://tools.ietf.org/html/rfc5751) support does not require any additional software. It uses Apple's security framework and certificates. The [OpenPGP](https://tools.ietf.org/html/rfc4880) support requires the `gpg` command to be available. This can be done with the [GPGTools](https://www.gpgtools.org) installer (the Apple Mail plugin is *not* needed). It is recommended to install the “GPG Keychain Access” part of GPGTools. Alternatively, if you are a Homebrew user, you can install the `gpg-suite-no-mail` cask or just the `gpg` package if you do not need “GPG Keychain Access”. In the latter case, you also need to install (and configure) `pinentry-mac`.
 
 It is possible to allow MailMate to index decrypted messages. This allows you to search within encrypted messages, but it also means that decrypted text is added to database files. Make sure you understand the implications of doing this. Note that if you change this setting then it only affects messages which have not yet been decrypted. Also note that attachments are saved in a decrypted state to disk if viewed.
 
  <!-- CID and content type are always added. -->
 
-A banner is shown above the message for all signed and/or encrypted messages. You can disable this banner for messages which are successfully verified and/or decrypted, but it is always shown if there are any issues. Most often a “Show Details” button is available. For S/MIME messages this allows you to review the related certificate. For OpenPGP messages it shows the output from the `gpg2` command. The latter is documented [here](http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=blob_plain;f=doc/DETAILS;hb=refs/heads/STABLE-BRANCH-2-0).
+A banner is shown above the message for all signed and/or encrypted messages. You can disable this banner for messages which are successfully verified and/or decrypted, but it is always shown if there are any issues. Most often a “Show Details” button is available. For S/MIME messages this allows you to review the related certificate. For OpenPGP messages it shows the output from the `gpg` command. The latter is documented [here](http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=blob_plain;f=doc/DETAILS;hb=refs/heads/STABLE-BRANCH-2-0).
 
 Note that MailMate always allows you to enable signing/encryption for a message. If it is not possible to actually do it then you are warned if you try to send the message.
 
 <!-- link to S/MIME error codes -->
-
-It has been reported by a user that MailMate also works with `gpg2` installed using `homebrew` if `pinentry-mac` is also installed. The user also wrote: “... in ~/.gnupg/gpg-agent.conf add the following line `pinentry-program /usr/local/bin/pinentry-mac`.”
 
 ## Software Update
 
