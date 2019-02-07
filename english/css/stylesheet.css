@@ -1,3 +1,29 @@
+/* As far as I can tell, variables work from macOS 10.11+ (El Capitan) */
+:root {
+	--background-color: white;
+	--text-color: black;
+	--link-color: #3983C4;
+	--pre-color: #F7F7F7;
+	--table-color: #F7F7F7;
+	--table-border-color: lightgray;
+	--quote-color: #777777;
+	--ruler-start: #ccc;
+	--ruler-middle: #333;
+}
+
+/* Dark scheme works from 10.14.4+ (Mojave) */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #2d2d2d;
+		--text-color: #d2d2d2;
+		--pre-color: #555555;
+		--table-color: #555555;
+		--quote-color: #a2a2a2;
+		--ruler-start: #333;
+		--ruler-middle: #ccc;
+	}
+}
+
 h1 {
 	margin-bottom: 0.5em;
 }
@@ -33,6 +59,8 @@ img.centerframe, img.center {
 }
 
 body {
+	background-color: var(--background-color);
+	color: var(--text-color);
 	font-family: -apple-system, "Helvetica Neue", "Lucida Grande", sans-serif;
 	margin: auto;
 	padding: 0px 10px 10px 10px;
@@ -95,7 +123,7 @@ pre {
 	margin-top: 1em;
 	margin-bottom: 1em;
 	padding: 5px;
-	background-color: #F7F7F7;
+	background-color: var(--pre-color);
 	border-radius: 5px 5px 5px 5px;
 	overflow-x: auto;
 }
@@ -106,7 +134,7 @@ code {
 	padding: 0 0.4em;
    white-space: nowrap;
 	border-radius: 3px;
-	background-color: #F7F7F7;
+	background-color: var(--pre-color);
 }
 pre > code {
 	padding: 0px;
@@ -115,8 +143,8 @@ pre > code {
 hr {
 	border: 0;
 	height: 1px;
-	background: #333;
-	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+	background: var(--ruler-middle);
+	background-image: linear-gradient(to right, var(--ruler-start), var(--ruler-middle), var(--ruler-start));
 }
 
 hr {
@@ -127,7 +155,7 @@ hr {
 /* Tables */
 table {
 	border-radius: 5px 5px 5px 5px;
-	background-color: #F7F7F7;
+	background-color: var(--table-color);
 	border-collapse: collapse;
 	margin: 1em 0em;
 	margin-left: auto;
@@ -138,11 +166,11 @@ th {
 	padding: 0.5em;
 }
 td {
-	border-top: 1px solid lightgray;
+	border-top: 1px solid var(--table-border-color);;
 	padding: 0.5em;
 }
 td+td,th+th {
-	border-left: 1px solid lightgray;
+	border-left: 1px solid var(--table-border-color);;
 }
 
 p.post-meta {
@@ -185,8 +213,8 @@ div.footnotes li p {
 .quotes ul li {
 	margin: 0 0 5px;
 	padding-left: 5px;
-	border-left: 2px solid #777777;
-	color: #777777;
+	border-left: 2px solid var(--quote-color);
+	color: var(--quote-color);
 }
 
 .quotes ul {
@@ -198,6 +226,6 @@ div.footnotes li p {
 blockquote {
 	margin: 1em 0;
 	padding-left: 5px;
-	border-left: 2px solid #777777;
-	color: #777777;
+	border-left: 2px solid var(--quote-color);
+	color: var(--quote-color);
 }
