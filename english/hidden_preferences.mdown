@@ -350,6 +350,24 @@ The command above sets a delay of 3 minutes.
 
 Once this feature is enabled, you can cancel sending a message by selecting it in the Drafts folder and using “Message ▸ Cancel Send and Edit” (⌥⇧⌘D).
 
+### Warn about delayed sending
+
+You can disable the warning about pending delayed messages:
+
+	defaults write com.freron.MailMate MmSendLaterWarningEnabled -bool NO
+
+If you keep the warning enabled then it can be made conditional like this:
+
+	defaults write com.freron.MailMate MmSendLaterWarningLimitEnabled -bool YES
+
+The default is 1 hour (60 minutes), but this can also be changed:
+
+	defaults write com.freron.MailMate MmSendLaterWarningLimitMinutes -integer 720
+
+The above would change it to 12 hours.
+
+The warning shows how long it'll be before the next message is to be sent.
+
 ### Warn about external recipients
 
 MailMate warns about sending to external recipients if a regular expression pattern is provided for internal recipients. A simple example:
