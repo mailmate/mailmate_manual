@@ -6,7 +6,7 @@ title: Account Setup
 
 MailMate is able to import IMAP accounts from Apple Mail and Thunderbird. You can do this using the “File ▸ Import Accounts...” menu item which opens a window showing you all importable accounts available.
 
-Alternatively, you can use the “File ▸ Add IMAP Account...” menu item. This opens a window in which you can manually configure an IMAP account. You may find [Apple's Mail Assistant](https://www.apple.com/support/macosx/mailassistant/) helpful if you do not know the server settings. If you need to edit or delete an existing account then use “Mailbox ▸ Edit Source...” or “Mailbox ▸ Remove Source” after selecting the account under SOURCES in the mailbox list.
+Alternatively, you can use the “File ▸ Add IMAP Account...” menu item. This opens a window in which you can manually configure an IMAP account. You may find [Apple's Mail Assistant](https://www.apple.com/support/macosx/mailassistant/) helpful if you do not know the server settings. If you need to edit or delete an existing account then use “Mailbox ▸ Edit Source...” or “Mailbox ▸ Remove Source” after selecting the account under SOURCES in the mailbox list. You can also reorder your accounts under Sources. This ordering is used whenever MailMate needs to display a list of accounts.
 
 The configurable values are as follows:
 
