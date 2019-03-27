@@ -352,7 +352,7 @@ Once this feature is enabled, you can cancel sending a message by selecting it i
 
 ### Warn about delayed sending
 
-You can disable the warning about pending delayed messages:
+You can disable the warning about pending delayed messages when quitting MailMate:
 
 	defaults write com.freron.MailMate MmSendLaterWarningEnabled -bool NO
 
