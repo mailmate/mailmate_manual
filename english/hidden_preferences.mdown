@@ -144,6 +144,11 @@ The following can be used to add a BCC (blind carbon copy) header by default to 
 
 Using the special value `"<.sender.>"` tells MailMate to use the sending address of the related account.
 
+This preference can also be a dictionary:
+
+	defaults write com.freron.MailMate MmDefaultBccHeader -dict "from.me@me.com" "bccspecial@example.com" "from.me2@me.com" "bcc.special2@example.com"
+
+
 MailMate uses delivery headers such as `X-Original-To` in order to derive an appropriate From address for replies. This is especially powerful when used in combination with the “Address Pattern” in the IMAP account settings, but some users may want to make MailMate pick the first address in “Email Address(es)” whenever none of the addresses are explicitly used in the recipient fields (`To` or `Cc`). This can currently be done by setting the following preferences:
 
 	defaults write com.freron.MailMate MmIgnoreDeliveryAddresses -bool YES
