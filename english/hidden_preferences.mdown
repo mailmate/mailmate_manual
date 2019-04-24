@@ -207,6 +207,10 @@ The recipient text fields in the Composer display at most 6 lines by default. Th
 
 You might prefer that if you often send to a large number of recipients. If you do then please remember to use the `Bcc:` header instead of the `To:` or `Cc:` headers.
 
+When you reply to multiple selected messages then, by default, a reply is generated for each message. The following preference allows you to instead create a single reply in which recipients are merged and the body is a concatenation of what is generated for individual replies:
+
+	defaults write com.freron.MailMate MmMergeReplies -bool YES
+
 ### External Editor
 
 MailMate supports using external editors to write emails. This is done by enabling the corresponding bundle in the Bundles preferences pane and then use the ⌃⇧O shortcut to edit the currently open draft. It is also possible to trigger this automatically when using tab to move into the main text field of the Composer. This is enabled as follows:
