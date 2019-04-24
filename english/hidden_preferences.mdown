@@ -61,7 +61,7 @@ An auto-expand feature has two options:
 
 The first one makes MailMate always expand all threads. Combined with the second one, only threads with emails “counted” are expanded. That might seem strange, but it means that if you have a mailbox with an unread count in the mailbox list then only threads with unread messages are going to be expanded (or the parts of the threads with unread messages). New messages also trigger auto-expansion. *(Note: It might be changed how this works. In particular, these features could be more independent of each other.)*
 
-Control of number of the maximum number of displayed messages in message view, when you select more, then the messageview stays blank:
+The maximum number of displayed messages in the message view. If you select more then the message view stays blank (the default value is 100):
 
 	defaults write com.freron.MailMate MmMaximumMessagesDisplayed -integer 10
 
