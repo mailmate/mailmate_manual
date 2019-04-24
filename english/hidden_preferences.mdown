@@ -202,8 +202,7 @@ The recipient text fields in the Composer display at most 6 lines by default. Th
 
 You might prefer that if you often send to a large number of recipients. If you do then please remember to use the `Bcc:` header instead of the `To:` or `Cc:` headers.
 
-
-When you select multiple messages and hit reply: then a single reply, addressed to the merged recipients and senders of all selected messages, with the body the same as what is generated in each reply, just as a series, one after the other:
+When you reply to multiple selected messages then, by default, a reply is generated for each message. The following preference allows you to instead create a single reply in which recipients are merged and the body is a concatenation of what is generated for individual replies:
 
 	defaults write com.freron.MailMate MmMergeReplies -bool YES
 
