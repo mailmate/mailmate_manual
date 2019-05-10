@@ -28,6 +28,8 @@ Selector | Argument | Action
 `collapseAll:` | - | Collapse all threads
 `scrollPageDown:` | - | Scroll one page down
 `scrollPageUp:` | - | Scroll one page up
+`scrollToTop:` | - | Scroll to the top of a list, for example, the message list.
+`scrollToBottom:` | - | Scroll to the bottom of a list, for example, the message list.
 `scrollPageDownOrNextUnreadMessage:` | - | Scroll one page down if possible or skip to next message
 `makeFirstResponder:` | View identifier | Move focus to a specific view (identifiers can be found in layout files)
 `selectNextKeyView:` | Move focus to the next key view as when using tab (⇥)
@@ -133,6 +135,9 @@ Selector | Argument | Action
 `showMarkupLanguage:` | - | Show markup menu
 `showIdentities:` | - | Show identities menu (choice of “From”)
 `toggleMarkdown:` | - | Enable/disable the use of Markdown (a bit faster than using `showMarkupLanguage:`).
+`toggleBold:` | - | Toggle styling of the current selection or word at the current caret location.
+`toggleItalic:` | - | Toggle styling of the current selection or word at the current caret location.
+`toggleCode:` | - | Toggle styling of the current selection or word at the current caret location.
 `send:` | - | Send message
 `sendAndArchiveParent:` | - | Send message and then archive the replied message
 `sendAndMoveParentToMailbox:` | Mailbox UUID | Send message and then move the replied message to the given mailbox
