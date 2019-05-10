@@ -455,6 +455,17 @@ The `userID` value is a value as described in the “HOW TO SPECIFY A USER ID”
 
 If an empty string is provided for `userID` or `serial` then it's a hint to MailMate that signing/encryption is not used for this email address. This overrides whatever the setting is in the Security preferences pane. For OpenPGP the `address` can also be the address of a recipient.
 
+The same file can be used to add some explicit signing/encryption settings for specific senders and/or recipients:
+
+	{
+		signingEnabledPattern = "{always_sign1@example.com,always_sign2@example.com}";
+		signingDisabledPattern = "never_sign@example.com";
+		encryptionEnabledPattern = "*@example.org"; // Encrypt whenever sending to someone with an example.org address.
+		encryptionDisabledPattern = "{exception1@example.org,exception2@example.org}"; // Do no encrypt for these addresses
+	}
+
+The above overrides whatever would have been the signing/encryption state based on the Security preferences pane settings.
+
 ## Network issues
 
 For a long time MailMate has used the `OpenSSL` libraries for its network code. This changed with the release of version 1.9.5 and MailMate now uses Apple's `CFNetwork`. The old code still works though and can be enabled like this:
