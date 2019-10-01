@@ -1,0 +1,17 @@
+title: Uninstall MailMate
+
+# <a name="uninstall"></a>Uninstall MailMate
+
+MailMate does not have a built-in uninstall feature, but most files are saved in the following folder:
+
+	/Users/<username>/Library/Application Support/MailMate
+
+If you have used the “Custom Location” feature in the General preferences pane then your emails might have been saved in a different location.
+
+Preferences are saved in this file:
+
+	/Users/<username>/Library/Preferences/com.freron.MailMate.plist
+
+Note that the “Library” folder might be hidden by macOS. You can hold down ⌥ to reveal it in the “Finder ▸ Go” menu.
+
+Finally, the application itself needs to be deleted. You can find it where you installed it. Most likely, it's in the “Applications” folder.

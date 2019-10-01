@@ -40,6 +40,7 @@ web_css: empty
 	* Software Update
 * [Custom Key Bindings][customkeybindings]
 * [Rebuild Database][rebuilddatabase]
+* [Uninstall][uninstall]
 
 [introduction]: introduction.html
 [accountsetup]: account_setup.html
@@ -50,6 +51,7 @@ web_css: empty
 [preferences]: preferences.html
 [customkeybindings]: custom_key_bindings.html
 [rebuilddatabase]: rebuild.html
+[uninstall]: uninstall.html
 
 ## Appendix
 
