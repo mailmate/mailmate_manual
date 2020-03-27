@@ -41,7 +41,7 @@ The configurable values are as follows:
 
 *	SMTP Server / User Name
 
-	The settings used for outgoing messages. Note that multiple accounts are allowed to share the same SMTP server.
+	The settings used for outgoing messages. Multiple accounts are allowed to share the same SMTP server. Use `-` as username to tell MailMate that you want to skip authentication (anonymous SMTP). This is not supported by most SMTP servers.
 
 *	Require SSL
 
