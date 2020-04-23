@@ -59,7 +59,7 @@ In practice, the extended `mailto:` URI scheme should allow MailMate to be integ
 
 ### LaunchBar
 
-An example with instructions is available [here](http://prenagha.github.io/launchbar/mailmate.html).
+An example with instructions is available [here](https://renaghan.com/launchbar/mailmate/).
 
 # The `mlmt:` URI scheme
 
