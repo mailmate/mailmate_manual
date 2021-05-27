@@ -32,7 +32,7 @@ You could look through the standard key bindings to get an idea of what is possi
 
 	"^'" = "insertSingleQuoteIgnoringSubstitution:";
 
-It's a bit difficult to actually view the standard key bindings. Here is a trick from [osxnotes](http://osxnotes.net/keybindings.html) which makes the output nice and clean:
+It's a bit difficult to actually view the standard key bindings. Here is a trick which makes the output nice and clean:
 
 	plutil -convert xml1 /System/Library/Frameworks/AppKit.framework/Resources/StandardKeyBinding.dict -o -|pl|grep -v noop:|ruby -pe '$_.gsub!(/[^ -~\n]/){"\\U%04x"%$&.ord}'|sed 's/  / /g'
 
