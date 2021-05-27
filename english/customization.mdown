@@ -119,29 +119,6 @@ SidebarWhiteFolder.icns
 
 **Note:** On macOS Catalina (10.15), the above must be changed to `/System/Applications/Mail.app/...`.
 
-macOS 10.9-10.
-
-	deltaMailboxes =
-	(
-		{	imagePath = "/Applications/Mail.app/Contents/Resources/InMailbox.tiff";
-			uuid = "INBOX";
-		},
-		{	imagePath = "/Applications/Mail.app/Contents/Resources/DraftsMailbox.tiff";
-			uuid = "DRAFTS";
-		},
-		{	imagePath = "/Applications/Mail.app/Contents/Resources/SentMailbox.tiff";
-			uuid = "SENT";
-		},
-		{	imagePath = "/Applications/Mail.app/Contents/Resources/JunkMailbox.tiff";
-			uuid = "JUNK";
-		},
-		{	imagePath = "/Applications/Mail.app/Contents/Resources/TrashMailbox.tiff";
-			uuid = "TRASH";
-		}
-	);
-
-**Note:** On macOS 10.8 and earlier you must replace `tiff` with `png`.
-
 Extendable file defining the set of possible counters for each mailbox (defaults are All, Unread, Flagged, and Unreplied):
 
 	countMenu.plist
