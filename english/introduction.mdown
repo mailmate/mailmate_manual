@@ -136,7 +136,7 @@ Whether or not you decide to use MailMate then you may want to follow future dev
 * [Twitter][] (@mailmateapp)
 
 [homepage]: https://freron.com
-[email]: https://freron.com/subscribe
+[email]: https://freron.com/mm_subscribe
 [blog]: https://blog.freron.com
 [rss]: feed://blog.freron.com
 [mailinglist]: https://lists.freron.com/listinfo/mailmate
