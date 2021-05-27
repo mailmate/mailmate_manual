@@ -98,6 +98,8 @@ The following is an example file. It shows the use of 3 types of colorings. You 
 
 The first example is of the `keyword` type. This colors emails matching a specific IMAP keyword. This can also be used for tags (which always map to an IMAP keyword). The second example is the `mailbox` type which colors messages which are in any one of the available mailboxes and smart mailboxes (the UUID value of a mailbox can be put on the pasteboard by selecting the mailbox and then hit ⌘C). The last example is currently a semi-hardcoded option. It makes emails pending deletion colored red similar to what is currently fully hardcoded in MailMate.
 
+A `color` can also be one of the [standard system color names](https://developer.apple.com/documentation/appkit/nscolor/standard_colors?language=objc). This will adapt to the use of dark mode. Make sure the color used is supported on your version of macOS. An example is `systemRedColor`.
+
 ## Navigation
 
 When moving or deleting a message MailMate automatically selects the “next” message in the current mailbox. The definition of “next” can be controlled using the following preference:
@@ -563,10 +565,10 @@ Debug variable for logging actions related to security protocols (S/MIME and Ope
 
 When dragging messages from the messages outline to the Finder (or Desktop), the default filename is based on the subject of the message. This can be customized using a [format string][]. Here are some simple examples:
 
-	defaults write com.freron.MailMate MmFilenameFormatString "${#body-part-id}.eml"
-	defaults write com.freron.MailMate MmFilenameFormatString "${subject} (${from}).eml"
+	defaults write com.freron.MailMate MmFilenameFormatString "${#body-part-id}"
+	defaults write com.freron.MailMate MmFilenameFormatString "${subject} (${from})"
 
-The default is a nicely formatted subject line: `${subject.prefix:+${subject.prefix} }${subject.blob:+[${subject.blob}] }${subject.body}.eml`. Note that due to a file system limitation, MailMate always replaces any occurrences of `:` with `;`.
+The default is a nicely formatted subject line: `${subject.prefix:+${subject.prefix} }${subject.blob:+[${subject.blob}] }${subject.body}`. If there is no extension provided then `.eml` is automatically appended. Note that due to a file system limitation, MailMate always replaces any occurrences of `:` with `;`.
 
 Normal behavior when clicking the dock icon is to open a mailbox viewer if none exists. The following changes this behavior such that any existing message viewer windows or composer windows is taken to the front when the dock icon is clicked.
 
