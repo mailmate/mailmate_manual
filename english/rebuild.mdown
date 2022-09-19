@@ -25,7 +25,7 @@ Then restart MailMate. When the rebuilding has finished, you should take a look 
 
 ## How to transfer MailMate Settings to another computer
 
-To copy your settings to another computer you need this files (depending on what you have customized):
+To copy your settings to another computer you need these files (depending on what you have customized):
 
 	/Users/<username>/Library/Application Support/MailMate/*.plist
 	/Users/<username>/Library/Application Support/MailMate/Resources/
