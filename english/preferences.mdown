@@ -32,6 +32,10 @@ MailMate allows you to configure 4 message counters which can be displayed in th
 
 **Note: The current interface in the preferences pane can be misleading. The 4 radio buttons to the left are not used to configure the position of a single counter. They are used to configure 4 separate counters.**
 
+Caveat: There are limits on the types of custom sounds allowed. These are described in the Apple documentation for [UNNotificationSound][].
+
+[unnotificationsound]: https://developer.apple.com/documentation/usernotifications/unnotificationsound
+
 <!--
 Note that the set of available counters (All, Unread, Flagged, etc.) can also be [customized][count menu plist].
 
