@@ -60,6 +60,14 @@ Selector | Argument | Action
 `moveUpAndModifySelection:` | - | Extend selection upwards
 `selectWithFilter:` | [Filter format string](custom_key_bindings.html#special_actions) | Select a subset of messages matched by the filter
 
+## Message display
+
+Selector | Argument | Action
+---------|----------|-------
+`nextAlternative:` | - | Switch to next display alternative (usually only plain text and HTML alternatives exist)
+`previousAlternative:` | - | Switch to previous display alternative (usually only plain text and HTML alternatives exist)
+`loadImagesOnce:` | - | Allow the external images of the currently displayed message to be displayed once (potentially allowing the action to be tracked by the external server).
+
 ## Message actions
 
 Selector | Argument | Action
@@ -85,6 +93,8 @@ Selector | Argument | Action
 `removeTag:` | IMAP keyword | Remove an IMAP keyword (not necessarily a tag)
 `clearTags:` | - | Remove all tags of the selected messages
 `toggleReadState:` | - | Shorthand for `( 'toggleTag:', '\\Seen' )`
+`markAsRead:` | - | Shorthand for `( 'removeTag:', '\\Seen' )`
+`markAsUnread:` | - | Shorthand for `( 'setTag:', '\\Seen' )`
 `toggleFlag:` | - | Shorthand for `( 'toggleTag:', '\\Flagged' )`
 `toggleMuteState:` | - | Shorthand for `( 'toggleTag:', '$Muted' )`
 `markAsJunk:` | - | Shorthand for `( 'setTag:', '$Junk' )` — automatically clears not-junk related tags
@@ -95,7 +105,6 @@ Selector | Argument | Action
 `undo:` | - | Undo action (moved messages or keyword changes)
 `redo:` | - | Redo action (moved messages or keyword changes)
 `copyAsLink:` | - | Put the `message:` URL of the currently selected message on the pasteboard.
-`loadImagesOnce:` | - | Allow the external images of the currently displayed message to be displayed once (potentially allowing the action to be tracked by the external server).
 
 ## Mailbox actions
 
@@ -144,6 +153,8 @@ Selector | Argument | Action
 `insertString:` | string | Insert text in composer
 `pasteAsQuotedText:` | - | Paste text with an increased quoting level
 `insertFormatString:`\*\* | format string | Insert text in composer using a format string
+`moveSignatureToTop:` | - | Move signature above replied text, so-called “top-posting”
+`moveSignatureToBottom:` | - | Move signature below replied text (and move signature if used), so-called “bottom-posting”
 
 \*\* Experimental feature added as an alternative to `insertText:`. Mainly to allow one to do something like `"x" = ( "reply:", "insertFormatString:", "Hi ${from.name.first},\n\n");`.
 

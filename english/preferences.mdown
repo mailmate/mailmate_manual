@@ -32,6 +32,10 @@ MailMate allows you to configure 4 message counters which can be displayed in th
 
 **Note: The current interface in the preferences pane can be misleading. The 4 radio buttons to the left are not used to configure the position of a single counter. They are used to configure 4 separate counters.**
 
+Caveat: There are limits on the types of custom sounds allowed. These are described in the Apple documentation for [UNNotificationSound][].
+
+[unnotificationsound]: https://developer.apple.com/documentation/usernotifications/unnotificationsound
+
 <!--
 Note that the set of available counters (All, Unread, Flagged, etc.) can also be [customized][count menu plist].
 
@@ -54,7 +58,7 @@ MailMate does not support rich text editing with WYSIWYG (What You See Is What Y
 
 The main problem with a plain text composer is that it's not possible to include arbitrary rich text within the text editor of the composer, but this is often needed when writing replies and when forwarding emails. The solution to this problem is based on the fact that most rich text emails contain *both* a plain text part and an HTML (rich text) part. The plain text can then be shown in the text editor while MailMate automatically injects the HTML into the generated HTML of the email. If the user tries to edit the plain text then MailMate offers to drop the original HTML. This warning can be disabled.
 
-Most users should be fine with the default settings in the Composer preferences pane, but if you like then you can change when MailMate chooses to embed HTML. The default setting is to “embed when needed” which lets MailMate decide when to embed. This is a heuristic algorithm which might change over time. The other options should be self-explanatory. You can also change the embedding method used. If the “Premailer” bundle is enabled then it's best to use this, but you also have the option of using a “scoped stylesheet”. This works well in theory, but it won't always work well in practice (depending on the receiving email client).
+Most users should be fine with the default settings in the Composer preferences pane, but if you like then you can change when MailMate chooses to embed HTML. The default setting is to “embed when needed” which lets MailMate decide when to embed. This is a heuristic algorithm which might change over time. The other options should be self-explanatory.
 
 ### HTML Styling
 
@@ -77,6 +81,18 @@ Here is an example of how to create a math block with “ASCIIMath”:
 If mixing ASCIIMath and TeX math then it's also possible to use `~~~asciimath` and `~~~texmath`, but this should rarely be necessary. Most users would only use one type and this is saved by MailMate in the `Content-Type` header.
 
 It's also possible to do math inline like this, ``` ``a^2 + b^2 = c^2`` ```. The ASCIIMath syntax is described [here](http://asciimath.org). *Warning:* Not all receiving email clients can handle the generated math.
+
+Finally, MailMate supports drawing diagrams using [Mermaid][]. Here's a very simply example:
+
+	~~~mermaid
+	graph LR
+	    A --> B
+		B --> C
+	~~~
+
+If needed, `language-mermaid` can be used to trigger the code highlighting instead.
+
+[mermaid]: https://mermaid-js.github.io
 
 ### <a name="markup_support"></a>Markdown Support
 

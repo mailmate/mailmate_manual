@@ -44,7 +44,7 @@ If you want to add or change the standard key bindings (in all applications) the
 
 You can use the standard key bindings as inspiration, but they do not reveal all that is possible. In particular, note the power of [multi-stroke key bindings][] which we are also going to utilize further below.
 
-[key bindings]: http://www.hcs.harvard.edu/~jrus/site/cocoa-text.html
+[key bindings]: https://web.archive.org/web/20210425001227/http://www.hcs.harvard.edu/~jrus/site/cocoa-text.html
 [selector]: https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/Selector.html
 [multi-stroke key bindings]: http://blog.macromates.com/2006/multi-stroke-key-bindings/
 
@@ -155,7 +155,8 @@ The filter is actually a [format string](format_string_syntax.html). This can be
 
 Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future.
 
-<!-- This no longer works.
+<!--
+Note: This no longer works.
 ## <a name="special_keys"></a>Special “Keys”
 
 Trackpad gestures are supported by MailMate and they have been implemented with customization in mind as described in the following. The 4 standard swipe directions, left, right, up, and down, are transformed into key down events with the unicode characters `\U2193`, `\U2190`, `\U2192`, and `\U2191` (→ ← ↑ ↓). It allows for great flexibility with respect to what can now be done with gestures. By default, standard key bindings include the following:
