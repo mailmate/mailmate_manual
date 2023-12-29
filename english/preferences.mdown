@@ -32,6 +32,13 @@ MailMate allows you to configure 4 message counters which can be displayed in th
 
 **Note: The current interface in the preferences pane can be misleading. The 4 radio buttons to the left are not used to configure the position of a single counter. They are used to configure 4 separate counters.**
 
+Troubleshooting: If sounds do not appear to work then make sure you have the following two System Settings enabled:
+
+* “Play user interface sound effects” in the “Sound” pane.
+* “Allow Notifications” for MailMate in the Notifications pane -- including the “Play sound for notification” setting.
+
+The above also applies to the “Sent Message” sound currently configured in the Composer preferences pane of MailMate.
+
 Caveat: There are limits on the types of custom sounds allowed. These are described in the Apple documentation for [UNNotificationSound][].
 
 [unnotificationsound]: https://developer.apple.com/documentation/usernotifications/unnotificationsound
