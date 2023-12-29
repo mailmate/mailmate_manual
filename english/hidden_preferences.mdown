@@ -321,6 +321,10 @@ This is a functional but somewhat incomplete feature allowing you to select an a
 
 	defaults write com.freron.MailMate MmSMTPAlternativeEnabled -bool YES
 
+To clean-up the list of alternative SMTP servers, remove the unwanted entries from the file:
+
+	~/Library/Application Support/MailMate/Submission.plist
+
 ### Internationalized Email
 
 MailMate has experimental support for the use of the [`SMTPUTF8` SMTP extension](https://tools.ietf.org/html/rfc6531). In short, this means that MailMate can generate and send emails with UTF8 headers. This also means that MailMate supports international user and domain names in email addresses. This feature is naturally limited by what is supported by the transmission agents, IMAP servers, and receiving email clients.
