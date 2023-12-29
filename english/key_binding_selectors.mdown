@@ -66,7 +66,8 @@ Selector | Argument | Action
 ---------|----------|-------
 `nextAlternative:` | - | Switch to next display alternative (usually only plain text and HTML alternatives exist)
 `previousAlternative:` | - | Switch to previous display alternative (usually only plain text and HTML alternatives exist)
-`loadImagesOnce:` | - | Allow the external images of the currently displayed message to be displayed once (potentially allowing the action to be tracked by the external server).
+`downloadResources:` | - | Allow the external resources/images of the currently displayed message to be downloaded once (potentially allowing tracking)
+`downloadAllResources:` | - | Works like `downloadResources:`, but this will also include any strictly blocked resources
 
 ## Message actions
 
@@ -156,7 +157,7 @@ Selector | Argument | Action
 `moveSignatureToTop:` | - | Move signature above replied text, so-called “top-posting”
 `moveSignatureToBottom:` | - | Move signature below replied text (and move signature if used), so-called “bottom-posting”
 
-\*\* Experimental feature added as an alternative to `insertText:`. Mainly to allow one to do something like `"x" = ( "reply:", "insertFormatString:", "Hi ${from.name.first},\n\n");`.
+\*\* This is a flexible alternative to `insertText:`. A custom reply key could be configured as follows, `"x" = ( "reply:", "insertFormatString:", "Hi ${to.name.first},\n\n");`. When replying/forwarding, it is also possible to refer to values in the replied/forwarded message by using the special `##replied` prefix. For example, `"^x" = ( "insertFormatString:", "Hi ${to.name}, you sent your email using ${##replied.#mailer.name}.");`
 
 ## Other
 
