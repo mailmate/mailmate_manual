@@ -89,14 +89,15 @@ The standard key binding system in macOS supports the use of a special selector 
 
 MailMate extends the list of selectors accepting an argument. The following table contains some of the most interesting examples. More can be found in [the appendix][key binding selectors].
 
-Selector               | Argument
----------------------- | -----------------------
-`goToMailbox:`         | Mailbox UUID (optional)
-`moveToMailbox:`       | Mailbox UUID (optional)
-`toggleTag:`           | IMAP keyword
-`setTag:`              | IMAP keyword
-`removeTag:`           | IMAP keyword
-`selectWithFilter:`    | Filter format string
+Selector                  | Argument
+------------------------- | -----------------------
+`goToMailbox:`            | Mailbox UUID (optional)
+`moveToMailbox:`          | Mailbox UUID (optional)
+`toggleTag:`              | IMAP keyword
+`setTag:`                 | IMAP keyword
+`removeTag:`              | IMAP keyword
+`selectWithFilter:`       | Filter string
+`selectWithFormatString:` | Filter format string
 
 The `goToMailbox:` and `moveToMailbox:` selectors work both with and without an argument. A mailbox [UUID][] is not always a UUID in a strict sense, but it is always a unique identifier for a mailbox. It can be one of the following:
 
@@ -149,11 +150,11 @@ The `selectWithFilter:` selector is quite powerful. It can be seen as a generali
 		"t" = ( "selectWithFilter:", "#flags.flag !=[x] '\\Flagged'"); // Selects all unstarred mail.
 	};
 
-The filter is actually a [format string](format_string_syntax.html). This can be used to select messages related to the current message. For example, here is the definition for a shortcut (⌃⌥D) to select all messages from the same sender and delete them:
+Selection can also be done using a [format string](format_string_syntax.html). This can be used to select messages related to the current message. For example, here is the definition for a shortcut (⌃⌥D) to select all messages from the same sender and delete them. It even works if selecting multiple messages with different senders.
 
-	"^~d" = ( "selectWithFilter:", "from.address = '${from.address}'", "moveToMailbox:", "trash" );
+	"^~d" = ( "selectWithFormatString:", "from.address = '${from.address}'", "moveToMailbox:", "trash" );
 
-Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future.
+Note that the filter (query) language is undocumented. This means that you should consider this feature experimental. Details may change in the future. For historical reasons, `selectWithFilter:` also handles format strings.
 
 <!--
 Note: This no longer works.
