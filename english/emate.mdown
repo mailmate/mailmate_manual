@@ -9,30 +9,30 @@ It is recommended to make a symbolic link to `emate` and never make a copy. This
 	mkdir -p ~/bin/
 	ln -s /Applications/MailMate.app/Contents/Resources/emate ~/bin/emate
 
-This is the current output when asking `emate` for `--help`:
+This is the current output when running `emate --help mailto`:
 
-	usage: emate mailto [-h] [-v] [-f FROM] [-t TO] [-c CC] [-b BCC] [-r REPLYTO]
-	                    [-s SUBJECT] [--header HEADER] [--send-now]
-	                    ...
+	Create a new email using MailMate
+	Usage: emate mailto [OPTIONS] [attachments...]
 
-	MailMate command line interface.
+	Positionals:
+	  attachments TEXT ...        Files to attach
 
-	positional arguments:
-	  attachments
-
-	optional arguments:
-	  -h, --help            show this help message and exit
-	  -v, --verbose         verbose output
-	  -f FROM, --from FROM  email address for the sender
-	  -t TO, --to TO        email address to send to
-	  -c CC, --cc CC        email addresses to add to cc
-	  -b BCC, --bcc BCC     email address to add to bcc
-	  -r REPLYTO, --replyto REPLYTO
-	                        email address for replies
-	  -s SUBJECT, --subject SUBJECT
-	                        subject for email
-	  --header HEADER       arbitrary header formatted as "<name>: <value>"
-	  --send-now            send email immediately
+	Options:
+	  -h,--help                   Print this help message and exit
+	  -f,--from TEXT ...          Email address for the sender
+	  -t,--to TEXT ...            Email address to send to
+	  -c,--cc TEXT ...            Email addresses to add to cc
+	  -b,--bcc TEXT ...           Email address to add to bcc
+	  -r,--replyto TEXT ...       Email address for replies
+	  -s,--subject TEXT ...       Subject for email
+	  --sign                      Sign email (overwriting default settings)
+	  --nosign                    Do not sign email (overwriting default settings)
+	  --encrypt                   Encrypt email (overwriting default settings)
+	  --noencrypt                 Do not encrypt email (overwriting default settings)
+	  --openpgp                   Use OpenPGP for signing/encrypting (overwriting default settings)
+	  --smime                     Use S/MIME for signing/encrypting (overwriting default settings)
+	  --header TEXT ...           Arbitrary header formatted as "<name>: <value>"
+	  --send-now                  Send email immediately
 
 The following is an example of creating a message with a tag named `special`:
 
