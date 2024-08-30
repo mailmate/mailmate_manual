@@ -73,7 +73,7 @@ For a number of different reasons MailMate might need to generate HTML for an ou
 
 In addition to basic styling of emails, you can also do some very powerful automatic styling if you have mathetmatics or source code in your emails. (Note: The latter currently only works if Markdown is also used.)
 
-To do this you need to enable some of the related bundles in the Bundles preferences pane. Currently, the only options are “Pygments” (for source code highlighting) and “ASCIIMath”/“TeX to Math” (for styling of mathematics). Here is an example of what to write to style a section of HTML code:
+To do this you need to enable some of the related bundles in the Bundles preferences pane. Currently, the only options are “Prism” (for source code highlighting) and “ASCIIMath”/“TeX to Math” (for styling of mathematics). Here is an example of what to write to style a section of HTML code:
 
 	~~~html
 	<p>This is a paragraph with a <a href="https://freron.com">link</a>.</p>
@@ -136,7 +136,7 @@ Before sending a message, MailMate makes a series of sanity checks. These are:
 
 [regular expression]: https://en.wikipedia.org/wiki/Regular_expression
 
-## Signatures
+## <a name="signatures_preferences"></a>Signatures
 
 The signatures preferences pane allows you to add, delete, and edit the set of available signatures. You can also configure whether you prefer so-called top or bottom posting. If you change this setting then you also need to “Reset Usage History” if you don't want MailMate to rely on signature placements used in the past for specific recipients.
 
