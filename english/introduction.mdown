@@ -14,9 +14,9 @@ The default behavior of MailMate should work well for most users, but there are 
 
 Finally, note that MailMate does not restrict you to using the built-in text editor. If you already use a text editor for other purposes then you can also use it to write your emails (see the Bundles preferences pane within MailMate).
 
-## Import or Add IMAP Accounts
+## Add IMAP Accounts
 
-To get started with MailMate, you need to configure one or more IMAP accounts. If you have any IMAP accounts configured in Apple Mail or Thunderbird then an importer window should open when you first started MailMate. Alternatively, it can be opened manually in the File menu where you can also find the menu item for manually [adding an account][setup] (“File ▸ Add IMAP Account…”). There is an Activity Viewer (⌥⌘0) to help debug server problems.
+To get started with MailMate, you need to configure one or more IMAP accounts using “[File ▸ Add IMAP Accounts…][setup]”. In most cases, you'll just need to write one or more of your account email addresses and MailMate will then automatically find the necessary settings itself. If this is not possible then you can provide the settings manually. There is an Activity Viewer (⌥⌘0) to help debug server problems.
 
 [setup]: account_setup.html
 
