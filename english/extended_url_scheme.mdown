@@ -1,6 +1,8 @@
-title: URI schemes
+title: URI Schemes
 
-# Extended `mailto:` URI scheme
+# URI Schemes
+
+## Extended `mailto:` URI scheme
 
 MailMate supports the [`mailto:` URI scheme][mailto rfc] which can be used to create new messages. For example, the following link creates a message with recipient, subject, and default body text:
 
@@ -35,33 +37,33 @@ Note that it is also possible (and easier for shell scripts) to create messages 
 [mailto rfc]: https://tools.ietf.org/html/rfc6068
 [emate]: emate.html
 
-## Hacking Integration with Third Party Applications
+### Hacking Integration with Third Party Applications
 
 In practice, the extended `mailto:` URI scheme should allow MailMate to be integrated with applications which need to send messages with attachments. Unfortunately this often requires the developers of the applications to add scripts for MailMate. Some example scripts are included with MailMate and they can be enabled as described below using the Terminal (assuming all applications are in `/Applications`). Note that in some cases updating the applications involved or moving MailMate is going to break the symbolic links created.
 
-### Alfred 2
+#### Alfred 2
 
 	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/Alfred\ 2/MailMate.scpt ~/Library/Application\ Support/Alfred\ 2/Plugins/Email/
 
-### iCal
+#### iCal
 
 	mv /Applications/iCal.app/Contents/Resources/Scripts/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/MailBackup.scpt
 	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/iCal/Mail.scpt /Applications/iCal.app/Contents/Resources/Scripts/
 
 *Note:* The above does not work on Mountain Lion or later versions of macOS since Apple no longer uses the `Mail.scpt` file. It is unknown whether or not a workaround exists.
 
-### BusyCal
+#### BusyCal
 
 	mv /Applications/BusyCal.app/Contents/Resources/Scripts/MailAttachmentScript.scpt /Applications/BusyCal.app/Contents/Resources/Scripts/MailAttachmentScriptBackup.scpt
 	ln -s /Applications/MailMate.app/Contents/SharedSupport/Other/BusyCal/MailAttachmentScript.scpt /Applications/BusyCal.app/Contents/Resources/Scripts/
 
 *Note:* The above only works for BusyCal 1.6.
 
-### LaunchBar
+#### LaunchBar
 
 An example with instructions is available [here](https://renaghan.com/launchbar/mailmate/).
 
-# The `mlmt:` URI scheme
+## The `mlmt:` URI scheme
 
 In addition to the `mailto:` scheme MailMate has its own URI scheme named `mlmt`. This is likely to be extended over time, but for now it can be used to trigger toolbar-like searches. The following is an example of using it from the Terminal window:
 
@@ -71,7 +73,7 @@ This searches subject lines for the value `mlmt`.  and `+` are reserved characte
 
 In general, `=` and `&` are reserved characters in the query part of the URI since they are used to separate key/value parameters. For convenience, the `+` is also a reserved character since it's replaced with the space character. If you need to use any of these reserved characters then they must be percent encoded.
 
-# AppleScript
+## AppleScript
 
 AppleScript support is somewhat limited. You can use the `mailto:` scheme via AppleScript as described further above, but you can also do anything you can do with [custom key bindings](custom_key_bindings.html). It's done like this:
 
