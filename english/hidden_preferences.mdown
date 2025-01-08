@@ -514,7 +514,7 @@ BusyContacts has a feature allowing easy access to the emails related to a speci
 
 Caveat: This feature appears to only be available in the BusyContacts version downloaded from the BusyMac website. It does *not* work if BusyContacts is installed from the AppStore.
 
-If you have any issues with this feature then make sure the MailMate extension for Spotlight is enabled here: “System Settings ▸ General ▸ Login Items & Extensions ▸ Spotlight ▸ ...”
+Read more about this feature in [this blog post](https://blog.freron.com/2025/busycontacts).
 
 ## Debugging
 
