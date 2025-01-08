@@ -123,11 +123,13 @@ Extendable file defining the set of possible counters for each mailbox (defaults
 
 	countMenu.plist
 
-### Messages Outline
+### Message List
 
 Extendable:
 
-	MmMessagesOutlineView/outlineColumns.plist (available columns in messages outline view)
+	MmMessageListView/outlineColumns.plist (available columns in messages outline view)
+
+(This file used to be in `MmMessagesOutlineView`.)
 
 ### <a name="css_plist"></a>Message Display
 
