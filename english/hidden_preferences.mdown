@@ -518,7 +518,7 @@ Read more about this feature in [this blog post](https://blog.freron.com/2025/bu
 
 ## Debugging
 
-When using the following debug variable, a log file is dumped to `/tmp/mailmate_imap_subscriptions.log` if an error occurs while fetching mailboxes to be displayed for “Edit Subscriptions”. It also enables logging for the Activity Viewer even when the Activity Viewer is closed.
+When using the following debug variable, a log file is dumped to `/tmp/mailmate_imap_subscriptions.log` if an error occurs while fetching mailboxes to be displayed for “Edit Subscriptions”. It also enables logging for the Activity Viewer even when the Activity Viewer is closed. Annd this is going to log data which can be found in Console.app when the problem occurs.
 
 	defaults write com.freron.MailMate LoggingEnabled -bool YES
 
@@ -533,6 +533,10 @@ Debug variable for logging communication between SpamSieve and MailMate:
 Debug variable for logging actions related to security protocols (S/MIME and OpenPGP):
 
 	defaults write com.freron.MailMate MmDebugSecurity -bool YES
+
+If you have had problems with accounts getting stuck in a “disconnected” state then you can help debug the problem doing as follows:
+
+	defaults write com.freron.MailMate MmDebugReachability -bool YES
 
 ## Other
 
